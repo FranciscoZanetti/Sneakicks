@@ -1,15 +1,14 @@
 # SneaKicks
 
-SneaKicks es un nuevo sitio de e-commerce para la compra de zapatillas online. Cuenta con productos tanto para mujeres como para hombres en varios talles. Tenemos una seccion de nuevos productos para estar a la ultima moda y seccion de ofertas para aquel que quiere ahorrar una moneda y caminar como si estuviese descalzo.
-El publico va a estar orientado a aquellos que lleven la cultura zapatillera en el alma, que la prenda mas importante de su atuendo sea un buen par de zapatillas. Se venderan zapatillas de alta gama de marcas como Nike, Adidas, Supreme, y parecidas.
-
+SneaKicks es un nuevo sitio de e-commerce para la compra de zapatillas online. Cuenta con productos tanto para mujeres como para hombres en varios talles. Tenemos una seccion de nuevos productos para estar a la ultima moda y seccion de ofertas para aquel que quiere ahorrar una moneda y caminar como si estuviese descalzo. El publico va a estar orientado a aquellos que lleven la cultura zapatillera en el alma, que la prenda mas importante de su atuendo sea un buen par de zapatillas. Se venderan zapatillas de alta gama de marcas como Nike, Adidas, Supreme, y parecidas.
 
 Integrantes del equipo:
-- Francisco Zanetti
-- Alan Kasis
-- Alexander Perez
-- Federico Caffaro
 
+Francisco Zanetti
+Alan Kasis
+Alexander Perez
+Federico Caffaro
+Wireframe en figma : https://www.figma.com/file/FPTMgTFV658sGy7eM1U48t/Landing?node-id=1%3A2
 
 Sitios de referencia:
 
