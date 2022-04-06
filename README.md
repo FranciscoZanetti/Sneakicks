@@ -12,9 +12,13 @@ Integrantes del equipo:
 
 
 Sitios de referencia:
+
 https://stadiumgoods.com
 
 https://footlocker.com
+
 https://dexter.com.ar
+
 https://mercadolibre.com.ar
+
 https://kickgame.com
