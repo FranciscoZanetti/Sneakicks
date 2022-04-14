@@ -1,0 +1,22 @@
+{
+  "name": "grupo_5_sacachispas",
+  "version": "1.0.0",
+  "description": "**Sneakicks** es un E-Comerce destinado a la venta de zapatillas. Su nombre proviene de la combinación de dos términos en inglés, *sneakers* y *kicks*, que hacen referencia a los calzados deportivos o de uso casual.//",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranciscoZanetti/grupo_5_sacachispas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FranciscoZanetti/grupo_5_sacachispas/issues"
+  },
+  "homepage": "https://github.com/FranciscoZanetti/grupo_5_sacachispas#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

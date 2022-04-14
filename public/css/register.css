@@ -1,0 +1,25 @@
+.btn{
+    width: 100%;
+    padding: 15px;
+    border-radius: 2px;
+    border: none;
+    margin: 20px 0;
+    font-size: 15px;
+    background: #0990e4;
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+.btn:hover{
+    background: #0983d5;
+}
+
+.tengo-cuenta{
+    text-align: center;
+    color: #e61c1c;
+    font-weight: bold;
+    text-decoration: none;
+}
+.tengo-cuenta:hover{
+    color: #e70e0e;
+}
