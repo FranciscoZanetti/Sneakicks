@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/product.css">
     <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <title>Sneakicks</title>
 </head>
 
@@ -19,68 +22,128 @@
 
     <main>
 
-        <section class="product">
+        <div class="container">
 
-            <section class="product_pc">
-                <p class="directory"></p>
-                <section class="images">
-                    <div class="images-mini"></div>
-                    <div class="images-big">
-                        <img src="/img/products/air-jordan-12-retro-olive" alt="Air Jordan 12 Retro Olive Green">
-                    </div>
-                </section>
-                <nav>
-                    <div><a href="#">Descripcion</a></div>
-                    <div><a href="#">Reseñas</a></div>
-                    <div><a href="#">Guía de talles</a></div>
-                </nav>
-            </section>
+            <p class="directory">> product</p>
 
-            <section class="product-info">
+            <section class="product">
 
-                <div class="product-info_header">
-                    <h2>Producto</h2>
-                    <div class="fav"><i class="fa-light fa-heart"></i></div>
-                </div>
-                <div class="star rating"></div>
-    
-                <div class="images-big"><img src="/images/products/air-jordan-12-retro-olive" alt="Air Jordan 12 Retro Olive Green"></div>
-    
-                <section class="product-info_price">
-                    <div class="price_old">
-                        <i class="fa-light fa-dollar-sign"></i>
-                        <span>530</span>
-                    </div>
-                    <div class="price-off">
-                        <div class="price-off_price">
-                            <i class="fa-light fa-dollar-sign"></i>
-                            <span>477</span>
+                <section class="product-pc">
+                    <section class="images">
+                        <div class="images-mini"></div>
+                        <div class="images-big">
+                            <img src="/img/products/air-jordan-12-retro-olive.jpeg" alt="Air Jordan 12 Retro Olive Green">
                         </div>
-                        <span class="price-off_off">10% OFF</span>
+                    </section>
+                    <nav>
+                        <div><a href="#">Descripcion</a></div>
+                        <div><a href="#">Reseñas</a></div>
+                        <div><a href="#">Guía de talles</a></div>
+                    </nav>
+                </section>
+
+                <section class="product-info">
+
+                    <div class="product-info-header">
+                        <h2>Air Jordan 12 Retro Olive Green</h2>
+                        <div class="fav"><i class="fa-regular fa-heart"></i></div>
                     </div>
-                </section>
-    
-                <section class="product-info_extra">
-                    <article class="extra">
-                        <span class="extra_icon"><i class="fa-light fa-truck-fast"></i></span>
-                        <span class="extra_text">Detalles de envío</span>
-                    </article>
-                    <article class="extra">
-                        <span class="extra_icon"><i class="fa-duotone fa-arrow-turn-down-left"></i></span>
-                        <span class="extra_text">Detalles de devolución</span>
-                    </article>
-                </section>
-    
-                <form class="product-info-form" action="/product" method="get">
-    
-                    <section class="form-size">
-                        <label for="size">Categoría de talle</label>
-                        <select name="size" id="size">
-                            <option value="Hombre" selected>Hombre</option>
-                            <option value="Mujer">Mujer</option>
-                            <option value="Nino">Niño</option>
-                        </select>
-    
+                    <div class="star-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+        
+                    <div class="images-big"><img src="/img/products/air-jordan-12-retro-olive.jpeg" alt="Air Jordan 12 Retro Olive Green"></div>
+        
+                    <section class="product-info-price">
+                        <div class="price-old">
+                            <!-- <i class="fa-solid fa-dollar-sign"></i> -->
+                            <span>$ 530</span>
+                        </div>
+                        <div class="price-off">
+                            <div class="price-off-price">
+                                <!-- <i class="fa-solid fa-dollar-sign"></i> -->
+                                <span>$ 477</span>
+                            </div>
+                            <span class="price-off-off">10% OFF</span>
+                        </div>
+                    </section>
+        
+                    <section class="product-info-extra">
+                        <article class="extra">
+                            <span class="extra-icon"><i class="fa-solid fa-truck-fast"></i></span>
+                            <span class="extra-text">Detalles de envío</span>
+                        </article>
+                        <article class="extra">
+                            <span class="extra-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></span>
+                            <span class="extra-text">Detalles de devolución</span>
+                        </article>
+                    </section>
+        
+                    <form class="product-info-form" action="/product" method="get">
+        
+                        <section class="form-size">
+                                <div class="size-select-container-parent">
+                                    <div class="size-select-container-child">
+                                        <label for="size">Talle:</label>
+                                        <select name="size" id="size">
+                                            <option selected disabled hidden> </option>
+                                            <option value="7">7</option>
+                                            <option value="7.5">7.5</option>
+                                            <option value="8">8</option>
+                                            <option value="8.5">8.5</option>
+                                            <option value="9">9</option>
+                                            <option value="9.5">9.5</option>
+                                            <option value="10">10</option>
+                                            <option value="10.5">10.5</option>
+                                            <option value="11">11</option>
+                                            <option value="11.5">11.5</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                        <span class="custom-arrow-size"></span>
+                                </div>
+                                </div>
+        
+                            <div class="size-boxes">
+                                <div class="size-boxes-box"><p class="box-number">7</p></div>
+                                <div class="size-boxes-box"><p class="box-number">7.5</p></div>
+                                <div class="size-boxes-box"><p class="box-number">8</p></div>
+                                <div class="size-boxes-box"><p class="box-number">8.5</p></div>
+                                <div class="size-boxes-box"><p class="box-number">9</p></div>
+                                <div class="size-boxes-box"><p class="box-number">9.5</p></div>
+                                <div class="size-boxes-box"><p class="box-number">10</p></div>
+                                <div class="size-boxes-box"><p class="box-number">10.5</p></div>
+                                <div class="size-boxes-box"><p class="box-number">11</p></div>
+                                <div class="size-boxes-box"><p class="box-number">11.5</p></div>
+                                <div class="size-boxes-box"><p class="box-number">12</p></div>
+                            </div>
+                        </section>
+        
+                        <section class="form-colorwaves">
+                            <div class="colorwaves-container">
+                                <label for="colorwave">Modelo:</label>
+                                <select name="colorwave" id="colorwave">
+                                    <option value="Bordeaux">Bordeaux</option>
+                                    <option value="Olive Green" selected>Olive Green</option>
+                                </select>
+                                <span class="custom-arrow-colorwave"></span>
+                            </div>
+                        </section>
+        
+                        <p class="form-stock">3 Unidades disponibles</p>
+        
+                        <div class="cart-button">
+                            <button type="submit">AGREGAR AL CARRITO</button>
+                        </div>
+        
+                    </form>
+        
+                    <!-- <section class="product-info-size">
+                        <form class="size-form" action="/product" method="get">
+                            <label for="size">Categoría de talle</label>
+                            <select name="size" id="size">
+                                <option value="Hombre" selected>Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Nino">Niño</option>
+                            </select>
+                        </form>
                         <div class="size-boxes">
                             <div class="size-boxes-box"><p class="box-number">7</p></div>
                             <div class="size-boxes-box"><p class="box-number">7.5</p></div>
@@ -95,203 +158,175 @@
                             <div class="size-boxes-box"><p class="box-number">12</p></div>
                         </div>
                     </section>
-    
-                    <section class="form-colorwaves">
-                        <div class="colorwaves-select">
+        
+                    <section class="product-info-colorwaves-container">
+                        <form class="colorwave-form" action="/product" method="get">
                             <label for="colorwave">Modelo</label>
-                        <select name="colorwave" id="colorwave">
-                            <option value="Bordeaux">Bordeaux</option>
-                            <option value="Olive Green" selected>Olive Green</option>
-                        </select>
-                        </div>
-                        <section class="colorwave-container">
-                            <div class="colorwave"></div>
-                            <div class="colorwave"></div>
-                            <div class="colorwave"></div>
-                            <div class="colorwave"></div>
+                            <select name="colorwave" id="colorwave">
+                                <option value="Bordeaux">Bordeaux</option>
+                                <option value="Olive Green" selected>Olive Green</option>
+                            </select>
+                        </form>
+                        <section class="colorwaves">
+                            <div class="colorwaves-colorwave"></div>
+                            <div class="colorwaves-colorwave"></div>
+                            <div class="colorwaves-colorwave"></div>
+                            <div class="colorwaves-colorwave"></div>
                             <a class="more">Más</a>
                         </section>
                     </section>
-    
-                    <p class="product-info_stock">3 Unidades disponibles</p>
-    
-                    <div class="product-info-button">
-                        <button type="submit">AGREGAR AL CARRITO</button>
-                    </div>
-    
-                </form>
-    
-                <!-- <section class="product-info_size">
-                    <form class="size-form" action="/product" method="get">
-                        <label for="size">Categoría de talle</label>
-                        <select name="size" id="size">
-                            <option value="Hombre" selected>Hombre</option>
-                            <option value="Mujer">Mujer</option>
-                            <option value="Nino">Niño</option>
-                        </select>
-                    </form>
-                    <div class="size-boxes">
-                        <div class="size-boxes-box"><p class="box-number">7</p></div>
-                        <div class="size-boxes-box"><p class="box-number">7.5</p></div>
-                        <div class="size-boxes-box"><p class="box-number">8</p></div>
-                        <div class="size-boxes-box"><p class="box-number">8.5</p></div>
-                        <div class="size-boxes-box"><p class="box-number">9</p></div>
-                        <div class="size-boxes-box"><p class="box-number">9.5</p></div>
-                        <div class="size-boxes-box"><p class="box-number">10</p></div>
-                        <div class="size-boxes-box"><p class="box-number">10.5</p></div>
-                        <div class="size-boxes-box"><p class="box-number">11</p></div>
-                        <div class="size-boxes-box"><p class="box-number">11.5</p></div>
-                        <div class="size-boxes-box"><p class="box-number">12</p></div>
-                    </div>
+        
+                    <p class="product-info-stock">3 Unidades disponibles</p>
+        
+                    <form class="add-to-cart" action="/product" method="get">
+        
+                    </form> -->
+        
                 </section>
-    
-                <section class="product-info_colorwaves-container">
-                    <form class="colorwave-form" action="/product" method="get">
-                        <label for="colorwave">Modelo</label>
-                        <select name="colorwave" id="colorwave">
-                            <option value="Bordeaux">Bordeaux</option>
-                            <option value="Olive Green" selected>Olive Green</option>
-                        </select>
-                    </form>
-                    <section class="colorwaves">
-                        <div class="colorwaves_colorwave"></div>
-                        <div class="colorwaves_colorwave"></div>
-                        <div class="colorwaves_colorwave"></div>
-                        <div class="colorwaves_colorwave"></div>
-                        <a class="more">Más</a>
+
+            </section>
+            
+            
+
+            <section class="details">
+
+                <article class="details-text" id="description">
+                    <h3>Descripción</h3>
+                    <p class="paragrafs">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quisquam libero dolorum corrupti ullam sapiente ipsum maiores illum ex eaque ut sed, repellendus autem veritatis laudantium perspiciatis fugiat officia aut! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit officiis sequi eligendi tenetur, aut id atque. Dignissimos eos dolor saepe illo corrupti eius, reprehenderit, fugiat molestiae cupiditate doloribus possimus quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolorem nihil corporis quidem aliquam accusamus repellendus rem tenetur minima fugit molestiae, culpa qui maiores. Soluta quidem mollitia dolorem exercitationem nobis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus iure non aut dolorum unde laudantium, architecto tempora molestiae? Nam asperiores itaque maiores harum similique est soluta architecto doloribus, obcaecati reprehenderit.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis quod iure laboriosam ducimus dolor animi iste est. Incidunt perspiciatis aut, necessitatibus earum blanditiis numquam voluptatibus. Dicta sequi sint minima.
+                    </p>
+                </article>
+
+                <article class="details-text">
+
+                    <h3>Reseñas</h3>
+                        <form class="text-review" action="/product" method="post">
+                            <p class="text-subtitle">Deja una reseña</p>
+                            <div class="textarea-container-parent">
+                                <div class="textarea-container-child">
+                                    <textarea name="review" id="review" placeholder="Escribe tu reseña"></textarea>
+                                    <span class="textarea-aux"></span>
+                                </div>
+                            </div>
+                            <div class="review-button">
+                                <button type="submit">Publicar</button>
+                            </div>
+                        </form>
+
+                    <section class="text-previous-reviews">
+
+                        <p class="text-subtitle">Reseñas del público</p>
+
+                        <article class="previous-reviews-review">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="paragrafs">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, pariatur. Quo, nostrum minima alias doloremque architecto nisi iste ab. Facilis amet reiciendis harum ipsam, tempora similique dolore aspernatur maiores ea!
+                            </p>
+                        </article>
+
+                        <article class="previous-reviews-review">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="paragrafs">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quisquam libero dolorum corrupti ullam sapiente ipsum maiores illum ex eaque ut sed, repellendus autem veritatis laudantium perspiciatis fugiat officia aut! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit officiis sequi eligendi tenetur, aut id atque. Dignissimos eos dolor saepe illo corrupti eius, reprehenderit, fugiat molestiae cupiditate doloribus possimus quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolorem nihil corporis quidem aliquam accusamus repellendus rem tenetur minima fugit molestiae, culpa qui maiores. Soluta quidem mollitia dolorem exercitationem nobis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus iure non aut dolorum unde laudantium, architecto tempora molestiae? Nam asperiores itaque maiores harum similique est soluta architecto doloribus, obcaecati reprehenderit.
+                            </p>
+                        </article>
+
+                        <article class="previous-reviews-review">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="paragrafs">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut facilis sit voluptas quae voluptatum aliquam praesentium quibusdam! Aut illo illum eos, sapiente laborum nesciunt voluptatum consequuntur quas. Quos, enim soluta?
+                            </p>
+                        </article>
+
                     </section>
-                </section>
-    
-                <p class="product-info_stock">3 Unidades disponibles</p>
-    
-                <form class="add-to-cart" action="/product" method="get">
-    
-                </form> -->
-    
+
+                </article>
+
+                <article class="details-text">
+
+                    <h3>Guía de talles</h3>
+
+                    <form class="size-unit-form" action="/product" method="get">
+
+                        <article class="size-unit-container">
+                            <div class="size-unit">
+                                <label for="estadosunidos">Estados Unidos:</label>
+                                <select name="estadosunidos" id="estadosunidos">
+                                    <option value="7">7</option>
+                                    <option value="7.5">7.5</option>
+                                    <option value="8">8</option>
+                                    <option value="8.5">8.5</option>
+                                    <option value="9">9</option>
+                                    <option value="9.5">9.5</option>
+                                    <option value="10">10</option>
+                                    <option value="10.5">10.5</option>
+                                    <option value="11">11</option>
+                                    <option value="11.5">11.5</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <span class="custom-arrow-size-unit"></span>
+                            </div>
+                        </article>
+
+                        <article class="size-unit-container">
+                            <div class="size-unit">
+                                <label for="europa">Europa:</label>
+                                <select name="europa" id="europa">
+                                    <option value="40">40</option>
+                                    <option value="40.5">40.5</option>
+                                    <option value="41">41</option>
+                                    <option value="41.5">41.5</option>
+                                    <option value="42">42</option>
+                                    <option value="42.5">42.5</option>
+                                    <option value="43">43</option>
+                                    <option value="43.5">43.5</option>
+                                    <option value="44">44</option>
+                                    <option value="44.5">44.5</option>
+                                    <option value="45">45</option>
+                                </select>
+                                <span class="custom-arrow-size-unit"></span>
+                            </div>
+                        </article>
+
+                        <article class="size-unit-container">
+                            <div class="size-unit">
+                                <label for="centimetros">Centímetros:</label>
+                                <select name="centimetros" id="centimetros">
+                                    <option value="25">25</option>
+                                    <option value="25.5">25.5</option>
+                                    <option value="26">26</option>
+                                    <option value="26.5">26.5</option>
+                                    <option value="27">27</option>
+                                    <option value="27.5">27.5</option>
+                                    <option value="28">28</option>
+                                    <option value="28.5">28.5</option>
+                                    <option value="29">29</option>
+                                    <option value="29.5">29.5</option>
+                                    <option value="30">30</option>
+                                </select>
+                                <span class="custom-arrow-size-unit"></span>
+                            </div>
+                        </article>
+
+                    </form>
+
+                </article>
+
             </section>
 
-        </section>
+            <section class="recomended">
+                <h3>Te pueden interesar</h3>
+                <div class="article-container"></div>
+            </section>
         
-        
-
-        <section class="details">
-
-            <article class="details-text">
-                <h3>Descripción</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quisquam libero dolorum corrupti ullam sapiente ipsum maiores illum ex eaque ut sed, repellendus autem veritatis laudantium perspiciatis fugiat officia aut! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit officiis sequi eligendi tenetur, aut id atque. Dignissimos eos dolor saepe illo corrupti eius, reprehenderit, fugiat molestiae cupiditate doloribus possimus quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolorem nihil corporis quidem aliquam accusamus repellendus rem tenetur minima fugit molestiae, culpa qui maiores. Soluta quidem mollitia dolorem exercitationem nobis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus iure non aut dolorum unde laudantium, architecto tempora molestiae? Nam asperiores itaque maiores harum similique est soluta architecto doloribus, obcaecati reprehenderit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis quod iure laboriosam ducimus dolor animi iste est. Incidunt perspiciatis aut, necessitatibus earum blanditiis numquam voluptatibus. Dicta sequi sint minima?
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, pariatur. Quo, nostrum minima alias doloremque architecto nisi iste ab. Facilis amet reiciendis harum ipsam, tempora similique dolore aspernatur maiores ea!
-                </p>
-            </article>
-
-            <article class="details-text">
-
-                <h3>Reseñas</h3>
-
-                <form class="text-review" action="/product" method="post">
-                    <p class="text-subtitle">Deja una reseña</p>
-                    <textarea name="review" id="review" placeholder="Escribe tu reseña"></textarea>
-                    <label for="review">Publicar</label>
-                </form>
-
-                <section class="text-previous-reviews">
-
-                    <p class="text-subtitle">Reseñas del público<p>
-
-                    <article class="previous-reviews-review">
-                        <div class="review-stars"></div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quisquam libero dolorum corrupti ullam sapiente ipsum maiores illum ex eaque ut sed, repellendus autem veritatis laudantium perspiciatis fugiat officia aut! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit officiis sequi eligendi tenetur, aut id atque. Dignissimos eos dolor saepe illo corrupti eius, reprehenderit, fugiat molestiae cupiditate doloribus possimus quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolorem nihil corporis quidem aliquam accusamus repellendus rem tenetur minima fugit molestiae, culpa qui maiores. Soluta quidem mollitia dolorem exercitationem nobis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus iure non aut dolorum unde laudantium, architecto tempora molestiae? Nam asperiores itaque maiores harum similique est soluta architecto doloribus, obcaecati reprehenderit.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis quod iure laboriosam ducimus dolor animi iste est. Incidunt perspiciatis aut, necessitatibus earum blanditiis numquam voluptatibus. Dicta sequi sint minima?
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, pariatur. Quo, nostrum minima alias doloremque architecto nisi iste ab. Facilis amet reiciendis harum ipsam, tempora similique dolore aspernatur maiores ea!
-                        </p>
-                    </article>
-
-                    <article class="previous-reviews-review">
-                        <div class="review-stars"></div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quisquam libero dolorum corrupti ullam sapiente ipsum maiores illum ex eaque ut sed, repellendus autem veritatis laudantium perspiciatis fugiat officia aut! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit officiis sequi eligendi tenetur, aut id atque. Dignissimos eos dolor saepe illo corrupti eius, reprehenderit, fugiat molestiae cupiditate doloribus possimus quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolorem nihil corporis quidem aliquam accusamus repellendus rem tenetur minima fugit molestiae, culpa qui maiores. Soluta quidem mollitia dolorem exercitationem nobis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus iure non aut dolorum unde laudantium, architecto tempora molestiae? Nam asperiores itaque maiores harum similique est soluta architecto doloribus, obcaecati reprehenderit.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis quod iure laboriosam ducimus dolor animi iste est. Incidunt perspiciatis aut, necessitatibus earum blanditiis numquam voluptatibus. Dicta sequi sint minima?
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, pariatur. Quo, nostrum minima alias doloremque architecto nisi iste ab. Facilis amet reiciendis harum ipsam, tempora similique dolore aspernatur maiores ea!
-                        </p>
-                    </article>
-
-                    <article class="previous-reviews-review">
-                        <div class="review-stars"></div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quisquam libero dolorum corrupti ullam sapiente ipsum maiores illum ex eaque ut sed, repellendus autem veritatis laudantium perspiciatis fugiat officia aut! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit officiis sequi eligendi tenetur, aut id atque. Dignissimos eos dolor saepe illo corrupti eius, reprehenderit, fugiat molestiae cupiditate doloribus possimus quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit dolorem nihil corporis quidem aliquam accusamus repellendus rem tenetur minima fugit molestiae, culpa qui maiores. Soluta quidem mollitia dolorem exercitationem nobis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus iure non aut dolorum unde laudantium, architecto tempora molestiae? Nam asperiores itaque maiores harum similique est soluta architecto doloribus, obcaecati reprehenderit.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis quod iure laboriosam ducimus dolor animi iste est. Incidunt perspiciatis aut, necessitatibus earum blanditiis numquam voluptatibus. Dicta sequi sint minima?
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, pariatur. Quo, nostrum minima alias doloremque architecto nisi iste ab. Facilis amet reiciendis harum ipsam, tempora similique dolore aspernatur maiores ea!
-                        </p>
-                    </article>
-
-                </section>
-
-            </article>
-
-            <article class="details-text">
-
-                <h3>Guía de talles</h3>
-
-                <form action="/product" method="get">
-
-                    <div class="size-unit">
-                        <p class="size-unit-subtitle">Estados Unidos</p>
-                        <select name="estadosunidos" id="estadosunidos">
-                            <option value="7">7</option>
-                            <option value="7.5">7.5</option>
-                            <option value="8">8</option>
-                            <option value="8.5">8.5</option>
-                            <option value="9">9</option>
-                            <option value="9.5">9.5</option>
-                            <option value="10">10</option>
-                            <option value="10.5">10.5</option>
-                            <option value="11">11</option>
-                            <option value="11.5">11.5</option>
-                            <option value="12">12</option>
-                        </select>
-                    </div>
-
-                    <div class="size-unit">
-                        <p class="size-unit-subtitle">Europa</p>
-                        <select name="europa" id="europa">
-                            <option value="40">40</option>
-                            <option value="40.5">40.5</option>
-                            <option value="41">41</option>
-                            <option value="41.5">41.5</option>
-                            <option value="42">42</option>
-                            <option value="42.5">42.5</option>
-                            <option value="43">43</option>
-                            <option value="43.5">43.5</option>
-                            <option value="44">44</option>
-                            <option value="44.5">44.5</option>
-                            <option value="45">45</option>
-                        </select>
-                    </div>
-
-                    <div class="size-unit">
-                        <p class="size-unit-subtitle">Centímetros</p>
-                        <select name="centimetros" id="centimetros">
-                            <option value="25">25</option>
-                            <option value="25.5">25.5</option>
-                            <option value="26">26</option>
-                            <option value="26.5">26.5</option>
-                            <option value="27">27</option>
-                            <option value="27.5">27.5</option>
-                            <option value="28">28</option>
-                            <option value="28.5">28.5</option>
-                            <option value="29">29</option>
-                            <option value="29.5">29.5</option>
-                            <option value="30">30</option>
-                        </select>
-                    </div>
-
-                </form>
-
-            </article>
-
-        </section>
+        </div>
 
     </main>
 
