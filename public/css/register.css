@@ -1,25 +1,339 @@
-.btn{
-    width: 100%;
-    padding: 15px;
-    border-radius: 2px;
-    border: none;
-    margin: 20px 0;
-    font-size: 15px;
-    background: #0990e4;
-    color: white;
-    cursor: pointer;
-    transition: all .5s ease;
-}
-.btn:hover{
-    background: #0983d5;
+body{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 14px;
+    text-align: center;
+    color: black;
+    background-color:white;
+     padding: 10px;
 }
 
+.cajas{
+    display: block;
+}
 .tengo-cuenta{
     text-align: center;
-    color: #e61c1c;
     font-weight: bold;
+    
+}
+.cajas_1{
+    border-radius: 8px;
+    margin-top: 30px;
+    max-width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    transition: all 0.4s;
+    width: 90%;
+}
+.cajas_1:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.cajas_2{
+    border-radius: 8px;
+    margin-top: 30px;
+    max-width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    transition: all 0.4s;
+    width: 90%;
+}
+.cajas_2:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.caja2_1{
+    border-radius: 8px;
+    margin-top: 30px;
+    max-width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    transition: all 0.4s;
+    width: 90%;
+}
+.caja2_1:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);  
+}
+.caja2_2{
+    border-radius: 8px;
+    margin-top: 30px;
+    max-width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    transition: all 0.4s;
+    width: 90%;
+}
+.caja2_2:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);  
+}
+.cajas{
+    display: flexbox;
+}
+.botones{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+
+
+}
+.botones01:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.botones1{
+    display: block;
+    font-size: 7px;
+}
+button{
+    text-align: center;
+    color: black;
+    background-color: gray;
+    padding: 5px;
+    font-size: 18px;
+    font-family: 'Bebas Neue', cursive;
+    width: 5em;
+    height: 2em; 
+}
+.radios{
+    font-size: small;
+}
+
+a {
     text-decoration: none;
 }
-.tengo-cuenta:hover{
-    color: #e70e0e;
+
+.blank-list {
+    list-style: none;
 }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+}
+
+.brands_left_arrow {
+    position: absolute;
+    top: 40%;
+    left: 1%;
+  }
+
+.brands_preview {
+    max-width: 22%;
+    width: 200px;
+    height: auto;
+  }
+
+.brands_right_arrow {
+    position: absolute;
+    top: 40%;
+    right: 1%;
+  }
+
+.carrousel {
+    width: 80%;
+    height: auto;
+  }
+
+.carrousel_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0px;
+    width: 100%;
+}
+
+.carrousel_small {
+    width: 97%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 25px 0px;
+    border: solid;
+}
+
+.center_text {
+    text-align: center;
+}
+
+.shop_button {
+    position: absolute;
+    top: 60%;
+    width: 25%;
+    text-align: center;
+    font-size: 12px;
+    padding: 5px;
+  }
+
+.left_arrow {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+  }
+
+.menu_icon {
+    color: #5E554B;
+    margin-left: 10px;
+    margin-right: 10px;
+    visibility: visible;
+}
+
+.discount-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.discount-container_item {
+    border-radius: 2px;
+    width: 45%;
+    height: auto;
+}
+
+.footer-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    background-color: #5E554B;
+}
+
+.footer-container_item {
+    width: 18%;
+    height: auto;
+    text-align: center;
+}
+
+.footer-container_logo {
+    display: flex;
+    width: 18%;
+    height: auto;
+    align-items: center;
+}
+
+.footer-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.half-margin {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+.header_logo {
+    width: 140px;
+    height: auto;
+}
+
+.header_icon {
+    color: #5E554B;
+    margin-left: 10px;
+    margin-right: 10px;
+    visibility: hidden;
+}
+
+.preview {
+    max-width:100%;
+    height: auto;
+  }
+
+.preview-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.preview-container_item {
+    width: 45%;
+    height: auto;
+    text-align: center;
+}
+
+.right_arrow {
+    position: absolute;
+    top: 35%;
+    right: 5%;
+  }
+
+.upper-header {
+    display: flex; /* or inline-flex */
+    align-items: center;
+  }
+
+.upper-header_logo {
+    display: block;
+    margin-left: 32%;
+    margin-right: auto;
+}
+
+.lower_banner {
+    width: 97%;
+    height: auto;
+  }
+
+.lower-header {
+    display: flex; /* or inline-flex */
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f3f3f3;
+  }
+
+@media (min-width: 576px){
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+    }
+
+    .header_icon {
+        color: #5E554B;
+        margin-left: 10px;
+        margin-right: 10px;
+        visibility: visible;
+    }
+
+    .header_logo {
+        width: 180px;
+        height: auto;
+    }
+
+    .menu_icon {
+        color: #5E554B;
+        margin-left: 10px;
+        margin-right: 10px;
+        visibility: hidden;
+    }
+}
+
+
+@media (min-width: 768px){
+    .preview-container_item {
+        width: 30%;
+        height: auto;
+        text-align: center;
+    }
+
+    .header_logo {
+        width: 240px;
+        height: auto;
+    }
+}
+
+@media (min-width: 992px){}
+
+@media (min-width: 1200px){}
+
+@media (min-width: 1400px){}

@@ -10,25 +10,119 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    
+    <footer>
+        <nav>
+            <div class="upper-header">
+                <div class="upper-header_logo">
+                    <img src="/img/designs/logo6.jpg" alt="Logo SneaKicks" class="header_logo">
+                </div>
+                <div>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-magnifying-glass"></i></a>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-user"></i></a>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-heart"></i></a>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-cart-shopping"></i></a>
+                    <!-- <a href="/"><i class="fa-solid menu_icon fa-xl fa-bars"></i></a> -->
+                </div>
+            </div>
+            <div class="lower-header">
+                <a href="/">MEN</a>
+                <a href="/">WOMEN</a>
+                <a href="/">KIDS</a>
+                <a href="/">OFERTAS</a>
+                <a href="/">NOVEDADES</a>
+            </div>
+        </nav>
+    </footer>
+    <main>
      <form class="form">
         
         <h1 class="titulo">Crea tu Cuenta</h1>
-        
-        <input class="cajas" type="text" placeholder="Nombres" required maxlength="30">
-        <input class="cajas" type="text" placeholder="Apellidos" required maxlength="30">
-        <input class="cajas" type="email" placeholder="Email" required maxlength="30">
-        <input class="cajas" type="contraseña" placeholder="Contraseña" required maxlength="30">
-        
-        <p class="termino1"><input type="checkbox">  Estoy de acuerdo con <a class="termino2" href="">Terminos y Condiciones</a></p>
-        <p class="termino1"><input type="checkbox">  Quiero recibir notifaciones al correo<a class="termino2" href="#"></a></p>
-        
-        <input type="submit" class="btn" value="REGISTRAR">
-        
-        <p class="tengo-cuenta"><a href="" class="tengo-cuenta">Ya tengo cuenta</a></p>
+        <section class="cajas">
+        <input class="cajas_1" type="text" placeholder="Nombres" required maxlength="30">
+        <input class="cajas_2" type="text" placeholder="Apellidos" required maxlength="30">
+        </section>
+        <section class="caja2">
+        <input class="caja2_1" type="email" placeholder="Email" required maxlength="30">
+        <input class="caja2_2" type="contraseña" placeholder="Contraseña" required maxlength="30">
+        </section>
+     <section class="radios">
+        <p class="termino1"><input type="checkbox">  Quiero recibir novedades<a class="termino2" href="#"></a></p>
+        <p>Sexo:</p>
+        <div>
+        <input type="radio" id="Hombre" name="Sexo" value="Hombre"
+         checked>
+        <label for="Hombre">Hombre</label>
+        </div>
+        <div>
+        <input type="radio" id="Mujer" name="Sexo" value="Mujer">
+        <label for="mujer">Mujer</label>
+     </section>
+        <section class="botones">
+            <button class="botones01" name="button" >Registrarse </button> 
+           <div class="botones1">
+             
+              <p><a href="#">¿Ya tienes Cuenta? Iniciar Seccion</a>
+          </div>
+        </section>
         
     </form>
+</main>
+<footer>
+    <div class="footer-container">
+        <div class="footer-container_logo">  
+            <img src="/img/designs/logo6.jpg" alt="Logo Footer" class="footer-logo">
+        </div>
+        <div class="footer-container_item">
+            <p>SEGUINOS</p>
+            <div class="socials-container">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+        <div class="footer-container_item">
+            <p>SOBRE NOSOTROS</p>
+            <a href="/">About</a>
+        </div>
+        <div class="footer-container_item">
+            <p>MARCAS</p>
+            <p class="half-margin"><a href="/">Marca 1</a></p>
+            <p class="half-margin"><a href="/">Marca 2</a></p>
+            <p class="half-margin"><a href="/">Marca 3</a></p>
+            <p class="half-margin"><a href="/">Marca 4</a></p>
+            <p class="half-margin"><a href="/">Marca 5</a></p>
+            <!-- <ul class="blank-list">
+                <li><a href="/">Marca 1</a></li>
+                <li><a href="/">Marca 2</a></li>
+                <li><a href="/">Marca 3</a></li>
+                <li><a href="/">Marca 4</a></li>
+                <li><a href="/">Marca 5</a></li>
+            </ul> -->
+        </div>
+        <div class="footer-container_item">
+            <p>MEDIOS DE PAGO</p>
+            <div class="socials-container">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-amex"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-brands fa-bitcoin"></i>
+                <i class="fa-brands fa-ethereum"></i>
+            </div>
+        </div>
+        <div class="footer-container_item">
+            <p>CREA TU CUENTA</p>
+            <a href="/">Sign Up</a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

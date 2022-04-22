@@ -10,21 +10,100 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
-    <header><h2>Ingresar</h2></header>
-    
-    <form enctype="text/plain" method="POST" action="index.php">
-        <input type="mail" name="correo" placeholder="usuario" required=true><br></br>
-        <input type="password" name="direccion" placeholder="contraseña" minlength="10" required=true><br></br>
+    <header>
+        <nav>
+            <div class="upper-header">
+                <div class="upper-header_logo">
+                    <img src="/img/designs/logo6.jpg" alt="Logo SneaKicks" class="header_logo">
+                </div>
+                <div>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-magnifying-glass"></i></a>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-user"></i></a>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-heart"></i></a>
+                    <a href="/"><i class="fa-solid header_icon fa-xl fa-cart-shopping"></i></a>
+                    <!-- <a href="/"><i class="fa-solid menu_icon fa-xl fa-bars"></i></a> -->
+                </div>
+            </div>
+            <div class="lower-header">
+                <a href="/">MEN</a>
+                <a href="/">WOMEN</a>
+                <a href="/">KIDS</a>
+                <a href="/">OFERTAS</a>
+                <a href="/">NOVEDADES</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+    <h2>Ingresar</h2>
+    <form  enctype="text/plain" method="POST" action="index.php">
+        <input class="boton1" type="mail" name="correo" placeholder="usuario" required=true><br></br>
+        <input class="boton2" type="password" name="direccion" placeholder="contraseña" minlength="10" required=true><br></br>
    
     <section class="botones">
-        <button  name="button" >Ingresar </button> 
+        <button class="botones01" name="button" >Ingresar </button> 
        <div class="botones1">
           <p><a href="#">¿Olvidaste tu Contraseña?</a> 
           <p><a href="/views/register.html">¿No tienes Cuenta? Registrate</a>
       </div>
     </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-container_logo">  
+                <img src="/img/designs/logo6.jpg" alt="Logo Footer" class="footer-logo">
+            </div>
+            <div class="footer-container_item">
+                <p>SEGUINOS</p>
+                <div class="socials-container">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-container_item">
+                <p>SOBRE NOSOTROS</p>
+                <a href="/">About</a>
+            </div>
+            <div class="footer-container_item">
+                <p>MARCAS</p>
+                <p class="half-margin"><a href="/">Marca 1</a></p>
+                <p class="half-margin"><a href="/">Marca 2</a></p>
+                <p class="half-margin"><a href="/">Marca 3</a></p>
+                <p class="half-margin"><a href="/">Marca 4</a></p>
+                <p class="half-margin"><a href="/">Marca 5</a></p>
+                <!-- <ul class="blank-list">
+                    <li><a href="/">Marca 1</a></li>
+                    <li><a href="/">Marca 2</a></li>
+                    <li><a href="/">Marca 3</a></li>
+                    <li><a href="/">Marca 4</a></li>
+                    <li><a href="/">Marca 5</a></li>
+                </ul> -->
+            </div>
+            <div class="footer-container_item">
+                <p>MEDIOS DE PAGO</p>
+                <div class="socials-container">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-bitcoin"></i>
+                    <i class="fa-brands fa-ethereum"></i>
+                </div>
+            </div>
+            <div class="footer-container_item">
+                <p>CREA TU CUENTA</p>
+                <a href="/">Sign Up</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
