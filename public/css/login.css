@@ -1,4 +1,4 @@
-/*body{
+body{
     font-family: 'Bebas Neue', cursive;
     font-size: 14px;
     text-align: center;
@@ -68,7 +68,7 @@ button{
     font-size: 7px;
 }
 
-a {
+/* a {
     text-decoration: none;
 }
 
@@ -159,7 +159,7 @@ body {
     border-radius: 2px;
     width: 45%;
     height: auto;
-}
+} 
 
 .footer-container {
     display: flex;
@@ -250,7 +250,32 @@ body {
     align-items: center;
     justify-content: space-around;
     background-color: #f3f3f3;
-  }
+  }*/
+
+.input-container-padre{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-container-hijo{
+    display: flex;
+}
+
+.input-container-hijo input{
+    border: none;
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 2px solid #ABABAB;
+    border-radius: 7px;
+}
+
+.input-container-hijo input:hover{
+    border-color: black;
+}
 
 @media (min-width: 576px){
     body {
@@ -291,10 +316,11 @@ body {
         height: auto;
     }
 }
-*/
+
 
 @media (min-width: 992px){}
 
 @media (min-width: 1200px){}
 
 @media (min-width: 1400px){}
+
