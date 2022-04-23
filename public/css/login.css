@@ -1,4 +1,4 @@
-body{
+/*body{
     font-family: 'Bebas Neue', cursive;
     font-size: 14px;
     text-align: center;
@@ -230,7 +230,7 @@ body {
   }
 
 .upper-header {
-    display: flex; /* or inline-flex */
+    display: flex; 
     align-items: center;
   }
 
@@ -246,7 +246,7 @@ body {
   }
 
 .lower-header {
-    display: flex; /* or inline-flex */
+    display: flex; 
     align-items: center;
     justify-content: space-around;
     background-color: #f3f3f3;
@@ -291,6 +291,7 @@ body {
         height: auto;
     }
 }
+*/
 
 @media (min-width: 992px){}
 

@@ -44,9 +44,16 @@
     <main>
     <h2>Ingresar</h2>
     <form  enctype="text/plain" method="POST" action="index.php">
-        <input class="boton1" type="mail" name="correo" placeholder="usuario" required=true><br></br>
-        <input class="boton2" type="password" name="direccion" placeholder="contraseña" minlength="10" required=true><br></br>
-   
+       <div class="imput-container-padre">
+        <div class="imput-container">
+            <input  type="mail" name="correo" placeholder="usuario" required=true>
+        </div>
+        </div class="imput-container">
+       <div class="imput-container-padre"> 
+        <div>
+            <input type="password" name="direccion" placeholder="contraseña" minlength="10" required=true>
+        </div>
+    </div>
     <section class="botones">
         <button class="botones01" name="button" >Ingresar </button> 
        <div class="botones1">
