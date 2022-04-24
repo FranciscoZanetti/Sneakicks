@@ -415,6 +415,11 @@ main{
         display: flex;
         justify-content: center;
         margin-bottom: var(--vw-1-5rem);
+        transition: background-color, 100ms;
+    }
+
+    .review-button:hover{
+        background-color: black;
     }
 
         .review-button button{
@@ -425,6 +430,14 @@ main{
             border: none;
             background-color: #ebebeb;
             border-radius: 7px;
+            transition: 
+                background-color, 100ms,
+                color, 100ms;
+        }
+
+        .review-button:hover > button{
+            background-color: black;
+            color: white;
         }
     
     .previous-reviews-review{
@@ -574,12 +587,14 @@ main{
     main{
         display: flex;
         justify-content: center;
+        background-color: white;
     }
 
-    .container{
+    main .container{
         padding-left: 2%;
         padding-right: 2%;
         flex-grow: 0;
+        width: 992px;
     }
 
     .product{
@@ -590,7 +605,7 @@ main{
 
         .directory{
             display: block;
-            font-size: 1rem;
+            font-size: var(--vw-1rem);
         }
 
         .product-pc{
@@ -623,6 +638,7 @@ main{
                         .images-mini-img-container img{
                             object-fit: contain;
                             width: 100%;
+                            flex-grow: 0;
                         }
 
                 #image-pc img{
@@ -631,25 +647,46 @@ main{
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
+                    flex-grow: 0;
                 }
 
-            .product-pc nav{
-                display: flex;
-                flex-wrap: wrap;
-                margin-top: 40px;
-            }
-
-                .product-pc nav div{
-                    padding-left: 5%;
-                    padding-right: 5%;
-                    padding-top: var(--vw-0-8rem);
-                    padding-bottom: var(--vw-0-8rem);
+                .product-pc nav{
+                    display: flex;
+                    margin-top: 50px;
                 }
+
+                    .product-pc nav a{
+                        background-color: #f8f8f8;
+                        padding-left: 5%;
+                        padding-right: 5%;
+                        padding-top: var(--vw-0-8rem);
+                        padding-bottom: var(--vw-0-8rem);
+                        display: inline-block;
+                        text-decoration: none;
+                        color: black;
+                    }
+                        #nav-descripcion{
+                            border-top-left-radius: 7px;
+                            border-bottom-left-radius: 7px;
+                        }
+
+                        #nav-talles{
+                            border-top-right-radius: 7px;
+                            border-bottom-right-radius: 7px;
+                        }
+
+                    .product-pc nav a:hover{
+                        background-color: #ebebeb;
+                    }
+
+                    .product-pc nav a:active{
+                        background-color: #ebebeb;
+                    }
 
         .product-info{
             width: 33%;
             float: right;
-            border: 1px solid #acacac;
+            border: 2px solid #ebebeb;
             border-radius: 7px;
         }
 
@@ -665,13 +702,17 @@ main{
             margin-top: 10px;
             margin-left: 0;
             margin-right: 0;
-            border: 1px solid #acacac;
+            border: 2px solid #ebebeb;
             border-radius: 7px;
             padding-left: 3%;
             padding-right: 3%;
         }
-}
 
+            #description{
+                border-top: none;
+            }
+}
+/* 
 @media (min-width: 1200px){}
 
-@media (min-width: 1400px){}
+@media (min-width: 1400px){} */
