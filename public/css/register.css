@@ -25,10 +25,8 @@ body{
     transition: all 0.4s;
     width: 90%;
 }
-.cajas_1:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-}
+
+
 .cajas_2{
     border-radius: 8px;
     margin-top: 30px;
@@ -39,10 +37,7 @@ body{
     transition: all 0.4s;
     width: 90%;
 }
-.cajas_2:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-}
+
 .caja2_1{
     border-radius: 8px;
     margin-top: 30px;
@@ -53,10 +48,7 @@ body{
     transition: all 0.4s;
     width: 90%;
 }
-.caja2_1:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);  
-}
+
 .caja2_2{
     border-radius: 8px;
     margin-top: 30px;
@@ -67,10 +59,7 @@ body{
     transition: all 0.4s;
     width: 90%;
 }
-.caja2_2:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);  
-}
+
 .cajas{
     display: flexbox;
 }
@@ -85,10 +74,7 @@ body{
 
 
 }
-.botones01:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-}
+
 
 .botones1{
     display: block;

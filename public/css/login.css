@@ -1,4 +1,4 @@
-/*body{
+body{
     font-family: 'Bebas Neue', cursive;
     font-size: 14px;
     text-align: center;
@@ -9,12 +9,13 @@
 button{
     text-align: center;
     color: black;
-    background-color: gray;
+    background-color: rgb(144, 144, 156);
     padding: 5px;
     font-size: 18px;
     font-family: 'Bebas Neue', cursive;
-    width: 5em;
+    width: 6em;
     height: 2em; 
+    
 
 
 }
@@ -27,6 +28,7 @@ button{
     text-align: center;
     transition: all 0.4s;
     width: 90%;
+
 }
 .boton1:hover{
     -webkit-transform: scale(1.2);
@@ -49,12 +51,13 @@ button{
 
 .botones{
     display: flex;
-    justify-content: center;
+  
     text-align: center;
     padding: 25px;
     margin-top: 0px;
     margin-bottom: 20px;
-    width: 100%;
+    
+    
 
 
 }
@@ -67,7 +70,7 @@ button{
     display: block;
     font-size: 7px;
 }
-
+/*
 a {
     text-decoration: none;
 }
@@ -250,7 +253,49 @@ body {
     align-items: center;
     justify-content: space-around;
     background-color: #f3f3f3;
-  }
+}
+*/
+.input-container-padre{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.input-container-hijo{
+    display: flex;
+    justify-content: center;
+}
+
+.input-container-hijo input{
+    border: none;
+    float: left;
+    width: 60%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 2px solid #ABABAB;
+    border-radius: 7px;
+    
+}
+
+.input-container-hijo input:hover{
+    border-color: black;
+}
+.boton_padre{
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    padding-top: 10px;
+    
+}
+.boton_hijo2 p{
+ font-size: 10px;
+ 
+}
+.boton_hijo1{
+    padding-top: 11px;
+}
 
 @media (min-width: 576px){
     body {
@@ -291,7 +336,6 @@ body {
         height: auto;
     }
 }
-*/
 
 @media (min-width: 992px){}
 
