@@ -241,6 +241,10 @@ footer p {
     margin-bottom: 15px;
 }
 
+.preview-container a{
+    color: black;
+}
+
 .preview_content {
     border-top: 1px solid rgba(33,33,33,.2);
 }
@@ -273,7 +277,8 @@ footer p {
     justify-content: space-around;
     background-color: #f3f3f3;
   }
-  .top-navbar{
+  
+.top-navbar{
     width: 100%;
     height: 65px;
     background: #ccc;
