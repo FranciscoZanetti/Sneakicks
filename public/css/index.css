@@ -1,3 +1,10 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0px;
+}
+
 a {
     text-decoration: none;
 }
@@ -7,7 +14,6 @@ a {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     margin: 0px;
 }
@@ -53,6 +59,15 @@ body {
     border: solid;
 }
 
+.carrousel_text {
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    top: 53%;
+}
+
 .center_text {
     text-align: center;
 }
@@ -70,11 +85,11 @@ body {
     color: white;
     cursor: pointer;
     font-size: 12px;
-    height: 30px;
+    height: 25px;
     padding: 5px;
     position: absolute;
     text-align: center;
-    top: 60%;
+    top: 78%;
     transition: box-shadow .15s,transform .15s;
     width: 25%;
 }
@@ -219,6 +234,7 @@ footer p {
   }
 
 .preview-container_item {
+    border-radius: 2px;
     width: 45%;
     height: auto;
     text-align: center;
@@ -257,10 +273,77 @@ footer p {
     justify-content: space-around;
     background-color: #f3f3f3;
   }
+  .top-navbar{
+    width: 100%;
+    height: 65px;
+    background: #ccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-navbar .top-left-navbar ul{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.top-navbar .top-left-navbar ul li{
+    margin: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.logo img{
+    min-width: 125px;
+    width: 20%;
+    max-width: 200px;
+    height: auto;
+}
+
+.top-right-navbar ul{
+    display: flex;
+    align-items: center;
+
+}
+
+.top-right-navbar ul li{
+    margin: 10px;
+}
+
+.bottom-navbar {
+    width: 100%;
+    height: auto;
+    background-color: #cccc;
+    padding: 1px;
+    display: none;
+}
+
+.bottom-navbar ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bottom-navbar ul li {
+    margin: 0 12px;
+}
+  
 
 @media (min-width: 576px){
     body {
         font-size: 14px;
+    }
+
+    .carrousel_text {
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        position: absolute;
+        top: 55%;
     }
 
     .header_icon {
@@ -303,8 +386,25 @@ footer p {
 }
 
 @media (min-width: 992px){
+
+    .bottom-navbar {
+        display: block;
+    }
+
     body {
         font-size: 16px;
+    }
+
+    .carrousel_text {
+        color: black;
+        font-size: 30px;
+        font-weight: 700;
+        position: absolute;
+        top: 60%;
+    }
+
+    .dropdown {
+        display: none !important;
     }
 
     .footer-container_item {
@@ -333,8 +433,9 @@ footer p {
     }
 
     .chevron-margin-right {
-        display: none;
+        visibility: hidden;
     }
+    
 }
 
 @media (min-width: 1200px){}

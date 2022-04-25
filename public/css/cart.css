@@ -1,5 +1,5 @@
 *{
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
     list-style: none;
     text-decoration: none ;
@@ -62,7 +62,6 @@ div {
     margin: 0 12px
 }
 
-
 a{
     color: #555;
 }
@@ -91,6 +90,7 @@ a{
     display: block;
     color: #757977;
 }
+
 .header-cart-right .header-cart__subtotal > span{
     display: block;
     text-align: center;
@@ -110,7 +110,6 @@ a{
     text-decoration: none;
     font-size: 16px;
 }
-
 
 .cart-item{
     position: relative;
@@ -168,7 +167,6 @@ a{
 .cart-item__product-options{
     color: rgba(17, 17, 17, 0.8);
     margin-bottom: 10px;
-
 }
 
 .cart-item__inner .cart-item__content .stock-level__wraper{
