@@ -21,7 +21,9 @@ Mi nombre es Alexander Pérez Blanco, vivo en Medellín, Colombia. Tengo 28 año
 
 Soy Francisco Zanetti, vivo en Ciudad Autónoma de Buenos Aires, Argentina. Tengo 20 años y estudio Ingeniería Informática, con especial interés en el desarrollo de software. Tengo experiencia en modelados y renders para estudios de arquitectura.
 
-### Alan
+### Alan Kasis
+
+Soy Alan Kasis, tengo 27 años y vivo en la Ciudad Autónoma de Buenos Aires. Soy Ingeniero Civil especializado en infraestructura hidraulica y transporte de fluidos. Actualmente trabajo en el area de desarrollo de una startup argentina.
 
 ### Federico Caffaro
 
