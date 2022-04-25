@@ -79,19 +79,23 @@ body{
 .botones1{
     display: block;
     font-size: 7px;
+    padding-left: 10px;
 }
 button{
     text-align: center;
     color: black;
     background-color: gray;
     padding: 5px;
-    font-size: 18px;
+    font-size: 17px;
     font-family: 'Bebas Neue', cursive;
     width: 5em;
     height: 2em; 
 }
 .radios{
     font-size: small;
+    display: block;
+    right: 40px;
+    
 }
 
 a {
