@@ -21,6 +21,10 @@ Mi nombre es Alexander Pérez Blanco, vivo en Medellín, Colombia. Tengo 28 año
 
 Soy Francisco Zanetti, vivo en Ciudad Autónoma de Buenos Aires, Argentina. Tengo 20 años y estudio Ingeniería Informática, con especial interés en el desarrollo de software. Tengo experiencia en modelados y renders para estudios de arquitectura.
 
+### Alan
+
+### Federico Caffaro
+
 
 ## Sitios de Referencia
 
@@ -36,6 +40,14 @@ Su cabecera es minimalista y muestra información resumida, que se despliega de 
 * ### [Moov][moov] y [Dexter][dexter]
 Sus plataformas son muy similares, y en ambos casos la *home page* muestra bloques y categorías útiles que fueron tomados de ejemplo. La barra de navegación despliega menús de forma cómoda.
 
+
+## Espacio de trabajo en Trello
+
+https://trello.com/digitalhousegrupo51
+
+## Repositorio en GitHub
+
+https://github.com/FranciscoZanetti/grupo_5_sacachispas.git
 
 [footlocker]: https://www.footlocker.com/
 [mercadolibre]: https://www.mercadolibre.com.ar/
