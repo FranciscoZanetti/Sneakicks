@@ -13,7 +13,7 @@ button{
     padding: 5px;
     font-size: 18px;
     font-family: 'Bebas Neue', cursive;
-    width: 5em;
+    width: 6em;
     height: 2em; 
 
 
@@ -71,39 +71,32 @@ button{
 /* a {
     text-decoration: none;
 }
-
 .blank-list {
     list-style: none;
 }
-
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
 }
-
 .brands_left_arrow {
     position: absolute;
     top: 40%;
     left: 1%;
   }
-
 .brands_preview {
     max-width: 22%;
     width: 200px;
     height: auto;
   }
-
 .brands_right_arrow {
     position: absolute;
     top: 40%;
     right: 1%;
   }
-
 .carrousel {
     width: 80%;
     height: auto;
   }
-
 .carrousel_container {
     position: relative;
     display: flex;
@@ -112,7 +105,6 @@ body {
     margin: 25px 0px;
     width: 100%;
 }
-
 .carrousel_small {
     width: 97%;
     position: relative;
@@ -122,11 +114,9 @@ body {
     margin: 25px 0px;
     border: solid;
 }
-
 .center_text {
     text-align: center;
 }
-
 .shop_button {
     position: absolute;
     top: 60%;
@@ -135,116 +125,97 @@ body {
     font-size: 12px;
     padding: 5px;
   }
-
 .left_arrow {
     position: absolute;
     top: 35%;
     left: 5%;
   }
-
 .menu_icon {
     color: #5E554B;
     margin-left: 10px;
     margin-right: 10px;
     visibility: visible;
 }
-
 .discount-container {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-
 .discount-container_item {
     border-radius: 2px;
     width: 45%;
     height: auto;
 } 
-
 .footer-container {
     display: flex;
     align-items: stretch;
     justify-content: space-around;
     background-color: #5E554B;
 }
-
 .footer-container_item {
     width: 18%;
     height: auto;
     text-align: center;
 }
-
 .footer-container_logo {
     display: flex;
     width: 18%;
     height: auto;
     align-items: center;
 }
-
 .footer-logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
 }
-
 .half-margin {
     margin-block-start: 0.5em;
     margin-block-end: 0.5em;
 }
-
 .header_logo {
     width: 140px;
     height: auto;
 }
-
 .header_icon {
     color: #5E554B;
     margin-left: 10px;
     margin-right: 10px;
     visibility: hidden;
 }
-
 .preview {
     max-width:100%;
     height: auto;
   }
-
 .preview-container {
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
 .preview-container_item {
     width: 45%;
     height: auto;
     text-align: center;
 }
-
 .right_arrow {
     position: absolute;
     top: 35%;
     right: 5%;
   }
-
 .upper-header {
     display: flex; 
     align-items: center;
   }
-
 .upper-header_logo {
     display: block;
     margin-left: 32%;
     margin-right: auto;
 }
-
 .lower_banner {
     width: 97%;
     height: auto;
   }
-
 .lower-header {
     display: flex; 
     align-items: center;
@@ -259,12 +230,13 @@ body {
 
 .input-container-hijo{
     display: flex;
+    justify-content: center;
 }
 
 .input-container-hijo input{
     border: none;
     float: left;
-    width: 100%;
+    width: 45%;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 5%;
@@ -275,6 +247,22 @@ body {
 
 .input-container-hijo input:hover{
     border-color: black;
+}
+.boton_padre{
+    display: flex;
+    justify-content: center;
+    
+}
+.boton_hijo2{
+    font-size: x-small;
+    padding-left: 12px;
+    padding-top: 8px;
+
+}
+.boton_hijo1{
+    padding-top: 16px;
+    padding-right: 10px;
+    
 }
 
 @media (min-width: 576px){
@@ -323,4 +311,3 @@ body {
 @media (min-width: 1200px){}
 
 @media (min-width: 1400px){}
-
