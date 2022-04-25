@@ -9,6 +9,7 @@ a {
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
+    margin: 0px;
 }
 
 .brands_left_arrow {
@@ -30,7 +31,7 @@ body {
   }
 
 .carrousel {
-    width: 80%;
+    width: 100%;
     height: auto;
   }
 
@@ -39,7 +40,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 25px 0px;
     width: 100%;
 }
 
@@ -49,7 +49,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin: 25px 0px;
+    margin: 10px 0px;
     border: solid;
 }
 
@@ -57,14 +57,44 @@ body {
     text-align: center;
 }
 
+.color-grey{
+    color: #5E554B;
+}
+
 .shop_button {
-    position: absolute;
-    top: 60%;
-    width: 25%;
-    text-align: center;
+    background-color: #5E554B;
+    border-radius: 3px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
     font-size: 12px;
+    height: 30px;
     padding: 5px;
-  }
+    position: absolute;
+    text-align: center;
+    top: 60%;
+    transition: box-shadow .15s,transform .15s;
+    width: 25%;
+}
+
+.shop_button:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+    transform: translateY(-2px);
+}
+
+.social_icon {
+    margin: 10px 5px;
+}
+
+.socials-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
 
 .left_arrow {
     position: absolute;
@@ -72,11 +102,19 @@ body {
     left: 5%;
   }
 
+main {
+    margin: 0px;
+}
+
 .menu_icon {
     color: #5E554B;
     margin-left: 10px;
     margin-right: 10px;
     visibility: visible;
+}
+
+.chevron-margin-right {
+    margin-right: 10px;
 }
 
 .discount-container {
@@ -91,22 +129,45 @@ body {
     height: auto;
 }
 
+footer a {
+    text-decoration: underline;
+    color: white;
+    font-weight: 500;
+}
+
+footer p {
+    color: white;
+    font-size: 14px;
+}
+
 .footer-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
     justify-content: space-around;
-    background-color: #5E554B;
+    background-color: #23314D;
 }
 
 .footer-container_item {
-    width: 18%;
+    width: 95%;
     height: auto;
-    text-align: center;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-container_item-title {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container_item-content {
+    display: none;
 }
 
 .footer-container_logo {
     display: flex;
-    width: 18%;
+    width: 32%;
     height: auto;
     align-items: center;
 }
@@ -116,6 +177,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    max-width: 180px;
 }
 
 .half-margin {
@@ -135,6 +197,11 @@ body {
     visibility: hidden;
 }
 
+.pagination_container {
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+}
+
 .preview {
     max-width:100%;
     height: auto;
@@ -147,10 +214,19 @@ body {
     flex-wrap: wrap;
 }
 
+.preview-container_item:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  }
+
 .preview-container_item {
     width: 45%;
     height: auto;
     text-align: center;
+    margin-bottom: 15px;
+}
+
+.preview_content {
+    border-top: 1px solid rgba(33,33,33,.2);
 }
 
 .right_arrow {
@@ -160,7 +236,7 @@ body {
   }
 
 .upper-header {
-    display: flex; /* or inline-flex */
+    display: flex;
     align-items: center;
   }
 
@@ -184,8 +260,7 @@ body {
 
 @media (min-width: 576px){
     body {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .header_icon {
@@ -220,9 +295,47 @@ body {
         width: 240px;
         height: auto;
     }
+
+    .shop_button {
+        height: 48px;
+        font-size: 18px;
+    }
 }
 
-@media (min-width: 992px){}
+@media (min-width: 992px){
+    body {
+        font-size: 16px;
+    }
+
+    .footer-container_item {
+        width: 32%;
+        height: auto;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer-container_item-title {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .footer-container_item-content {
+        display: block;
+    }
+
+    .footer-container_logo {
+        display: flex;
+        width: 32%;
+        height: auto;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .chevron-margin-right {
+        display: none;
+    }
+}
 
 @media (min-width: 1200px){}
 

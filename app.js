@@ -4,7 +4,7 @@ const port = 3000
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Servidor iniciado en puerto ${port} - http://localhost:${port}`)
 })
 app.use(express.static('public'));
 
