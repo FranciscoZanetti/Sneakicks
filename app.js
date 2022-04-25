@@ -18,6 +18,15 @@ app.get('/', (req, res) => {
     app.get('/register', (req, res) => {
         res.sendFile(__dirname + '/views/register.html')
         });
+<<<<<<< Updated upstream
     app.get('/productDetail', (req, res) => {
       res.sendFile(__dirname + '/views/productDetail.html')
       });
+=======
+    app.get('/product', (req, res) => {
+      res.sendFile(__dirname + '/views/descripcionProducto.html')
+      });
+    app.get('/cart', (req, res) => {
+      res.sendFile(__dirname + '/views/cart.html')
+        });
+>>>>>>> Stashed changes
