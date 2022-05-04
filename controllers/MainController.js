@@ -14,6 +14,9 @@ const controller = {
     cart: (req, res) => {
         return res.render('cart');
     },
+    manageProduct: (req, res) => {
+        return res.render('manageProduct');
+    },
 }
 
 module.exports = controller;
