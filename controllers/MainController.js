@@ -2,8 +2,17 @@ const controller = {
     index: (req, res) => {
         return res.render('index');
     },
-    detalleMenu: (req, res) => {
-        return res.render('detalleMenu');
+    login: (req, res) => {
+        return res.render('login');
+    },
+    register: (req, res) => {
+        return res.render('register');
+    },
+    productDetail: (req, res) => {
+        return res.render('productDetail');
+    },
+    cart: (req, res) => {
+        return res.render('cart');
     },
 }
 
