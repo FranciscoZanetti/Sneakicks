@@ -1,294 +1,155 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/cart.css">
-    <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
-    <title>Carrito de compras</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/cart.css">
+  <title>cart</title>
 </head>
+
 <body>
-    <header>
-        <div class="top-navbar">
-            <div class="top-left-navbar">
-                <ul>
-                    <li><a href="#"></a><i class="fa-solid fa-bars"></i></li>
-                    <li><a href="#"></a><i class="fa-solid fa-magnifying-glass"></i></li>
-                </ul>
-            </div>
-            <div class="logo">
-                <img src="img/designs/logo6.png" alt="Logo">
-            </div>
-            <div class="top-right-navbar">
-                    <ul>
-                        <li><a href="#"></a><i class="fa-regular fa-user"></i></li>
-                        <li><a href="#"></a><i class="fa-solid fa-cart-shopping"></i></li>
-                    </ul>
-            </div>
+  <main>
+    <div class="cart">
+        <div class="basket-module">
+            <label for="promo-code">Codigo de descuento</label>
+            <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
+            <button class="promo-code-cta">Aplicar</button>
+          </div>
+      <div class="cart-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Precio</li>
+          <li class="quantity">Cantidad</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+      <div class="cart-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="/img/products/yeezy_1.webp" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">2</span>x Adidas by Jeezy</strong> Boost 350</h1>
+            <p><strong>Alien, talle 41</strong></p>
+            <p>SKU - 232321939</p>
+          </div>
         </div>
-        <div class="bottom-navbar">
-            <ul>
-                <li><a href="#">Men</a></li>
-                <li><a href="#">Women</a></li>
-                <li><a href="#">Kids</a></li>
-                <li><a href="#">Marcas</a></li>
-                <li><a href="#">Ofertas</a></li>
-            </ul>
+        <div class="price">6500.00</div>
+        <div class="quantity">
+          <input type="number" value="2" min="1" class="quantity-field">
         </div>
-    </header>
-    <main class="cart-section">
-        <div class="header-cart">
-            <div class="header-cart-left">
-                <h2>TU CARRO</h2>
-            </div>
-            <div class="header-cart-right">
-                <div class="header-cart__subtotal">
-                Subtotal:  
-                <span class="money"> $500 </span>
-                </div>
-                <div class="header-cart__checkout">
-                    <button href="#">Checkout</button>
-                </div>
-            </div>
+        <div class="subtotal">13000.00</div>
+        <div class="remove">
+          <button>Quitar</button>
         </div>
-        <div class="cartitems-list">
-            <ul class="cartitems__list">
-                <li>
-                    <div class="cart-item">
-                        <div class="cart-item__image">
-                            <img src="img/products/yeezy_1.webp" alt="product">
-                        </div>
-                        <div class="cart-item__inner">
-                            <div class="cart-item__content">
-                                <h2 class="cart-item__content-title">
-                                    <a href=""> YEEZY LUNAR LANDING</a>
-                                </h2>
-                                <div class="cart-item__content-price">
-                                    <span class="cart-item__price-title">
-                                      Price
-                                    </span>
-                                    <span class="money">$500</span>
-                                </div>
-                                <div class="cart-item__product-options">
-                                    <span class="cart-item__option-name">Size</span> UK 7 | EU 41 | US 8
-                                </div>
-                                <div class="stock-level__wrapper">
-                                    <span class="product-stock__level stock-level__low-stock">
-                                    <span class="stock-level__text">Only 2 left at this price!</span>
-                                    </span>
-                                </div>
-                                <div class="cart-item__sku">
-                                    <strong>SKU </strong><span>554724-078</span></div>
-                                </div>
-                            <div class="cart-item__info">
-                                <div class="cart-item__quantity">
-                                    <div class="cart-item__quantity-form">
-                                        <div class="select-wraper">
-                                            <div class="select-quantity">
-                                                <select>
-                                                  <option value="0">Cant.</option>
-                                                  <option value="1">1</option>
-                                                  <option value="2">2</option>
-                                                  <option value="3">3</option>
-                                                  <option value="4">4</option>
-                                                  <option value="5">5</option>
-                                                  <option value="6">6</option>
-                                                  <option value="7">7</option>
-                                                  <option value="8">8</option>
-                                                  <option value="9">9</option>
-                                                  <option value="10">+10</option>
-                                                </select>
-                                              </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item__total"> $325 </div>
-                                <div class="cart-item__remove"><i class="fa-solid fa-xmark"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="cart-item">
-                        <div class="cart-item__image">
-                            <img src="img/products/yeezy_1.webp" alt="product">
-                        </div>
-                        <div class="cart-item__inner">
-                            <div class="cart-item__content">
-                                <h2 class="cart-item__content-title">
-                                    <a href=""> YEEZY LUNAR LANDING</a>
-                                </h2>
-                                <div class="cart-item__content-price">
-                                    <span class="cart-item__price-title">
-                                      Price
-                                    </span>
-                                    <span class="money">$500</span>
-                                </div>
-                                <div class="cart-item__product-options">
-                                    <span class="cart-item__option-name">Size</span> UK 7 | EU 41 | US 8
-                                </div>
-                                <div class="stock-level__wrapper">
-                                    <span class="product-stock__level stock-level__low-stock">
-                                    <span class="stock-level__text">Only 2 left at this price!</span>
-                                    </span>
-                                </div>
-                                <div class="cart-item__sku">
-                                    <strong>SKU </strong><span>554724-078</span></div>
-                                </div>
-                            <div class="cart-item__info">
-                                <div class="cart-item__quantity">
-                                    <div class="cart-item__quantity-form">
-                                        <div class="select-wraper">
-                                            <div class="select-quantity">
-                                                <select>
-                                                  <option value="0">Cant.</option>
-                                                  <option value="1">1</option>
-                                                  <option value="2">2</option>
-                                                  <option value="3">3</option>
-                                                  <option value="4">4</option>
-                                                  <option value="5">5</option>
-                                                  <option value="6">6</option>
-                                                  <option value="7">7</option>
-                                                  <option value="8">8</option>
-                                                  <option value="9">9</option>
-                                                  <option value="10">+10</option>
-                                                </select>
-                                              </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item__total"> $325 </div>
-                                <div class="cart-item__remove"><i class="fa-solid fa-xmark"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="cart-item">
-                        <div class="cart-item__image">
-                            <img src="img/products/yeezy_1.webp" alt="product">
-                        </div>
-                        <div class="cart-item__inner">
-                            <div class="cart-item__content">
-                                <h2 class="cart-item__content-title">
-                                    <a href=""> YEEZY LUNAR LANDING</a>
-                                </h2>
-                                <div class="cart-item__content-price">
-                                    <span class="cart-item__price-title">
-                                      Price
-                                    </span>
-                                    <span class="money">$500</span>
-                                </div>
-                                <div class="cart-item__product-options">
-                                    <span class="cart-item__option-name">Size</span> UK 7 | EU 41 | US 8
-                                </div>
-                                <div class="stock-level__wrapper">
-                                    <span class="product-stock__level stock-level__low-stock">
-                                    <span class="stock-level__text">Only 2 left at this price!</span>
-                                    </span>
-                                </div>
-                                <div class="cart-item__sku">
-                                    <strong>SKU </strong><span>554724-078</span></div>
-                                </div>
-                            <div class="cart-item__info">
-                                <div class="cart-item__quantity">
-                                    <div class="cart-item__quantity-form">
-                                        <div class="select-wraper">
-                                            <div class="select-quantity">
-                                                <select>
-                                                  <option value="0">Cant.</option>
-                                                  <option value="1">1</option>
-                                                  <option value="2">2</option>
-                                                  <option value="3">3</option>
-                                                  <option value="4">4</option>
-                                                  <option value="5">5</option>
-                                                  <option value="6">6</option>
-                                                  <option value="7">7</option>
-                                                  <option value="8">8</option>
-                                                  <option value="9">9</option>
-                                                  <option value="10">+10</option>
-                                                </select>
-                                              </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item__total"> $325 </div>
-                                <div class="cart-item__remove"><i class="fa-solid fa-xmark"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+      </div>
+      <div class="cart-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="img/products/nike_1.webp" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> x Nike</strong> Jordan</h1>
+            <p><strong>SB, talle 42</strong></p>
+            <p>SKU - 232321939</p>
+          </div>
         </div>
-    </main>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-container_logo">  
-                <img src="/img/designs/logo6.png" alt="Logo Footer" class="footer-logo">
-            </div>
-            <div class="footer-container_item">
-                <p>SEGUINOS</p>
-                <div class="socials-container">
-                    <i class="fa-brands fa-2xl fa-instagram social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-twitter social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-facebook social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-youtube social_icon"></i>
-                </div>
-            </div>
-            <div class="footer-container_item">
-                <div class="footer-container_item-title">
-                    <p>SOBRE NOSOTROS</p>
-                    <i class="fa-solid fa-chevron-down chevron-margin-right"></i>
-                </div>
-                <div class="footer-container_item-content">
-                    <a href="/">About</a>
-                </div>
-            </div>
-            <div class="footer-container_item">
-                <div class="footer-container_item-title">
-                    <p>MARCAS</p>
-                    <i class="fa-solid fa-chevron-down chevron-margin-right"></i>
-                </div>
-                <div class="footer-container_item-content">
-                    <p class="half-margin"><a href="/">Nike</a></p>
-                    <p class="half-margin"><a href="/">Adidas</a></p>
-                    <p class="half-margin"><a href="/">FILA</a></p>
-                    <p class="half-margin"><a href="/">Puma</a></p>
-                    <p class="half-margin"><a href="/">Air Jordan</a></p>
-                </div>
-            </div>
-            <div class="footer-container_item">
-                <div class="footer-container_item-title">
-                    <p>SERVICIO AL CLIENTE</p>
-                    <i class="fa-solid fa-chevron-down chevron-margin-right"></i>
-                </div>
-                <div class="footer-container_item-content">
-                    <p class="half-margin"><a href="/">FAQs</a></p>
-                    <p class="half-margin"><a href="/">Contactenos</a></p>
-                    <p class="half-margin"><a href="/">Tiendas</a></p>
-                    <p class="half-margin"><a href="/">Politica de privacidad</a></p>
-                    <p class="half-margin"><a href="/">Politica de devoluciones</a></p>
-                </div>
-            </div>
-            <div class="footer-container_item">
-                <p>MEDIOS DE PAGO</p>
-                <div class="socials-container">
-                    <i class="fa-brands fa-2xl fa-cc-visa social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-cc-amex social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-cc-mastercard social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-cc-paypal social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-bitcoin social_icon"></i>
-                    <i class="fa-brands fa-2xl fa-ethereum social_icon"></i>
-                </div>
-            </div>
-            <p>Copyright © 2022 SneaKicks.</p>
+        <div class="price">3500.00</div>
+        <div class="quantity">
+          <input type="number" value="1" min="1" class="quantity-field">
         </div>
-    </footer>
+        <div class="subtotal">3500.00</div>
+        <div class="remove">
+          <button>Quitar</button>
+        </div>
+      </div>
+      <div class="cart-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="/img/products/yeezy_1.webp" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">2</span>x Adidas by Jeezy</strong> Boost 350</h1>
+            <p><strong>Alien, talle 41</strong></p>
+            <p>SKU - 232321939</p>
+          </div>
+        </div>
+        <div class="price">6500.00</div>
+        <div class="quantity">
+          <input type="number" value="2" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">13000.00</div>
+        <div class="remove">
+          <button>Quitar</button>
+        </div>
+      </div>
+      <div class="cart-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="/img/products/yeezy_1.webp" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">2</span>x Adidas by Jeezy</strong> Boost 350</h1>
+            <p><strong>Alien, talle 41</strong></p>
+            <p>SKU - 232321939</p>
+          </div>
+        </div>
+        <div class="price">6500.00</div>
+        <div class="quantity">
+          <input type="number" value="2" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">13000.00</div>
+        <div class="remove">
+          <button>Quitar</button>
+        </div>
+      </div>
+      <div class="cart-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="/img/products/yeezy_1.webp" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">2</span>x Adidas by Jeezy</strong> Boost 350</h1>
+            <p><strong>Alien, talle 41</strong></p>
+            <p>SKU - 232321939</p>
+          </div>
+        </div>
+        <div class="price">6500.00</div>
+        <div class="quantity">
+          <input type="number" value="2" min="1" class="quantity-field">
+        </div>
+        <div class="subtotal">13000.00</div>
+        <div class="remove">
+          <button>Quitar</button>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Tu carrito de compras</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="cart-subtotal">16500.00</div>
+        </div>
+        <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Seleccionar tipo de envio</option>
+             <option value="collection">Comun (5-7 dias habiles)</option>
+             <option value="first-class">Rapido (3-5 dias habiles)</option>
+             <option value="second-class">Hamilton (1-2 dias habiles)</option>
+          </select>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="cart-total">16500.00</div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta">Checkout</button>
+        </div>
+      </div>
+    </aside>
+  </main>
 </body>
+
 </html>
