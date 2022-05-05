@@ -1,3 +1,6 @@
+@import url("header.css");
+@import url("footer.css");
+
 *{
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
@@ -99,18 +102,6 @@ body {
     transform: translateY(-2px);
 }
 
-.social_icon {
-    margin: 10px 5px;
-}
-
-.socials-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding-bottom: 10px;
-}
-
 .left_arrow {
     position: absolute;
     top: 35%;
@@ -142,57 +133,6 @@ main {
     border-radius: 2px;
     width: 45%;
     height: auto;
-}
-
-footer a {
-    text-decoration: underline;
-    color: white;
-    font-weight: 500;
-}
-
-footer p {
-    color: white;
-    font-size: 14px;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: space-around;
-    background-color: #23314D;
-}
-
-.footer-container_item {
-    width: 95%;
-    height: auto;
-    color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.footer-container_item-title {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-container_item-content {
-    display: none;
-}
-
-.footer-container_logo {
-    display: flex;
-    width: 32%;
-    height: auto;
-    align-items: center;
-}
-
-.footer-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 180px;
 }
 
 .half-margin {
@@ -276,65 +216,6 @@ footer p {
     align-items: center;
     justify-content: space-around;
     background-color: #f3f3f3;
-  }
-  
-.top-navbar{
-    width: 100%;
-    height: 65px;
-    background: #ccc;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.top-navbar .top-left-navbar ul{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-.top-navbar .top-left-navbar ul li{
-    margin: 10px;
-}
-
-.logo {
-    display: flex;
-    justify-content: center;
-}
-
-.logo img{
-    min-width: 125px;
-    width: 20%;
-    max-width: 200px;
-    height: auto;
-}
-
-.top-right-navbar ul{
-    display: flex;
-    align-items: center;
-
-}
-
-.top-right-navbar ul li{
-    margin: 10px;
-}
-
-.bottom-navbar {
-    width: 100%;
-    height: auto;
-    background-color: #cccc;
-    padding: 1px;
-    display: none;
-}
-
-.bottom-navbar ul{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.bottom-navbar ul li {
-    margin: 0 12px;
 }
   
 
