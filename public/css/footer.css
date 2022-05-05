@@ -60,3 +60,49 @@ footer p {
     justify-content: flex-start;
     padding-bottom: 10px;
 }
+
+@media (min-width: 576px){
+
+}
+
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 992px){
+
+    .footer-container_item {
+        width: 32%;
+        height: auto;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer-container_item-title {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .footer-container_item-content {
+        display: block;
+    }
+
+    .footer-container_logo {
+        display: flex;
+        width: 32%;
+        height: auto;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .chevron-margin-right {
+        visibility: hidden;
+    }
+    
+}
+
+@media (min-width: 1200px){}
+
+@media (min-width: 1400px){}

@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .top-navbar{
     width: 100%;
     height: 65px;
@@ -56,3 +60,62 @@
 .bottom-navbar ul li {
     margin: 0 12px;
 }
+
+@media (min-width: 576px){
+    body {
+        font-size: 14px;
+    }
+
+    .header_icon {
+        color: #5E554B;
+        margin-left: 10px;
+        margin-right: 10px;
+        visibility: visible;
+    }
+
+    .header_logo {
+        width: 180px;
+        height: auto;
+    }
+
+    .menu_icon {
+        color: #5E554B;
+        margin-left: 10px;
+        margin-right: 10px;
+        visibility: hidden;
+    }
+}
+
+
+@media (min-width: 768px){
+
+    .header_logo {
+        width: 240px;
+        height: auto;
+    }
+
+    .shop_button {
+        height: 48px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 992px){
+
+    .bottom-navbar {
+        display: block;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .dropdown {
+        display: none !important;
+    }
+
+}
+
+@media (min-width: 1200px){}
+
+@media (min-width: 1400px){}
