@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/manageProduct.css">
+    <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <title>Sneakicks</title>
+</head>
+
+
+
+<body>
+    <main>
+        <div class="container">
+            <h2 class="manage-title">Crea o edita un producto</h2>
+            <form action="/manageProduct" method="post">
+                <article class="product-item">
+                    <label for="item-name">Nombre del producto</label>
+                    <input type="text" class="item-input" id="item-name">
+                </article>
+                <article class="product-item">
+                    <label for="item-colorwave">Modelo 1</label>
+                    <input type="text" class="item-input" id="item-colorwave">
+                </article>
+                <article class="product-item">
+                    <p>Talles</p>
+                    <% for (let i=3; i<=15.5; i+0.5) { %>
+                        <div class="item-size">
+                            <input type="checkbox" class="item-checkbox" id=""><label for=""><% i %></label>
+                        </div>
+                    <% } %>
+                </article>
+                <article class="product-item">
+                    <label for="item-price">Precio</label>
+                    <input type="text" class="input" id="item-price">
+                </article>
+                <article class="product-item">
+                    <label for="item-discount">Descuento</label>
+                    <div class="discount-container">
+                        <input type="text" class="input" id="item-discount"><span>%</span>
+                    </div>
+                </article>
+                <article class="product-item">
+                    <label for="item-description">Descripción del producto</label>
+                    <textarea name="item-description" id="item-description" placeholder="Escriba una descripción"></textarea>
+                </article>
+                <article class="product-item">
+                    <p>Imágenes del producto</p>
+                    <div class="item-images">
+                        <input type="file" name="item-images" accept=".jpg" id="item-images">
+                    </div>
+                </article>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

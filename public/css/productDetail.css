@@ -142,7 +142,22 @@ main{
     margin-left: var(--vw-10px);
 }
 
+.extra-text:hover{
+    cursor: pointer;
+}
 
+
+main form select:hover{
+    cursor: pointer;
+}
+
+main form label:hover{
+    cursor: pointer;
+}
+
+main form button:hover{
+    cursor: pointer;
+}
 
 .product-info-form{
     margin-left: 5%;
@@ -158,6 +173,10 @@ main{
         margin-bottom: var(--vw-1rem);
     }
 
+    .size-select-container-parent{
+        cursor: pointer;
+    }
+
         .size-select-container-child{
             display: inline-block;
             position: relative;
@@ -171,6 +190,10 @@ main{
             width: 100%;
         }
 
+        .size-select-container-child:hover{
+            cursor: pointer;
+        }
+
             .size-select-container-child label{
                 position: absolute;
                 pointer-events: none;
@@ -181,6 +204,8 @@ main{
                 align-items: center;
                 padding-left: var(--vw-1-5rem);
             }
+
+            
 
             .size-select-container-child select{
                 font-size: var(--vw-1rem);
@@ -252,6 +277,10 @@ main{
             width: 100%;
         }
 
+        .colorwaves-container:hover{
+            cursor: pointer;
+        }
+
             .colorwaves-container label{
                 position: absolute;
                 pointer-events: none;
@@ -268,7 +297,7 @@ main{
                 padding-top: var(--vw-0-8rem);
                 padding-bottom: var(--vw-0-8rem);
                 padding-left: var(--vw-1rem);
-                padding-right: var(--vw-5rem);
+                padding-right: var(--vw-3rem);
                 background-color: #ebebeb;
                 border: none;
                 border-radius: 7px;
@@ -315,6 +344,10 @@ main{
         justify-content: center;
     }
 
+    .cart-button:hover{
+        cursor: pointer;
+    }
+
     .cart-button button{
         font-size: var(--vw-1-1rem);
         color: white;
@@ -323,6 +356,7 @@ main{
         background-color: black;
         border: none;
     }
+
 
 
 .details{
@@ -427,6 +461,7 @@ main{
 
     .review-button:hover{
         background-color: black;
+        cursor: pointer;
     }
 
         .review-button button{
@@ -467,6 +502,10 @@ main{
             /* background-color: #ebebeb; */
             border-radius: 7px;
             margin-bottom: var(--vw-1rem);
+        }
+
+        .size-unit-container:hover{
+            cursor: pointer;
         }
 
             .size-unit{
