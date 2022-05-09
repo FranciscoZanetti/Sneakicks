@@ -121,7 +121,7 @@ button:hover{
     
 }
 
-.top-navbar{
+/* .top-navbar{
     width: 100%;
     height: 65px;
     background: #ccc;
@@ -233,7 +233,7 @@ footer p {
 
 .social_icon {
     margin: 10px 5px;
-}
+} */
 
 .login-main {
     display: flex;
@@ -256,7 +256,7 @@ footer p {
         font-size: 18px;
     }
 
-    .header_icon {
+    /* .header_icon {
         color: #5E554B;
         margin-left: 10px;
         margin-right: 10px;
@@ -273,7 +273,7 @@ footer p {
         margin-left: 10px;
         margin-right: 10px;
         visibility: hidden;
-    }
+    } */
 }
 
 
@@ -284,17 +284,17 @@ footer p {
         text-align: center;
     }
 
-    .header_logo {
+    /* .header_logo {
         width: 240px;
         height: auto;
-    }
+    } */
 }
 
 
 @media (min-width: 992px){
-    .bottom-navbar {
+    /* .bottom-navbar {
         display: block;
-    }
+    } */
 
     body {
         font-size: 16px;
@@ -312,7 +312,7 @@ footer p {
         display: none !important;
     }
 
-    .footer-container_item {
+    /* .footer-container_item {
         width: 32%;
         height: auto;
         color: white;
@@ -339,7 +339,7 @@ footer p {
 
     .chevron-margin-right {
         visibility: hidden;
-    }
+    } */
 }
 
 @media (min-width: 1200px){}
@@ -352,20 +352,20 @@ footer p {
     padding: 0px;
 }
 
-a {
+/* a {
     text-decoration: none;
 }
 
 .blank-list {
     list-style: none;
-}
+} */
 
 body {
     font-size: 12px;
     margin: 0px;
 }
 
-.brands_left_arrow {
+/* .brands_left_arrow {
     position: absolute;
     top: 40%;
     left: 1%;
@@ -421,9 +421,9 @@ body {
 
 .color-grey{
     color: #5E554B;
-}
+} */
 
-.shop_button {
+/* .shop_button {
     background-color: #5E554B;
     border-radius: 3px;
     border-width: 0;
@@ -615,7 +615,7 @@ footer p {
   }
 
 .lower-header {
-    display: flex; /* or inline-flex */
+    display: flex;
     align-items: center;
     justify-content: space-around;
     background-color: #f3f3f3;
@@ -782,8 +782,8 @@ footer p {
     .chevron-margin-right {
         visibility: hidden;
     }
-    
-}
+     */
+/* } */
 
 @media (min-width: 1200px){}
 
