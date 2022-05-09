@@ -578,7 +578,7 @@ main form button:hover{
 }
 
 
-footer a {
+/* footer a {
     text-decoration: underline;
     color: white;
     font-weight: 500;
@@ -670,8 +670,8 @@ footer p {
   }
 
 .lower-header {
-    display: flex; /* or inline-flex */
-    align-items: center;
+    display: flex; or inline-flex */
+    /* align-items: center;
     justify-content: space-around;
     background-color: #f3f3f3;
   }
@@ -736,14 +736,14 @@ footer p {
 
 header a{
     text-decoration: none;
-}
+} */
 
 
 
 
 
 @media (min-width: 576px){
-    .header_icon {
+    /* .header_icon {
         color: #5E554B;
         margin-left: 10px;
         margin-right: 10px;
@@ -760,7 +760,7 @@ header a{
         margin-left: 10px;
         margin-right: 10px;
         visibility: hidden;
-    }
+    } */
 }
 
 @media (min-width: 680px) and (orientation: landscape){
@@ -792,10 +792,10 @@ header a{
                 padding-left: var(--vw-0-8rem);
             }
 
-    .header_logo {
+    /* .header_logo {
         width: 240px;
         height: auto;
-    }
+    } */
 }
 
 @media (min-width: 992px){
@@ -946,7 +946,8 @@ header a{
                 border-top: none;
             }
 
-    .bottom-navbar {
+
+    /* .bottom-navbar {
         display: block;
     }
 
@@ -974,7 +975,7 @@ header a{
         height: auto;
         align-items: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+    } */
 }
 /* 
 @media (min-width: 1200px){}
