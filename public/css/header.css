@@ -8,6 +8,7 @@
 }
 
 .partial-header a {
+    text-align: center;
     text-decoration: none;
     color: black;
 }
@@ -125,7 +126,7 @@
     }
 
     .partial-header .top-navbar {
-        width: 992px;
+        width: 90%;
     }
 
     .partial-header .bottom-navbar-container{
@@ -135,7 +136,7 @@
 
     .partial-header .bottom-navbar {
         display: block;
-        width: 992px;
+        width: 90%;
     }
 
     .partial-header {
