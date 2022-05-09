@@ -56,7 +56,10 @@ const controller = {
         return res.render('users/register');
     },
     productDetail: (req, res) => {
-        return res.render('products/productDetail');
+        return res.render('products/productDetail', {productos: productos});
+    },
+    productList: (req, res) => {
+        return res.render('products/productList', {productos: productos});
     },
     cart: (req, res) => {
         return res.render('products/cart', {productos: productos});

@@ -88,8 +88,8 @@ body {
     color: white;
     cursor: pointer;
     font-size: 12px;
-    height: 25px;
-    padding: 5px;
+    height: auto;
+    padding: 8px;
     position: absolute;
     text-align: center;
     top: 78%;
@@ -127,12 +127,17 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .discount-container_item {
     border-radius: 2px;
-    width: 45%;
+    width: 90%;
     height: auto;
+}
+
+.discount-container img{
+    margin: 0.5rem 0.25rem;
 }
 
 .half-margin {
@@ -175,7 +180,7 @@ main {
 
 .preview-container_item {
     border-radius: 2px;
-    width: 45%;
+    width: 90%;
     height: auto;
     text-align: center;
     margin-bottom: 15px;
@@ -232,6 +237,12 @@ main {
         top: 55%;
     }
 
+    .discount-container_item {
+        border-radius: 2px;
+        width: 45%;
+        height: auto;
+    }
+
     .header_icon {
         color: #5E554B;
         margin-left: 10px;
@@ -250,15 +261,16 @@ main {
         margin-right: 10px;
         visibility: hidden;
     }
+
+    .preview-container_item {
+        width: 45%;
+        height: auto;
+        text-align: center;
+    }
 }
 
 
 @media (min-width: 768px){
-    .preview-container_item {
-        width: 30%;
-        height: auto;
-        text-align: center;
-    }
 
     .header_logo {
         width: 240px;
@@ -266,8 +278,14 @@ main {
     }
 
     .shop_button {
-        height: 48px;
+        height: auto;
         font-size: 18px;
+    }
+
+    .preview-container_item {
+        width: 30%;
+        height: auto;
+        text-align: center;
     }
 }
 

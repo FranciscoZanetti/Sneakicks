@@ -27,37 +27,35 @@
     <%- include('../partials/header'); %>
 
     <main>
-        <form class="form">
-            
-            <h1 class="titulo">CREA TU CUENTA</h1>
-            <section class="cajas">
-            <input class="cajas_1" type="text" placeholder="Nombres" required maxlength="30">
-            <input class="cajas_2" type="text" placeholder="Apellidos" required maxlength="30">
-            </section>
-            <section class="caja2">
-            <input class="caja2_1" type="email" placeholder="Email" required maxlength="30">
-            <input class="caja2_2" type="contraseña" placeholder="Contraseña" required maxlength="30">
-            </section>
-            <section class="radios">
-                <p class="termino1"><input type="checkbox">  Quiero recibir novedades<a class="termino2" href="#"></a></p>
-                <p>Sexo:</p>
-                <div class="genero">
-                <input type="radio" id="Hombre" name="Sexo" value="Hombre"
-                checked>
-                <label for="Hombre">Hombre</label>
+        <div class="register-container">
+            <form class="form">
+                <h1>CREA TU CUENTA</h1>
+                <section class="cajas">
+                <input class="cajas_1" type="text" placeholder="Nombres" required maxlength="30">
+                <input class="cajas_2" type="text" placeholder="Apellidos" required maxlength="30">
+                </section>
+                <section class="caja2">
+                <input class="caja2_1" type="email" placeholder="Email" required maxlength="30">
+                <input class="caja2_2" type="password" placeholder="Contraseña" required maxlength="30">
+                </section>
+                <section class="radios">
+                    <p class="termino1"><input type="checkbox">  Quiero recibir novedades<a class="termino2" href="#"></a></p>
+                    <p>Sexo:</p>
+                    <div class="genero">
+                        <input type="radio" id="hombre" name="Sexo" value="Hombre" checked>
+                        <label for="hombre">Hombre</label>
+                        <input type="radio" id="Mujer" name="Sexo" value="Mujer">
+                        <label for="mujer">Mujer</label>
+                    </div>
+                </section>
+                <div class="botones">
+                    <button class="shop_button" name="button" >Registrarse </button>
+                    <div class="botones1">
+                        <p><a href="/login">¿Ya tienes Cuenta? Iniciar Seccion</a>
+                    </div>
                 </div>
-                <div>
-                <input type="radio" id="Mujer" name="Sexo" value="Mujer">
-                <label for="mujer">Mujer</label>
-            </section>
-            <section class="botones">
-                <button class="botones01" name="button" >Registrarse </button> 
-            <div class="botones1">
-                
-                <p><a href="/login">¿Ya tienes Cuenta? Iniciar Seccion</a>
-            </div>
-            </section>
-        </form>
+            </form>
+        </div>
     </main>
 
 <%- include('../partials/footer'); %>
