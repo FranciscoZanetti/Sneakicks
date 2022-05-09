@@ -214,6 +214,63 @@ article{
         #item-images{
             cursor: pointer;
         }
+    
+    #product-buttons{
+        margin-top: var(--vw-2rem)
+    }
+
+    .item-submit{
+        margin-bottom: var(--vw-1-1rem);
+        padding-top: var(--vw-0-5rem);
+        padding-bottom: var(--vw-0-5rem);
+        text-align: center;
+        border: none;
+        background-color: black;
+        border-radius: 7px;
+    }
+
+    .item-submit:hover{
+        cursor: pointer;
+    }
+
+        #item-submit{
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: var(--vw-1-1rem);
+        }
+
+        #item-submit:hover{
+            cursor: pointer;
+        }
+
+    .item-reset{
+        padding-top: var(--vw-0-5rem);
+        padding-bottom: var(--vw-0-5rem);
+        text-align: center;
+        border: 2px solid #ABABAB;
+        border-radius: 7px;
+    }
+
+    .item-reset:hover{
+        border: 2px solid black;
+        cursor: pointer;
+    }
+
+    .item-reset:hover > #item-reset{
+        color: black;
+    }
+
+    #item-reset{
+        border: none;
+        background-color: white;
+        color: #ABABAB;
+        font-size: var(--vw-1-1rem);
+    }
+
+    #item-reset:hover{
+        cursor: pointer;
+    }
 
 
 @media (min-width: 768px){
@@ -226,6 +283,20 @@ article{
 
         .price-discount-container article{
             width: 40%;
+        }
+    
+    #product-buttons{
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .item-reset{
+            width: 40%;
+        }
+
+        .item-submit{
+            width: 40%;
+            margin-bottom: 0;
         }
 }
 
@@ -250,5 +321,9 @@ article{
 
     .container{
         width: 992px;
+    }
+
+    h2{
+        font-size: 1.8rem;
     }
 }
