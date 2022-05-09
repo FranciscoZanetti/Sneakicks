@@ -223,10 +223,12 @@ article{
         margin-bottom: var(--vw-1-1rem);
         padding-top: var(--vw-0-5rem);
         padding-bottom: var(--vw-0-5rem);
-        text-align: center;
         border: none;
         background-color: black;
         border-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .item-submit:hover{
@@ -247,9 +249,12 @@ article{
     .item-reset{
         padding-top: var(--vw-0-5rem);
         padding-bottom: var(--vw-0-5rem);
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border: 2px solid #ABABAB;
         border-radius: 7px;
+        transition: border, 100ms;
     }
 
     .item-reset:hover{
@@ -266,6 +271,7 @@ article{
         background-color: white;
         color: #ABABAB;
         font-size: var(--vw-1-1rem);
+        transition: color, 100ms;
     }
 
     #item-reset:hover{
