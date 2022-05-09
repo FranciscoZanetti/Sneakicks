@@ -23,7 +23,8 @@ body{
     
 }
 .cajas_1{
-    border-radius: 8px;
+    border: 2px solid #ABABAB;
+    border-radius: 7px;
     margin-top: 30px;
     max-width: 300px;
     padding-top: 10px;
@@ -36,7 +37,8 @@ body{
     border-color: black;
 }
 .cajas_2{
-    border-radius: 8px;
+    border: 2px solid #ABABAB;
+    border-radius: 7px;
     margin-top: 30px;
     max-width: 300px;
     padding-top: 10px;
@@ -50,7 +52,8 @@ body{
    
 }
 .caja2_1{
-    border-radius: 8px;
+    border: 2px solid #ABABAB;
+    border-radius: 7px;
     margin-top: 30px;
     max-width: 300px;
     padding-top: 10px;
@@ -61,7 +64,8 @@ body{
 }
 
 .caja2_2{
-    border-radius: 8px;
+    border: 2px solid #ABABAB;
+    border-radius: 7px;
     margin-top: 30px;
     max-width: 300px;
     padding-top: 10px;
@@ -88,8 +92,6 @@ body{
 
 button:hover{
     cursor: pointer;
-    /* -webkit-transform: scale(1.1);
-    transform: scale(1.1); */
 }
 
 .genero {
@@ -139,29 +141,7 @@ main {
 }
 
 @media (min-width: 576px){
-    /* body {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-    }
 
-    .header_icon {
-        color: #5E554B;
-        margin-left: 10px;
-        margin-right: 10px;
-        visibility: visible;
-    }
-
-    .header_logo {
-        width: 180px;
-        height: auto;
-    }
-
-    .menu_icon {
-        color: #5E554B;
-        margin-left: 10px;
-        margin-right: 10px;
-        visibility: hidden;
-    } */
 }
 
 
