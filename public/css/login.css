@@ -10,6 +10,7 @@ body{
     font-size: 14px;
     color: black;
     background-color:white;
+   
 }
 
 button{
@@ -238,6 +239,8 @@ footer p {
     justify-content: center;
     width: 100%;
     height: 70vh;
+    padding-bottom: 170px;
+
 }
 
 .login-form-container {
