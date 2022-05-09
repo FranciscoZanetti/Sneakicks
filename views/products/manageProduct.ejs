@@ -21,39 +21,49 @@
             <h2 class="manage-title">Crea o edita un producto</h2>
             <form action="/manageProduct" method="post">
                 <article class="product-item">
-                    <label for="item-name">Nombre del producto</label>
+                    <label for="item-name" class="item-label">Nombre del producto</label>
                     <input type="text" class="item-input" id="item-name">
                 </article>
                 <article class="product-item">
-                    <label for="item-colorwave">Modelo 1</label>
+                    <label for="item-colorwave" class="item-label">Modelo</label>
                     <input type="text" class="item-input" id="item-colorwave">
                 </article>
                 <article class="product-item">
-                    <p>Talles</p>
-                    <% for (let i=3; i<=15.5; i+0.5) { %>
-                        <div class="item-size">
-                            <input type="checkbox" class="item-checkbox" id=""><label for=""><% i %></label>
-                        </div>
-                    <% } %>
-                </article>
-                <article class="product-item">
-                    <label for="item-price">Precio</label>
-                    <input type="text" class="input" id="item-price">
-                </article>
-                <article class="product-item">
-                    <label for="item-discount">Descuento</label>
-                    <div class="discount-container">
-                        <input type="text" class="input" id="item-discount"><span>%</span>
+                    <p class="item-header">Talles</p>
+                    <div id="product-size">
+                        <% for (let i=3; i<=15.5; i=i+0.5) { %>
+                            <div class="item-size">
+                                <input type="checkbox" name="size-input" value="<%= i %>" class="item-checkbox" id="<%= i %>" checked>
+                                <label for="<%= i %>"><%= i %></label>
+                            </div>
+                        <% } %>
                     </div>
                 </article>
+                <section class="price-discount-container">
+                    <article class="product-item">
+                        <label for="item-price" class="item-label">Precio</label>
+                        <input type="text" class="item-input" id="item-price">
+                    </article>
+                    <article class="product-item">
+                        <label for="item-discount" class="item-label">Descuento</label>
+                        <div class="discount-container">
+                            <input type="text" class="item-input" id="item-discount"><span>%</span>
+                        </div>
+                    </article>
+                </section>
                 <article class="product-item">
-                    <label for="item-description">Descripción del producto</label>
-                    <textarea name="item-description" id="item-description" placeholder="Escriba una descripción"></textarea>
+                        <label for="item-description" class="item-label">Descripción del producto</label>
+                        <div class="description-container-parent">
+                        <div class="description-container-child">
+                            <textarea name="item-description" id="item-description" placeholder="Escriba una descripción"></textarea>
+                            <span class="description-aux"></span>
+                        </div>
+                        </div>
                 </article>
                 <article class="product-item">
-                    <p>Imágenes del producto</p>
+                    <p class="item-header">Imágenes del producto</p>
                     <div class="item-images">
-                        <input type="file" name="item-images" accept=".jpg" id="item-images">
+                        <input type="file" name="item-images" accept=".jpg" accept=".png" id="item-images">
                     </div>
                 </article>
             </form>

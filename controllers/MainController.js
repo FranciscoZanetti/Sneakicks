@@ -44,6 +44,7 @@ const productos = [
 
 ]
 
+
 const controller = {
     index: (req, res) => {
         return res.render('products/index', {productos: productos});
