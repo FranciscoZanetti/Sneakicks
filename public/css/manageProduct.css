@@ -86,7 +86,7 @@ article{
             margin-bottom: var(--vw-0-8rem);
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: left;
             width: 30%;
             margin-left: var(--vw-1rem);
             margin-right: var(--vw-1rem);
