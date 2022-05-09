@@ -15,15 +15,19 @@ body{
 
 button{
     text-align: center;
-    color: black;
-    background-color: gray;
+    color: white;
+    background-color: black;
     padding: 5px;
     font-size: 18px;
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Nunito Sans', sans-serif;
     width: 6em;
     height: 2em; 
+    border: none;
+    border-radius: 7px;
 }
-
+button:hover{
+    cursor: pointer;
+}
 .boton1{
     border-radius: 8px;
     margin-top: 30px;
@@ -35,12 +39,12 @@ button{
     width: 90%;
 }
 .boton1:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 .boton2:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 .boton2{
     border-radius: 8px;
@@ -65,8 +69,8 @@ button{
 
 }
 .botones01:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .botones1{
