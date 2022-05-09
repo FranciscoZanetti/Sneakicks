@@ -17,76 +17,36 @@
     <%- include('../partials/header'); %>
   </header>
   <main>
-    <!-- <div class="cart">
+    <div class="cart">
       <div class="cart-labels">
-        <ul>
-          <li class="item item-heading">Item</li>
-          <li class="price">Precio</li>
-          <li class="quantity">Cantidad</li>
-          <li class="subtotal">Subtotal</li>
-        </ul>
+        <h2>TUS PRODUCTOS</h2>
       </div>
-      <div class="cart-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="/img/products/yeezy_1.webp" alt="Placholder Image 2" class="product-frame">
+        <% for( let producto of productos.slice(0,3) ) { %> 
+          <div class="cart-product">
+            <div class="item">
+              <div class="product-image">
+                <img src="/img/products/<%= producto.image_url %>" alt="Placholder Image 2" class="product-frame">
+              </div>
+              <div class="product-details">
+                <div class="details">
+                  <h1><strong><%= producto.marca %></strong> <%= producto.modelo %></h1>
+                  <p><strong>Talle 41</strong></p>
+                  <p>SKU - 232321939</p>
+                </div>
+                <div class="product-lower-container">
+                  <div class="price"><%= producto.precio %></div>
+                  <div class="quantity">
+                    <input type="number" value="2" min="1" class="quantity-field">
+                  </div>
+                  <div class="remove">
+                    <button>Quitar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">2</span>x Adidas by Jeezy</strong> Boost 350</h1>
-            <p><strong>Alien, talle 41</strong></p>
-            <p>SKU - 232321939</p>
-          </div>
-        </div>
-        <div class="price">6500.00</div>
-        <div class="quantity">
-          <input type="number" value="2" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">13000.00</div>
-        <div class="remove">
-          <button>Quitar</button>
-        </div>
-      </div>
-      <div class="cart-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="img/products/nike_1.webp" alt="Placholder Image 2" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">1</span> x Nike</strong> Jordan</h1>
-            <p><strong>SB, talle 42</strong></p>
-            <p>SKU - 232321939</p>
-          </div>
-        </div>
-        <div class="price">3500.00</div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">3500.00</div>
-        <div class="remove">
-          <button>Quitar</button>
-        </div>
-      </div>
-      <div class="cart-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="/img/products/yeezy_1.webp" alt="Placholder Image 2" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">2</span>x Adidas by Jeezy</strong> Boost 350</h1>
-            <p><strong>Alien, talle 41</strong></p>
-            <p>SKU - 232321939</p>
-          </div>
-        </div>
-        <div class="price">6500.00</div>
-        <div class="quantity">
-          <input type="number" value="2" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">13000.00</div>
-        <div class="remove">
-          <button>Quitar</button>
-        </div>
-      </div>
-    </div> -->
+        <% } %>       
+    </div>
     <div class="summary">
       <div class="summary-total-items"><span class="total-items"></span> Tu carrito de compras</div>
       <div class="summary-subtotal">
