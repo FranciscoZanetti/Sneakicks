@@ -2,11 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const productsFilePath = path.join(__dirname, '../data/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8')).sneakers;
 
 const controller = {
     index: (req, res) => {
-        console.log(products);
         return res.render('products/productList', {products: products});
     },
     login: (req, res) => {

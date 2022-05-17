@@ -35,12 +35,12 @@
                     <div class="preview-container_item">
                         <a href="/product">
                             <div class="preview_image">
-                                <img src="/img/products/<%= product.image_url %>" alt="" class="preview">
+                                <img src=<%= product.grid_picture_url %> alt="" class="preview">
                             </div>
                             <div class="preview_content">
-                                <h3 class="half-margin"><%= product.marca %></h3>
-                                <p class="half-margin"><%= product.modelo %></p>
-                                <p class="half-margin"><%= product.precio %></p>
+                                <h3 class="half-margin"><%= product.brand_name %></h3>
+                                <p class="half-margin"><%= product.name %></p>
+                                <p class="half-margin"><%= product.retail_price_cents %></p>
                             </div>
                         </a>
                     </div>
