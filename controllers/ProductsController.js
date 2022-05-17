@@ -15,13 +15,13 @@ const controller = {
         return res.render('users/register');
     },
     productDetail: (req, res) => {
-        return res.render('products/productDetail', {productos: productos});
+        return res.render('products/productDetail', {products: products});
     },
     productList: (req, res) => {
-        return res.render('products/productList', {productos: productos});
+        return res.render('products/productList', {products: products});
     },
     cart: (req, res) => {
-        return res.render('products/cart', {productos: productos});
+        return res.render('products/cart', {products: products});
     },
     manageProduct: (req, res) => {
         return res.render('products/manageProduct');
