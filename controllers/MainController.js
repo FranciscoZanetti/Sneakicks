@@ -1,53 +1,12 @@
-const productos = [
-    {
-        id: 1,
-        marca: 'Nike',
-        modelo: 'Dunk Low',
-        precio: '24.000',
-        image_url: 'nike_1.webp'
-    },
-    {
-        id: 2,
-        marca: 'adidas Yeezy',
-        modelo: 'Yeezy Boost 350 V2',
-        precio: '120.000',
-        image_url: 'yeezy_1.webp'
-    },
-    {
-        id: 3,
-        marca: 'Jordan',
-        modelo: 'Air Jordan 1 High 85',
-        precio: '140.000',
-        image_url: 'airjordan_1.jpg'
-    },
-    {
-        id: 4,
-        marca: 'Nike',
-        modelo: 'Dunk Low',
-        precio: '24.000',
-        image_url: 'nike_1.webp'
-    },
-    {
-        id: 5,
-        marca: 'adidas Yeezy',
-        modelo: 'Yeezy Boost 350 V2',
-        precio: '120.000',
-        image_url: 'yeezy_1.webp'
-    },
-    {
-        id: 6,
-        marca: 'Jordan',
-        modelo: 'Air Jordan 1 High 85',
-        precio: '140.000',
-        image_url: 'airjordan_1.jpg'
-    },
+const fs = require('fs');
+const path = require('path');
 
-]
-
+const productsFilePath = path.join(__dirname, '../data/products.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8')).sneakers.slice(22, 42);
 
 const controller = {
     index: (req, res) => {
-        return res.render('products/index', {productos: productos});
+        return res.render('index', {products: products});
     },
     login: (req, res) => {
         return res.render('users/login');
@@ -56,13 +15,13 @@ const controller = {
         return res.render('users/register');
     },
     productDetail: (req, res) => {
-        return res.render('products/productDetail', {productos: productos});
+        return res.render('products/productDetail', {products: products});
     },
     productList: (req, res) => {
-        return res.render('products/productList', {productos: productos});
+        return res.render('products/productList', {products: products});
     },
     cart: (req, res) => {
-        return res.render('products/cart', {productos: productos});
+        return res.render('products/cart', {products: products});
     },
     manageProduct: (req, res) => {
         return res.render('products/manageProduct');

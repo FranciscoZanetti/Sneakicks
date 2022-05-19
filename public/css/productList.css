@@ -105,6 +105,10 @@ main{
     margin-bottom: var(--vw-1rem);
 }
 
+.price::before {
+    content: "$";
+}
+
 .price-old{
     font-size: var(--vw-1rem);
     text-decoration: line-through;
