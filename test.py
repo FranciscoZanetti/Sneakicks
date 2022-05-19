@@ -1,9 +1,17 @@
 import json
 
 with open('data/products.json', 'r+') as f:
-    data = json.load(f)
-    new = [];
-    for item in data:
-        item["image_url"] = "nike_1.webp"
-        new.append(item)
-    json.dump(new, f, indent=4)
+    data = json.load(f)["sneakers"]
+    # cats = ["brand_name", "category", "color", "designer", "main_picture_url",
+    #  "gender", "id", "name", "release_year", "retail_price_cents", "shoe_condition",
+    #   "size_range", "sku", "upper_material", "story_html"]
+    new = []
+    for d in data:
+        new_d = {}
+        for key, value in d.items():
+            if key in cats:
+                new_d[key] = value
+        new.append(new_d)
+    
+    print(new)
+    # json.dump(new, f, indent=4)

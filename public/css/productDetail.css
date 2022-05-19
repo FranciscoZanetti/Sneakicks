@@ -516,6 +516,10 @@ main form button:hover{
         margin-bottom: var(--vw-2rem);
     }
 
+    .price::before {
+        content: "$";
+    }
+
     .review-stars{
         font-size: var(--vw-0-8rem);
         margin-bottom: var(--vw-0-5rem);

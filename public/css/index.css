@@ -194,6 +194,10 @@ main {
     border-top: 1px solid rgba(33,33,33,.2);
 }
 
+.price::before {
+    content: "$";
+}
+
 .right_arrow {
     position: absolute;
     top: 35%;
