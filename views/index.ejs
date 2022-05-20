@@ -37,12 +37,12 @@
                     <div class="preview-container_item">
                         <a href="/products/<%= product.id %>">
                             <div class="preview_image">
-                                <img src=<%= product.main_picture_url %> alt="" class="preview">
+                                <img src=<%= product.main_picture %> alt="" class="preview">
                             </div>
                             <div class="preview_content">
                                 <h3 class="half-margin"><%= product.brand_name %></h3>
                                 <p class="half-margin"><%= product.name %></p>
-                                <p class="half-margin price"><%= product.retail_price_cents %></p>
+                                <p class="half-margin price"><%= product.price_original %></p>
                             </div>
                         </a>
                     </div>
@@ -56,12 +56,12 @@
                     <div class="preview-container_item">
                         <a href="/products/<%= product.id %>">
                             <div class="preview_image">
-                                <img src=<%= product.main_picture_url %> alt="" class="preview">
+                                <img src=<%= product.main_picture %> alt="" class="preview">
                             </div>
                             <div class="preview_content">
                                 <h3 class="half-margin"><%= product.brand_name %></h3>
                                 <p class="half-margin"><%= product.name %></p>
-                                <p class="half-margin price"><%= product.retail_price_cents %></p>
+                                <p class="half-margin price"><%= product.price_original %></p>
                             </div>
                         </a>
                     </div>

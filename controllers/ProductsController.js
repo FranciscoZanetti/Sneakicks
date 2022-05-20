@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const productsFilePath = path.join(__dirname, '../data/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'})
+const products = JSON.parse(productsJSON);
+
 
 const controller = {
     index: (req, res) => {
@@ -20,6 +21,9 @@ const controller = {
     manageProduct: (req, res) => {
         return res.render('products/manageProduct');
     },
+    create: (req, res) => {
+        
+    }
 }
 
 module.exports = controller;

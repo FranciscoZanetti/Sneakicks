@@ -142,6 +142,55 @@ article{
         font-size: var(--vw-1-1rem);
     }
 
+    #item-condition-container{
+        position: relative;
+        display: flex;
+        padding-top: var(--vw-0-5rem);
+        padding-bottom: var(--vw-0-5rem);
+        padding-left: 5%;
+        padding-right: 5%;
+        border-radius: 7px;
+        border: none;
+        background-color: #ebebeb;
+    }
+
+        #item-condition{
+            font-size: var(--vw-1rem);
+            background-color: #ebebeb;
+            border: none;
+            flex-grow: 100%;
+            width: 100%;
+        }
+
+        #item-condition:hover{
+            cursor: pointer;
+        }
+
+        .custom-arrow-size{
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #ebebeb;
+            width: var(--vw-3rem);
+            height: 100%;
+            pointer-events: none;
+            border-radius: 7px;
+        }
+
+        .custom-arrow-size::before{
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 0.4rem solid transparent;
+            border-right: 0.4rem solid transparent;
+            border-top: 0.5rem solid black;
+        }
+
     .description-container-parent{
         display: flex;
         margin-bottom: var(--vw-1rem);

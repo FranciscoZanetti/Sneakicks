@@ -30,20 +30,20 @@
                 <section class="product-pc">
                     <section class="images">
                         <div id="image-pc">
-                            <img src=<%= product.main_picture_url %> alt=<%= product.name %>>
+                            <img src=<%= product.main_picture %> alt=<%= product.name %>>
                         </div>
                         <div class="images-mini">
                             <article class="images-mini-img-container">
-                                <img src=<%= product.main_picture_url %> alt=<%= product.name %>>
+                                <img src=<%= product.main_picture %> alt=<%= product.name %>>
                             </article>
                             <article class="images-mini-img-container">
-                                <img src=<%= product.main_picture_url %> alt=<%= product.name %>>
+                                <img src=<%= product.main_picture %> alt=<%= product.name %>>
                             </article>
                             <article class="images-mini-img-container">
-                                <img src=<%= product.main_picture_url %> alt=<%= product.name %>>
+                                <img src=<%= product.main_picture %> alt=<%= product.name %>>
                             </article>
                             <article class="images-mini-img-container">
-                                <img src=<%= product.main_picture_url %> alt=<%= product.name %>>
+                                <img src=<%= product.main_picture %> alt=<%= product.name %>>
                             </article>
                         </div>
                     </section>
@@ -62,17 +62,17 @@
                     </div>
                     <div class="star-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
         
-                    <div class="images-big"><img src=<%= product.main_picture_url %> alt=<%= product.name %>></div>
+                    <div class="images-big"><img src=<%= product.main_picture %> alt=<%= product.name %>></div>
         
                     <section class="product-info-price">
                         <div class="price-old">
                             <!-- <i class="fa-solid fa-dollar-sign"></i> -->
-                            <span class="price"><%= product.retail_price_cents %></span>
+                            <span class="price"><%= product.price_original %></span>
                         </div>
                         <div class="price-off">
                             <div class="price-off-price">
                                 <!-- <i class="fa-solid fa-dollar-sign"></i> -->
-                                <span>$ <%= product.retail_price_cents * (100 - product.discount) / 100 %></span>
+                                <span>$ <%= product.price_original * (100 - product.discount) / 100 %></span>
                             </div>
                             <span class="price-off-off"><%= product.discount %>% OFF</span>
                         </div>
@@ -158,7 +158,7 @@
                 <article class="details-text" id="description">
                     <h3>Descripción</h3>
                     <p class="paragrafs">
-                        <%= product.story_html %>
+                        <%= product.story %>
                     </p>
                 </article>
 
@@ -292,7 +292,7 @@
                     <div class="preview-container_item">
                         <a href="/products/<%= product.id %>">
                             <div class="preview_image">
-                                <img src=<%= product.main_picture_url %> alt="" class="preview">
+                                <img src=<%= product.main_picture %> alt="" class="preview">
                             </div>
                             <div class="preview_content">
                                 <h3 class="half-margin"><%= product.brand_name %></h3>
