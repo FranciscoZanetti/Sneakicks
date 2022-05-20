@@ -327,6 +327,11 @@ article{
         cursor: pointer;
     }
 
+    .error-message{
+        color: red;
+        font-size: var(--vw-0-8rem);
+    }
+
 
 @media (min-width: 768px){
 

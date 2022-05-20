@@ -33,10 +33,11 @@ const controller = {
     create: (req, res) => {
         let errors = validationResult(req);
         if (!errors.isEmpty() || !req.file){
-            res.render("products/manageProduct", { errors: errors.array(), old: req.body });
+            // console.log(errors.mapped());
+            res.render("products/manageProduct", { errors: errors.mapped(), old: req.body });
         }else{
             let aux = path.parse(req.file.filename);
-            console.log(aux);
+            // console.log(aux);
             let splitArray = aux.name.split("-");
 
             let discountInt = parseInt(req.body.discount);
@@ -59,7 +60,7 @@ const controller = {
                 story: req.body.story,
                 size: req.body.size,
             }
-            console.log(newShoe);
+            // console.log(newShoe);
             products.push(newShoe);
             productsStringified = JSON.stringify(products);
             fs.writeFileSync("./data/products.json", productsStringified);
