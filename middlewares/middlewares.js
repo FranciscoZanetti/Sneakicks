@@ -1,16 +1,24 @@
-// const path = require("path");
-// const fs = require("fs");
+const path = require("path");
+const fs = require("fs");
+const { check } = require("express-validator");
 
-// const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'})
-// const products = JSON.parse(productsJSON);
+const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'})
+const products = JSON.parse(productsJSON);
 
-// const middlewares = {
-//     fixImageSources: (req, res, next) => {
-//         products.forEach( product => {
-//             product.main_picture = path.join("/img/products/", product.main_picture);
-//         });
-//         next();
-//     }
-// }
+const middlewares = {
+    validateManageProduct: [
+        check("name").notEmpty().withMessage("* Este campo es obligatorio"),
+        check("colorwave").notEmpty().withMessage("* Este campo es obligatorio"),
+        check("brand_name").notEmpty().withMessage("* Este campo es obligatorio"),
+        check("category").notEmpty().withMessage("* Este campo es obligatorio"),
+        check("price_original")
+            .notEmpty().withMessage("* Este campo es obligatorio").bail()
+            .isInt().withMessage("* El precio debe ser un número entero, no usamos centavos"),
+        check("discount").isInt().withMessage("* El porcentaje debe ser un entero"),
+        check("release_year")
+            .isInt().withMessage("* Debe ser un año válido"),
+        check("story").notEmpty().withMessage("* Este campo es obligatorio")
+    ]
+}
 
-// module.exports = middlewares;
+module.exports = middlewares;

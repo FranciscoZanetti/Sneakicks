@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { validationResult } = require("express-validator");
 
 const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'})
 const products = JSON.parse(productsJSON);
@@ -30,37 +31,43 @@ const controller = {
         return res.render('products/manageProduct');
     },
     create: (req, res) => {
-        let aux = path.parse(req.file.filename);
-        console.log(aux);
-        let splitArray = aux.name.split("-");
+        let errors = validationResult(req);
+        if (!errors.isEmpty() || !req.file){
+            res.render("products/manageProduct", { errors: errors.array(), old: req.body });
+        }else{
+            let aux = path.parse(req.file.filename);
+            console.log(aux);
+            let splitArray = aux.name.split("-");
 
-        let discountInt = parseInt(req.body.discount);
-        // let release_yearInt = parseInt(req.body.release_year);
-        let price_originalInt = parseInt(req.body.price_original);
-        let price_finalInt = (100-discountInt) * price_originalInt / 100;
+            let discountInt = parseInt(req.body.discount);
+            let price_originalInt = parseInt(req.body.price_original);
+            let price_finalInt = (100-discountInt) * price_originalInt / 100;
 
-        let newShoe = {
-            brand_name: req.body.brand_name,
-            category: req.body.category,
-            colorwave: req.body.colorwave,
-            discount: req.body.discount,
-            id: splitArray[0],
-            main_picture: req.file.filename,
-            name: req.body.name,
-            whole_name: req.body.name+" '"+req.body.colorwave+"'",
-            release_year: req.body.release_year,
-            price_original: req.body.price_original,
-            price_final: JSON.stringify(price_finalInt),
-            shoe_condition: req.body.shoe_condition,
-            story: req.body.story,
-            size: req.body.size,
+            let newShoe = {
+                brand_name: req.body.brand_name,
+                category: req.body.category,
+                colorwave: req.body.colorwave,
+                discount: req.body.discount,
+                id: splitArray[0],
+                main_picture: req.file.filename,
+                name: req.body.name,
+                whole_name: req.body.name+" '"+req.body.colorwave+"'",
+                release_year: req.body.release_year,
+                price_original: req.body.price_original,
+                price_final: JSON.stringify(price_finalInt),
+                shoe_condition: req.body.shoe_condition,
+                story: req.body.story,
+                size: req.body.size,
+            }
+            console.log(newShoe);
+            products.push(newShoe);
+            productsStringified = JSON.stringify(products);
+            fs.writeFileSync("./data/products.json", productsStringified);
+
+            return res.redirect('/products/'+newShoe.id);
         }
-        console.log(newShoe);
-        products.push(newShoe);
-        productsStringified = JSON.stringify(products);
-        fs.writeFileSync("./data/products.json", productsStringified);
 
-        return res.redirect('/products/'+newShoe.id);
+        
     }
 }
 
