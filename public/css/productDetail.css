@@ -104,6 +104,21 @@ main{
     font-size: var(--vw-1rem);
 }
 
+.product-info-brand{
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: var(--vw-1-1rem);
+    font-weight: bold;
+    color: #cfcfcf;
+}
+
+.product-info-condition{
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: var(--vw-1-1rem);
+    color: black;
+}
+
 .product-info-price{
     margin-left: 5%;
     margin-bottom: var(--vw-1rem);
@@ -933,7 +948,7 @@ header a{
                         }
                 
                 #image-pc{
-                    height: 400px;
+                    height: 450px;
                     overflow: hidden;
                     display: flex;
                     justify-content: center;
@@ -988,9 +1003,9 @@ header a{
             float: right;
             border: 2px solid #ebebeb;
             border-radius: 7px;
-            display: flex;
+            /* display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: space-around; */
         }
 
             .product-info .images-big{

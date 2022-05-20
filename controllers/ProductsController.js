@@ -22,7 +22,20 @@ const controller = {
         return res.render('products/manageProduct');
     },
     create: (req, res) => {
-        
+        // let newShoe = {
+        //     brand_name: 
+        //     category:
+        //     colorwave:
+        //     discount:
+        //     id:
+        //     main_picture:
+        //     name:
+        //     release_year:
+        //     price_original:
+        //     shoe_condition:
+        //     story:
+        //     size:
+        // }
     }
 }
 

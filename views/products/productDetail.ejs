@@ -56,13 +56,29 @@
 
                 <section class="product-info">
 
+                    
                     <div class="product-info-header">
                         <h2><%= product.name %></h2>
                         <div class="fav"><i class="fa-regular fa-heart"></i></div>
                     </div>
+
                     <div class="star-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
         
+                    <div class="product-info-brand">
+                        <p id="product-info-brand"><%= product.brand_name %></p>
+                    </div>
+
                     <div class="images-big"><img src=<%= product.main_picture %> alt=<%= product.name %>></div>
+
+                    <div class="product-info-condition">
+                        <p id="product-info-condition">
+                            <% if (product.shoe_condition == "used"){ %>
+                                Usado
+                            <% } else{ %>
+                                Nuevo, sin defectos
+                            <% } %>
+                        </p>
+                    </div>
         
                     <section class="product-info-price">
                         <div class="price-old">
