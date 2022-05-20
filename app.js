@@ -14,3 +14,6 @@ app.set('view engine', 'ejs');
 
 app.use('/', mainRoutes);
 app.use('/products', productRoutes);
+
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());

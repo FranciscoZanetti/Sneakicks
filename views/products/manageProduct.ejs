@@ -24,13 +24,17 @@
     <main>
         <div class="container">
             <h2 class="manage-title">Crea o edita un producto</h2>
-            <form action="/manageProduct" method="post">
+            <form action="/products/create" method="post" enctype="multipart/form-data">
                 <article class="product-item">
-                    <label for="item-name" class="item-label">Nombre del producto</label>
+                    <label for="item-name" class="item-label">Nombre del modelo</label>
                     <input type="text" class="item-input" id="item-name" name="name">
                 </article>
                 <article class="product-item">
-                    <label for="item-colorwave" class="item-label">Modelo</label>
+                    <label for="item-brand" class="item-label">Marca</label>
+                    <input type="text" class="item-input" id="item-brand" name="brand_name">
+                </article>
+                <article class="product-item">
+                    <label for="item-colorwave" class="item-label">Colorwave</label>
                     <input type="text" class="item-input" id="item-colorwave" name="colorwave">
                 </article>
                 <article class="product-item">
