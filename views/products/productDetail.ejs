@@ -60,7 +60,7 @@
 
                     
                     <div class="product-info-header">
-                        <h2><%= product.name %></h2>
+                        <h2><%= product.whole_name %></h2>
                         <div class="fav"><i class="fa-regular fa-heart"></i></div>
                     </div>
 
@@ -117,17 +117,6 @@
                                             <option selected disabled hidden> </option>
                                             <% sizeArray = sizeArray.sort( (a,b) => {return a-b}); %>
                                             <% for (let size of sizeArray){ %>
-                                                <!-- <option value="7">7</option>
-                                                <option value="7.5">7.5</option>
-                                                <option value="8">8</option>
-                                                <option value="8.5">8.5</option>
-                                                <option value="9">9</option>
-                                                <option value="9.5">9.5</option>
-                                                <option value="10">10</option>
-                                                <option value="10.5">10.5</option>
-                                                <option value="11">11</option>
-                                                <option value="11.5">11.5</option>
-                                                <option value="12">12</option> -->
                                                 <option value="<%= size %>" ><%= size %></option>
                                             <% } %>
                                         </select>
@@ -154,8 +143,14 @@
                             <div class="colorwaves-container">
                                 <label for="colorwave">Modelo:</label>
                                 <select name="colorwave" id="colorwave">
-                                    <option value="Bordeaux">Bordeaux</option>
-                                    <option value="Olive Green" selected>Olive Green</option>
+                                    <option value="<%= product.colorwave %>" selected><%= product.colorwave %></option>
+                                    <% if ( colorwaveArray.length >=1 ){ %>
+                                        <% for ( let colorwave of colorwaveArray ){ %>
+                                            <option value="<%= colorwave %>"><%= colorwave %></option>
+                                            <!-- <option value="Bordeaux">Bordeaux</option>
+                                            <option value="Olive Green" selected>Olive Green</option> -->
+                                        <% } %>
+                                    <% } %>
                                 </select>
                                 <span class="custom-arrow-colorwave"></span>
                             </div>

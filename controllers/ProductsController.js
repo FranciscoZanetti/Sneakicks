@@ -15,7 +15,13 @@ const controller = {
 		});
         let sizeArray = product.size;
         let recomendedProducts = products.filter(element => element.id != req.params.id);
-		return res.render('products/productDetail', {product: product, sizeArray: sizeArray, recomendedProducts: recomendedProducts});
+        let colorwaveArray = [];
+        products.forEach(element => {
+            if ((element.name == product.name) && (element.id != product.id)){
+                colorwaveArray.push(element.colorwave);
+            }
+        });
+		return res.render('products/productDetail', {product: product, sizeArray: sizeArray, colorwaveArray: colorwaveArray, recomendedProducts: recomendedProducts});
 	},
     cart: (req, res) => {
         return res.render('products/cart', {products: products});
@@ -36,6 +42,7 @@ const controller = {
             id: splitArray[0],
             main_picture: req.file.filename,
             name: req.body.name,
+            whole_name: req.body.name+" '"+req.body.colorwave+"'",
             release_year: req.body.release_year,
             price_original: req.body.price_original,
             shoe_condition: req.body.shoe_condition,
