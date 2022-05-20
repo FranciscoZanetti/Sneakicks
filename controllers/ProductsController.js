@@ -12,8 +12,10 @@ const controller = {
 	productDetail: (req, res) => {
 		let product = products.find(item => {
 			return item.id == req.params.id;
-		})
-		return res.render('products/productDetail', {product: product, products: products})
+		});
+        let sizeArray = product.size;
+        let recomendedProducts = products.filter(element => element.id != req.params.id);
+		return res.render('products/productDetail', {product: product, sizeArray: sizeArray, recomendedProducts: recomendedProducts});
 	},
     cart: (req, res) => {
         return res.render('products/cart', {products: products});
@@ -45,7 +47,7 @@ const controller = {
         productsStringified = JSON.stringify(products);
         fs.writeFileSync("./data/products.json", productsStringified);
 
-        return res.redirect('/');
+        return res.redirect('/products/'+newShoe.id);
     }
 }
 
