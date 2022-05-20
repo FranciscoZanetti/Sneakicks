@@ -55,19 +55,19 @@
                 <section class="price-discount-container">
                     <article class="product-item">
                         <label for="item-price" class="item-label">Precio</label>
-                        <input type="text" class="item-input" id="item-price" name="price_original">
+                        <input type="number" min="1" class="item-input" id="item-price" name="price_original">
                     </article>
                     <article class="product-item">
                         <label for="item-discount" class="item-label">Descuento</label>
                         <div class="discount-container">
-                            <input type="text" class="item-input" id="item-discount" name="discount"><span>%</span>
+                            <input type="number" min="0" max="90" class="item-input" id="item-discount" name="discount"><span>%</span>
                         </div>
                     </article>
                 </section>
                 <section class="price-discount-container">
                     <article class="product-item">
                         <label for="item-year" class="item-label">Año de salida</label>
-                        <input type="text" class="item-input" id="item-year" name="release_year">
+                        <input type="number" min="1970" class="item-input" id="item-year" name="release_year">
                     </article>
                     <article class="product-item">
                         <label for="item-condition" class="item-label">Condición</label>

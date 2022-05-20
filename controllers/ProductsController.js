@@ -34,6 +34,11 @@ const controller = {
         console.log(aux);
         let splitArray = aux.name.split("-");
 
+        let discountInt = parseInt(req.body.discount);
+        // let release_yearInt = parseInt(req.body.release_year);
+        let price_originalInt = parseInt(req.body.price_original);
+        let price_finalInt = (100-discountInt) * price_originalInt / 100;
+
         let newShoe = {
             brand_name: req.body.brand_name,
             category: req.body.category,
@@ -45,6 +50,7 @@ const controller = {
             whole_name: req.body.name+" '"+req.body.colorwave+"'",
             release_year: req.body.release_year,
             price_original: req.body.price_original,
+            price_final: JSON.stringify(price_finalInt),
             shoe_condition: req.body.shoe_condition,
             story: req.body.story,
             size: req.body.size,

@@ -83,16 +83,20 @@
                     </div>
         
                     <section class="product-info-price">
-                        <div class="price-old">
-                            <!-- <i class="fa-solid fa-dollar-sign"></i> -->
-                            <span class="price"><%= product.price_original %></span>
-                        </div>
+                        <% if ( product.discount != "0" ){ %>
+                            <div class="price-old">
+                                <!-- <i class="fa-solid fa-dollar-sign"></i> -->
+                                <span class="price"><%= product.price_original %></span>
+                            </div>
+                        <% } %>
                         <div class="price-off">
                             <div class="price-off-price">
                                 <!-- <i class="fa-solid fa-dollar-sign"></i> -->
-                                <span>$ <%= product.price_original * (100 - product.discount) / 100 %></span>
+                                <span>$ <%= product.price_final %></span>
                             </div>
-                            <span class="price-off-off"><%= product.discount %>% OFF</span>
+                            <% if ( product.discount != "0" ){ %>
+                                <span class="price-off-off"><%= product.discount %>% OFF</span>
+                            <% } %>
                         </div>
                     </section>
         
