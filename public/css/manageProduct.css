@@ -38,12 +38,36 @@ main{
     padding-bottom: var(--vw-2rem);
 }
 
-h2{
-    text-align: center;
-    font-size: var(--vw-1-5rem);
-    margin-top: 0;
+
+.header-id-container-parent{
+    display: flex;
+    justify-content: center;
     margin-bottom: var(--vw-1-5rem);
 }
+
+    .header-container-child{
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+        h2{
+            text-align: center;
+            font-size: var(--vw-1-5rem);
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .product-id{
+            background-color: #ebebeb;
+            border: none;
+            border-radius: 7px;
+            padding-left: 5%;
+            padding-right: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
 article{
     margin-bottom: var(--vw-1-2rem);
@@ -194,6 +218,7 @@ article{
     .description-container-parent{
         display: flex;
         margin-bottom: var(--vw-1rem);
+        /* overflow: auto; */
     }
 
         .description-container-child{
@@ -204,6 +229,7 @@ article{
             background-color: #ebebeb;
             position: relative;
             padding-right: var(--vw-0-5rem);
+            /* overflow: auto; */
         }
 
             #item-description{
@@ -383,7 +409,11 @@ article{
         width: 992px;
     }
 
-    h2{
-        font-size: 1.8rem;
+    .header-container-child{
+        width: 70%;
     }
+
+        h2{
+            font-size: 1.8rem;
+        }
 }

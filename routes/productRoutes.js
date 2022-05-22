@@ -28,4 +28,8 @@ router.post('/create', middlewares.validateManageProduct, uploadFile.single("mai
 
 router.get('/:id', productsController.productDetail);
 
+router.get('/:id/edit', productsController.editGet);
+
+router.put('/:id/edit', productsController.editPut);
+
 module.exports = router;
