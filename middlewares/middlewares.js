@@ -18,6 +18,10 @@ const middlewares = {
         check("release_year")
             .isInt().withMessage("* Debe ser un año válido"),
         check("story").notEmpty().withMessage("* Este campo es obligatorio")
+    ],
+    validateReviewForm: [
+        check("stars").notEmpty().withMessage("* Debes agregar un puntaje de estrellas"),
+        check("text").notEmpty().withMessage("* Este campo es obligatorio")
     ]
 }
 

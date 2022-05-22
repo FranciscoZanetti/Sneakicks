@@ -19,7 +19,7 @@ const uploadFile = multer({storage});
 const productsController = require('../controllers/productsController');
 
 /*** GET ALL PRODUCTS ***/ 
-router.get('/', productsController.index); 
+router.get('/', productsController.productList); 
 
 
 router.get('/create', productsController.manageProduct);
@@ -35,5 +35,7 @@ router.put('/:id/edit', productsController.editPut);
 router.get('/:id/delete', productsController.deleteGet);
 
 router.delete('/:id/delete', productsController.deleteDelete);
+
+router.post(':id/adding-review', middlewares.validateReviewForm, productsController.addReview);
 
 module.exports = router;

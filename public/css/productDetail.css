@@ -466,8 +466,62 @@ main form button:hover{
         margin-bottom: var(--vw-1-2rem);
     }
 
+    .stars-text-error-message{
+        font-size: var(--vw-0-8rem);
+        color: red;
+        margin-bottom: var(--vw-0-8rem);
+    }
+
+    .add-star-rating-container-parent{
+        padding-bottom: var(--vw-0-8rem);
+        display: flex;
+        padding-left: var(--vw-0-8rem);
+    }
+
+        .add-star-rating-container-child{
+            display: flex;
+            width: 20%;
+            justify-content: space-between;
+        }
+
+            .star-input-container{
+                position: relative;
+                width: 7%;
+            }
+
+                .radio-container{
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .radio-container input{
+                        font-size: var(--vw-1-1rem);
+                        /* appearance: none; */
+                    }
+
+                .form-star-container{
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    pointer-events: none;
+                }
+
+                    .form-star-container .fa-star{
+                        font-size: var(--vw-1-1rem);
+                        pointer-events: none;
+                    }
+
+
     .textarea-container-parent{
         display: flex;
+        margin-top: var(--vw-0-8rem);
         margin-bottom: var(--vw-1rem);
     }
 
@@ -911,38 +965,7 @@ main form button:hover{
                 border-top: none;
             }
 
-
-    /* .bottom-navbar {
-        display: block;
-    }
-
-
-    .footer-container_item {
-        width: 32%;
-        height: auto;
-        color: white;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .footer-container_item-title {
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .footer-container_item-content {
-        display: block;
-    }
-
-    .footer-container_logo {
-        display: flex;
-        width: 32%;
-        height: auto;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    } */
+            .textarea-container-parent{
+                margin-top: var(--vw-1-5rem);
+            }
 }
-/* 
-@media (min-width: 1200px){}
-
-@media (min-width: 1400px){} */

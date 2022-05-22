@@ -2,19 +2,19 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require("express-validator");
 
-const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'})
+const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
 const products = JSON.parse(productsJSON);
 
+const reviewsJSON = fs.readFileSync('./data/reviews.json', {encoding: 'utf-8'});
+const reviews = JSON.parse(reviewsJSON);
 
 const controller = {
-    index: (req, res) => {
-        return res.render('products/productList', {products: products});
-    },
 	productDetail: (req, res) => {
 		let product = products.find(item => {
 			return item.id == req.params.id;
 		});
         let sizeArray = product.size;
+        sizeArray = sizeArray.sort( (a,b) => {return a-b});
         let recomendedProducts = products.filter(element => element.id != req.params.id);
         let colorwaveArray = [];
         products.forEach(element => {
@@ -22,7 +22,11 @@ const controller = {
                 colorwaveArray.push(element.colorwave);
             }
         });
-		return res.render('products/productDetail', {product: product, sizeArray: sizeArray, colorwaveArray: colorwaveArray, recomendedProducts: recomendedProducts});
+
+        productReviews = reviews.filter(review => review.id == product.id);
+        productReviews.reverse();
+
+		return res.render('products/productDetail', {product: product, sizeArray: sizeArray, colorwaveArray: colorwaveArray, productReviews: productReviews, recomendedProducts: recomendedProducts});
 	},
     cart: (req, res) => {
         return res.render('products/cart', {products: products});
@@ -144,7 +148,30 @@ const controller = {
         productsStringified = JSON.stringify(products);
         fs.writeFileSync("./data/products.json", productsStringified);
 
-        return res.redirect("/");
+        return res.redirect("/products/");
+    },
+    productList: (req, res) => {
+        return res.render("products/productList", {products: products});
+    },
+    addReview: (req, res) => {
+        let errors = validationResult(req);
+        if (!errors.isEmpty()){
+            res.render("products/productDetail", { errors: errors.mapped(), old: req.body });
+        }else{
+            let newReview = {
+                id: req.params.id,
+                stars: req.body.stars,
+                text: req.body.text
+            }
+
+            console.log(newReview);
+
+            reviews.push(newReview);
+            reviewsStringified = JSON.stringify(reviews);
+            fs.writeFileSync("./data/reviews.json", reviewsStringified);
+
+            return res.redirect('/products/'+ newReview.id);
+        }
     }
 }
 
