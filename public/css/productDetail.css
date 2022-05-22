@@ -13,6 +13,7 @@
     --vw-4rem: clamp(3.62rem, calc(((64 * 100) / 414) * 1vw), 5.565rem);
     --vw-3rem: clamp(2.7rem, calc(((48 * 100) / 414) * 1vw), 4.174rem);
     --vw-5rem: clamp(4.5rem, calc(((80 * 100) / 414) * 1vw), 6.956rem);
+    --vw-6rem: clamp(5.2rem, calc(((96 * 100) / 414) * 1vw), 8.348rem);
 }
 
 
@@ -45,6 +46,58 @@ main{
 .directory{
     display: none;
 }
+
+.edit-delete-container{
+    display: flex;
+    justify-content: center;
+    margin-top: var(--vw-2rem);
+    margin-bottom: var(--vw-1rem);
+}
+
+    .edit-delete{
+        display: flex;
+        justify-content: space-around;
+        width: 70%;
+    }
+
+        .edit-delete-a{
+            display: block;
+        }
+
+            .edit-delete-buttons{
+                border-radius: 7px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-left: var(--vw-0-5rem);
+                padding-right: var(--vw-0-5rem);
+                padding-top: var(--vw-0-5rem);
+                padding-bottom: var(--vw-0-5rem);
+                background-color: #ebebeb;
+                width: var(--vw-6rem);
+            }
+
+            #edit-button{
+                background-color: #ebebeb;
+            }
+
+                #edit-button p{
+                    color: black;
+                    /* font-weight: bold; */
+                }
+
+            #delete-button{
+                background-color: rgb(216, 24, 24);
+            }
+
+                #delete-button p{
+                    color: white;
+                    /* font-weight: bold; */
+                }
+
+                .edit-delete-container p{
+                    margin: 0;
+                }
 
 .product-pc{
     display: none;
@@ -345,6 +398,7 @@ main form button:hover{
         }
 
     .form-stock{
+        text-align: center;
         font-weight: bold;
         font-size: var(--vw-1rem);
         margin-bottom: var(--vw-20px);
@@ -699,6 +753,7 @@ main form button:hover{
         --vw-4rem: 4rem;
         --vw-3rem: 3rem;
         --vw-5rem: 5rem;
+        --vw-6rem: 6rem;
     }
 
 
@@ -725,6 +780,16 @@ main form button:hover{
             display: block;
             font-size: var(--vw-1rem);
         }
+
+        .edit-delete-container{
+            margin-top: var(--vw-1rem);
+            margin-bottom: var(--vw-2rem);
+            justify-content: right;
+        }
+
+            .edit-delete{
+                width: 33%;
+            }
 
         .product-pc{
             display: block;

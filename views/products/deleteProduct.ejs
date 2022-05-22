@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/deleteProduct.css">
+    <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <title>Eliminar | Sneakicks</title>
+</head>
+
+
+
+<body>
+    
+    <%- include('../partials/header'); %>
+
+    <main id="deleteProduct-main">
+        <div class="main-container">
+            <form action="/products/:id/delete?_method=DELETE" method="post" enctype="multipart/form-data">
+                <p class="header">¿ Estás seguro de que deseas el producto ID: <%= product.id %> ?</p>
+                <div class="buttons-container">
+                    <div class="buttons">
+                        <button type="submit">Eliminar</button>
+                        <a href="/products/<%= product.id %>" class="cancel-a">
+                            <div class="cancel">
+                                <p>Cancelar</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../partials/footer'); %>
+
+</body>
+</html>

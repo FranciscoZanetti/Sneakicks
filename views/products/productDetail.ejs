@@ -25,6 +25,21 @@
 
             <p class="directory">> product</p>
 
+            <section class="edit-delete-container">
+                <div class="edit-delete">
+                    <a href="/products/<%= product.id %>/edit" class="edit-delete-a">
+                        <div class="edit-delete-buttons" id="edit-button">
+                            <p>Editar</p>
+                        </div>
+                    </a>
+                    <a href="/products/<%= product.id %>/delete" class="edit-delete-a">
+                        <div class="edit-delete-buttons" id="delete-button">
+                            <p>Eliminar</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
             <section class="product">
 
                 <section class="product-pc">

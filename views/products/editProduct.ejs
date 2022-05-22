@@ -26,10 +26,12 @@
             <div class="header-id-container-parent">
                 <div class="header-container-child">
                     <h2 class="manage-title">Edita el producto</h2>
-                    <div class="product-id"><%= product.id %></div>
+                    <div class="product-id">
+                        <input type="number" name="id" id="product-id-read-only" value="<%= product.id %>" readonly>
+                    </div>
                 </div>
             </div>
-            <form action="/products/:id/edit?_method=PUT" method="post" enctype="multipart/form-data">
+            <form action="/products/<%= product.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data">
                 <article class="product-item">
                     <label for="item-name" class="item-label">Nombre del modelo</label>
                     <% if ( locals.errors && errors.name ){ %>

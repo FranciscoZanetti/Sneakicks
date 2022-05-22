@@ -73,12 +73,16 @@ const controller = {
 			return item.id == req.params.id;
 		});
         let sizeArray = product.size;
+
         return res.render('products/editProduct', {product: product, sizeArray: sizeArray});
     },
     editPut: (req, res) => {
         let product = products.find(item => {
-			return item.id == req.params.id;
+			return item.id == req.body.id;
 		});
+
+        console.log(product);
+
         let errors = validationResult(req);
         if (!errors.isEmpty()){
             res.render("products/editProducts", { errors: errors.mapped(), old: req.body });
@@ -117,8 +121,30 @@ const controller = {
                     product == editedShoe;
                 }
             });
+            productsStringified = JSON.stringify(products);
+            fs.writeFileSync("./data/products.json", productsStringified);
+
             return res.redirect("/products/"+editedShoe);
         }
+    },
+    deleteGet: (req, res) => {
+        let product = products.find(item => {
+			return item.id == req.params.id;
+		});
+        return res.render("products/deleteProduct", {product: product});
+    },
+    deleteDelete: (req, res) => {
+        let product = products.find(item => {
+			return item.id == req.params.id;
+		});
+        let indexDelete = products.indexOf(product);
+        if (indexDelete > -1){
+            products.splice(indexDelete, 1);
+        }
+        productsStringified = JSON.stringify(products);
+        fs.writeFileSync("./data/products.json", productsStringified);
+
+        return res.redirect("/");
     }
 }
 
