@@ -21,20 +21,20 @@
       <div class="cart-labels">
         <h2>TUS PRODUCTOS</h2>
       </div>
-        <% for( let producto of productos.slice(0,3) ) { %> 
+        <% for( let producto of products.slice(0,3) ) { %> 
           <div class="cart-product">
             <div class="item">
               <div class="product-image">
-                <img src="/img/products/<%= producto.image_url %>" alt="Placholder Image 2" class="product-frame">
+                <img src="/img/products/<%= producto.main_picture %>" alt="Placholder Image 2" class="product-frame">
               </div>
               <div class="product-details">
                 <div class="details">
-                  <h1><strong><%= producto.marca %></strong> <%= producto.modelo %></h1>
+                  <h1><strong><%= producto.brand_name %></strong> <%= producto.name %></h1>
                   <p><strong>Talle 41</strong></p>
                   <p>SKU - 232321939</p>
                 </div>
                 <div class="product-lower-container">
-                  <div class="price"><%= producto.precio %></div>
+                  <div class="price"><%= producto.price_original %></div>
                   <div class="quantity">
                     <input type="number" value="2" min="1" class="quantity-field">
                   </div>
