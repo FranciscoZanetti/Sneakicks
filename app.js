@@ -11,12 +11,14 @@ app.listen(port, () => {
 
 app.use(express.static('public'));
 
+app.use(methodOverride('_method'));
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
 app.set('view engine', 'ejs');
 
 app.use('/', mainRoutes);
 app.use('/products', productRoutes);
 
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
-
-app.use(methodOverride('_method'));
+module.exports = app;

@@ -831,7 +831,8 @@ main form button:hover{
     }
 
         .directory{
-            display: block;
+            margin-top: var(--vw-1-5rem);
+            display: flex;
             font-size: var(--vw-1rem);
         }
 

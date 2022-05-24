@@ -23,7 +23,11 @@
         <% if (product){ %>
         <div class="container">
 
-            <p class="directory">> productos > <%= product.whole_name %></p>
+            <!-- <p class="directory">> productos > <%= product.whole_name %></p> -->
+            <div class="directory">
+                <a href="/products">> products </a>
+                <a href="/products/<%= product.id %>">> <%= product.whole_name %></a>
+            </div>
 
             <section class="edit-delete-container">
                 <div class="edit-delete">

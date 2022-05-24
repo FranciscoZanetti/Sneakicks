@@ -23,7 +23,7 @@
 
     <main id="deleteProduct-main">
         <div class="main-container">
-            <form action="/products/:id/delete?_method=DELETE" method="post" enctype="multipart/form-data">
+            <form action="/products/<%= product.id %>/delete?_method=DELETE" method="post" enctype="multipart/form-data">
                 <p class="header">¿ Estás seguro de que deseas el producto ID: <%= product.id %> ?</p>
                 <div class="buttons-container">
                     <div class="buttons">
