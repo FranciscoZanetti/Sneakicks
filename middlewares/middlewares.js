@@ -17,7 +17,8 @@ const middlewares = {
         check("discount").isInt().withMessage("* El porcentaje debe ser un entero"),
         check("release_year")
             .isInt().withMessage("* Debe ser un año válido"),
-        check("story").notEmpty().withMessage("* Este campo es obligatorio")
+        check("story").notEmpty().withMessage("* Este campo es obligatorio"),
+        check("stock").notEmpty().withMessage("* Este campo es obligatorio")
     ],
     validateReviewForm: [
         check("stars").notEmpty().withMessage("* Debes agregar un puntaje de estrellas"),

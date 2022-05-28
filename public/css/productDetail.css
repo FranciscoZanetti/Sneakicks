@@ -144,12 +144,14 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 47vh;
+    /* height: 47vh; */
+    box-sizing: border-box;
 }
 
 .product-info .images-big img{
     width: 100%;
-    object-fit: cover;
+    /* height: 100%; */
+    object-fit: contain;
 }
 
 .product-info .star-rating{
@@ -397,11 +399,20 @@ main form button:hover{
             border-top: 0.5rem solid black;
         }
 
-    .form-stock{
+    .form-stock-avaiable{
         text-align: center;
         font-weight: bold;
         font-size: var(--vw-1rem);
         margin-bottom: var(--vw-20px);
+        color: #4EBD24;
+    }
+
+    .form-stock-unavaiable{
+        text-align: center;
+        font-weight: bold;
+        font-size: var(--vw-1rem);
+        margin-bottom: var(--vw-20px);
+        color: rgb(216, 24, 24);
     }
 
     .cart-button{

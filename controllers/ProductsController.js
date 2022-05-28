@@ -62,9 +62,10 @@ const controller = {
                 shoe_condition: req.body.shoe_condition,
                 story: req.body.story,
                 size: req.body.size,
+                stock: req.body.stock
             }
             products.push(newShoe);
-            productsStringified = JSON.stringify(products);
+            productsStringified = JSON.stringify(products, null, '\t');
             fs.writeFileSync("./data/products.json", productsStringified);
 
             return res.redirect('/products/'+newShoe.id);
@@ -108,6 +109,7 @@ const controller = {
                 shoe_condition: req.body.shoe_condition,
                 story: req.body.story,
                 size: req.body.size,
+                stock: req.body.stock
             }
             if (req.file){
                 editedShoe.main_picture = req.file.filename;
@@ -154,17 +156,18 @@ const controller = {
         let errors = validationResult(req);
         if (!errors.isEmpty()){
             res.redirect('/products/'+req.params.id);
-        }else{
+        }
+        else{
             let newReview = {
                 id: req.params.id,
                 stars: req.body.stars,
                 text: req.body.text
             }
-
+            console.log("body: ", req.body);
             console.log(newReview);
 
             reviews.push(newReview);
-            reviewsStringified = JSON.stringify(reviews);
+            reviewsStringified = JSON.stringify(reviews, null, '\t');
             fs.writeFileSync("./data/reviews.json", reviewsStringified);
 
             return res.redirect('/products/'+ newReview.id);
