@@ -5,7 +5,7 @@ const mainRoutes = require('./routes/mainRoutes');
 const productRoutes = require('./routes/productRoutes');
 const methodOverride = require('method-override');
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Servidor iniciado en puerto ${port} - http://localhost:${port}`)
 })
 
