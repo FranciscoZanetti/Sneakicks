@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
-    <title>Registro | Sneakicks</title>
+    <title>Edita tu perfil | Sneakicks</title>
 
 </head>
 
@@ -33,9 +33,9 @@
         <main>
             <div class="register-container">
                 <form action="/users/register" class="form" method="post" enctype="multipart/form-data">
-                    <h1>CREA TU CUENTA</h1>
+                    <h1>Edita tu perfil</h1>
                     <section class="form-container">
-                        <input class="input-form" type="text" name="first_name" placeholder="Nombres" required maxlength="30">
+                        <input class="input-form" type="text" name="first_name" placeholder="Nombres" value=<%=req.session.first_name %> required maxlength="30">
                         <input class="input-form" type="text" name="last_name" placeholder="Apellidos" required maxlength="30">
                         <input class="input-form" type="email"  name="email" placeholder="Email" required maxlength="30">
                         <input class="input-form" type="password"  name="password" placeholder="Contraseña" required maxlength="30">
@@ -47,10 +47,7 @@
                         </article>
                     </section>
                     <div class="register_button-container">
-                        <input class="register-button" type="submit" value="Registrarse" name="register-button"></input>
-                        <div class="register-child">
-                            <p><a href="/users/login">¿Ya tienes Cuenta? Iniciar Seccion</a>
-                        </div>
+                        <input class="register-button" type="submit" value="Confirmar cambios" name="register-button"></input>
                     </div>
                 </form>
             </div>

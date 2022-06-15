@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const { validationResult } = require("express-validator");
 
 const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
@@ -36,13 +37,11 @@ const controller = {
     },
     create: (req, res) => {
         let errors = validationResult(req);
+
         if (!errors.isEmpty() || !req.file){
-            // console.log(errors.mapped());
             res.render("products/manageProduct", { errors: errors.mapped(), old: req.body });
         }else{
             let aux = path.parse(req.file.filename);
-            // console.log(aux);
-            let splitArray = aux.name.split("-");
 
             let discountInt = parseInt(req.body.discount);
             let price_originalInt = parseInt(req.body.price_original);
@@ -53,7 +52,7 @@ const controller = {
                 category: req.body.category,
                 colorwave: req.body.colorwave,
                 discount: req.body.discount,
-                id: splitArray[0],
+                id: Date.now(),
                 main_picture: req.file.filename,
                 name: req.body.name,
                 whole_name: req.body.name+" '"+req.body.colorwave+"'",
@@ -63,10 +62,10 @@ const controller = {
                 shoe_condition: req.body.shoe_condition,
                 story: req.body.story,
                 size: req.body.size,
+                stock: req.body.stock
             }
-            // console.log(newShoe);
             products.push(newShoe);
-            productsStringified = JSON.stringify(products);
+            productsStringified = JSON.stringify(products, null, '\t');
             fs.writeFileSync("./data/products.json", productsStringified);
 
             return res.redirect('/products/'+newShoe.id);
@@ -76,20 +75,21 @@ const controller = {
         let product = products.find(item => {
 			return item.id == req.params.id;
 		});
+        console.log(product);
         let sizeArray = product.size;
 
         return res.render('products/editProduct', {product: product, sizeArray: sizeArray});
     },
     editPut: (req, res) => {
         let product = products.find(item => {
-			return item.id == req.body.id;
+			return item.id == req.params.id;
 		});
-
-        console.log(product);
+        let sizeArray = product.size;
 
         let errors = validationResult(req);
+
         if (!errors.isEmpty()){
-            res.render("products/editProducts", { errors: errors.mapped(), old: req.body });
+            res.render("products/editProduct", { errors: errors.mapped(), old: req.body, product: product, sizeArray: sizeArray });
         }else{
             let discountInt = parseInt(req.body.discount);
             let price_originalInt = parseInt(req.body.price_original);
@@ -100,8 +100,7 @@ const controller = {
                 category: req.body.category,
                 colorwave: req.body.colorwave,
                 discount: req.body.discount,
-                // id: splitArray[0],
-                // main_picture: req.file.filename,
+                id: product.id,
                 name: req.body.name,
                 whole_name: req.body.name+" '"+req.body.colorwave+"'",
                 release_year: req.body.release_year,
@@ -110,25 +109,23 @@ const controller = {
                 shoe_condition: req.body.shoe_condition,
                 story: req.body.story,
                 size: req.body.size,
+                stock: req.body.stock
             }
             if (req.file){
-                let aux = path.parse(req.file.filename);
-                let splitArray = aux.name.split("-");
-                editedShoe.id = splitArray[0];
                 editedShoe.main_picture = req.file.filename;
             }else{
-                editedShoe.id = product.id;
                 editedShoe.main_picture = product.main_picture;
             };
-            products.forEach( product => {
+            products.forEach( (product, index) => {
                 if (product.id == req.params.id){
-                    product == editedShoe;
+                    products[index] = editedShoe;
                 }
             });
-            productsStringified = JSON.stringify(products);
+
+            productsStringified = JSON.stringify(products, null, '\t');
             fs.writeFileSync("./data/products.json", productsStringified);
 
-            return res.redirect("/products/"+editedShoe);
+            return res.redirect("/products/"+editedShoe.id);
         }
     },
     deleteGet: (req, res) => {
@@ -138,14 +135,16 @@ const controller = {
         return res.render("products/deleteProduct", {product: product});
     },
     deleteDelete: (req, res) => {
-        let product = products.find(item => {
-			return item.id == req.params.id;
-		});
-        let indexDelete = products.indexOf(product);
-        if (indexDelete > -1){
-            products.splice(indexDelete, 1);
-        }
-        productsStringified = JSON.stringify(products);
+        let productsAfterDelete = [];
+        products.forEach( product => {
+            console.log(product.id == req.params.id);
+            if (product.id != req.params.id){
+                productsAfterDelete.push(product);
+            }
+        });
+
+        productsStringified = JSON.stringify(productsAfterDelete);
+        console.log(productsStringified);
         fs.writeFileSync("./data/products.json", productsStringified);
 
         return res.redirect("/products/");
@@ -156,18 +155,19 @@ const controller = {
     addReview: (req, res) => {
         let errors = validationResult(req);
         if (!errors.isEmpty()){
-            res.render("products/productDetail", { errors: errors.mapped(), old: req.body });
-        }else{
+            res.redirect('/products/'+req.params.id);
+        }
+        else{
             let newReview = {
                 id: req.params.id,
                 stars: req.body.stars,
                 text: req.body.text
             }
-
+            console.log("body: ", req.body);
             console.log(newReview);
 
             reviews.push(newReview);
-            reviewsStringified = JSON.stringify(reviews);
+            reviewsStringified = JSON.stringify(reviews, null, '\t');
             fs.writeFileSync("./data/reviews.json", reviewsStringified);
 
             return res.redirect('/products/'+ newReview.id);

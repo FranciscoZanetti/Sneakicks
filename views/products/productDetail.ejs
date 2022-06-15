@@ -23,7 +23,10 @@
         <% if (product){ %>
         <div class="container">
 
-            <p class="directory">> productos > <%= product.whole_name %></p>
+            <div class="directory">
+                <a href="/products">> products </a>
+                <a href="/products/<%= product.id %>">> <%= product.whole_name %></a>
+            </div>
 
             <section class="edit-delete-container">
                 <div class="edit-delete">
@@ -129,18 +132,18 @@
                     <form class="product-info-form" action="/productDetail" method="get">
         
                         <section class="form-size">
-                                <div class="size-select-container-parent">
-                                    <div class="size-select-container-child">
-                                        <label for="size">Talle:</label>
-                                        <select name="size" id="size">
-                                            <option selected disabled hidden> </option>
-                                            <% for (let size of sizeArray){ %>
-                                                <option value="<%= size %>" ><%= size %></option>
-                                            <% } %>
-                                        </select>
-                                        <span class="custom-arrow-size"></span>
+                            <div class="size-select-container-parent">
+                                <div class="size-select-container-child">
+                                    <label for="size">Talle:</label>
+                                    <select name="size" id="size">
+                                        <option selected disabled hidden> </option>
+                                        <% for (let size of sizeArray){ %>
+                                            <option value="<%= size %>" ><%= size %></option>
+                                        <% } %>
+                                    </select>
+                                    <span class="custom-arrow-size"></span>
                                 </div>
-                                </div>
+                            </div>
         
                             <div class="size-boxes">
                                 <div class="size-boxes-box"><p class="box-number">7</p></div>
@@ -173,9 +176,14 @@
                                 <span class="custom-arrow-colorwave"></span>
                             </div>
                         </section>
-        
-                        <p class="form-stock">3 Unidades disponibles</p>
-        
+
+                        <% if (product.stock <=5 && product.stock > 0){ %>
+                            <p class="form-stock-avaiable"><%= product.stock %> Unidades disponibles</p>
+                        <% } %>
+                        <% if (product.stock == 0){ %>
+                            <p class="form-stock-unavaiable">Sin stock</p>
+                        <% } %>
+                        
                         <div class="cart-button">
                             <button type="submit">AGREGAR AL CARRITO</button>
                         </div>
@@ -200,7 +208,7 @@
                 <article class="details-text">
 
                     <h3>Reseñas</h3>
-                        <form class="text-review" action="/products/<%= product.id %>/adding-review" method="post" enctype="multipart/form-data">
+                        <form class="text-review" action="/products/<%= product.id %>/adding-review" method="POST">
                             <p class="text-subtitle">Deja una reseña</p>
                             <% if(locals.errors && errors.stars){ %>
                                 <p id="stars-text-error-message"><%= errors.stars.msg %></p>

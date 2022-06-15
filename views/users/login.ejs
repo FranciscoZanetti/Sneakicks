@@ -24,22 +24,22 @@
     <main class="login-main">
         <div class="login-form-container">
             <h1>INICIAR SESIÓN</h1>
-            <form  enctype="text/plain" method="POST" action="index.php">
+            <form method="POST" action="/users/login">
                 <div class="input-container-padre">
                     <div class="input-container-hijo">
-                        <input  type="mail" name="correo" placeholder="Usuario" required=true>
+                        <input  type="mail" name="email" placeholder="Usuario" required>
                     </div>
                 </div>
                 <div class="input-container-padre"> 
                     <div class="input-container-hijo">
-                        <input type="password" name="contrase;a" placeholder="Contraseña" minlength="10" required=true>
+                        <input type="password" name="password" placeholder="Contraseña" minlength="8" required>
                     </div>
                 </div>
                 <div class="boton_padre">
-                    <button class="shop_button" name="button" >Ingresar </button>
+                    <button class="shop_button" name="button" type="submit">Ingresar</button>
                     <div class="boton_hijo2">
                         <p><a href="#">¿Olvidaste tu Contraseña?</a> 
-                        <p><a href="/register">¿No tienes Cuenta? Registrate</a>
+                        <p><a href="/users/register">¿No tienes Cuenta? Registrate</a>
                     </div>
                 </div>
             </div>

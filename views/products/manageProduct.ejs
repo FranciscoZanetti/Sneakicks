@@ -135,6 +135,15 @@
                         <input type="file" name="main_picture" accept=".jpg,.jpeg,.png" id="item-images">
                     </div>
                 </article>
+                <article class="product-item">
+                    <label for="item-stock" class="item-label">Stock (unidades)</label>
+                    <% if ( locals.errors && errors.stock ){ %>
+                        <div class="error-message-container">
+                            <p class="error-message"><%= errors.stock.msg %></p>
+                        </div>
+                    <% } %>
+                    <input type="number" min="0" class="item-input" id="item-price" name="stock" value="<%= locals.old && old.stock ? old.stock : '' %>">
+                </article>
                 <article class="product-item" id="product-buttons">
                     <div class="item-submit">
                         <button type="submit" id="item-submit">Crear</button>

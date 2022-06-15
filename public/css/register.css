@@ -13,7 +13,7 @@ body{
     margin: 0;
 }
 
-.cajas{
+.form-container{
     display: block;
 }
 
@@ -22,40 +22,12 @@ body{
     font-weight: bold;
     
 }
-.cajas_1{
+
+.input-form{
     border: 2px solid #ABABAB;
     border-radius: 7px;
     margin-top: 30px;
-    max-width: 300px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    transition: all 0.4s;
-    width: 90%;
-}
-.cajas_1:hover{
-    border-color: black;
-}
-.cajas_2{
-    border: 2px solid #ABABAB;
-    border-radius: 7px;
-    margin-top: 30px;
-    max-width: 300px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    transition: all 0.4s;
-    width: 90%;
-}
-.cajas_2:hover{
-    border-color: black;  
-   
-}
-.caja2_1{
-    border: 2px solid #ABABAB;
-    border-radius: 7px;
-    margin-top: 30px;
-    max-width: 300px;
+    max-width: 400px;
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
@@ -63,19 +35,11 @@ body{
     width: 90%;
 }
 
-.caja2_2{
-    border: 2px solid #ABABAB;
-    border-radius: 7px;
-    margin-top: 30px;
-    max-width: 300px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    transition: all 0.4s;
-    width: 90%;
+.input-form:hover{
+    border-color: gray;
 }
 
-.botones {
+.register_button-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,9 +48,10 @@ body{
     margin-top: 0px;
     margin-bottom: 20px;
     width: 100%;
+    flex-wrap: wrap;
 }
 
-.botones1 {
+.register-child {
     padding: 0px 10px;
 }
 
@@ -119,7 +84,7 @@ main {
     background-color: #ABABAB;
 }
 
-.shop_button {
+.register-button {
     background-color: #5E554B;
     border-radius: 3px;
     border-width: 0;
@@ -132,7 +97,7 @@ main {
     padding: 5px;
     text-align: center;
     transition: box-shadow .15s,transform .15s;
-    width: 50%;
+    width: 80%;
 }
 
 .shop_button:hover {
@@ -141,9 +106,10 @@ main {
 }
 
 @media (min-width: 576px){
-
+    .input-form{
+        width: 45%;
+    }
 }
-
 
 @media (min-width: 768px){
 
@@ -153,6 +119,10 @@ main {
         padding: 1.5rem;
         margin: 2rem;
         background-color: #ABABAB;
+    }
+
+    .register-button {
+        width: 50%;
     }
 }
 

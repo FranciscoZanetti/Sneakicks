@@ -8,12 +8,6 @@ const controller = {
     index: (req, res) => {
         return res.render('index', {products: products});
     },
-    login: (req, res) => {
-        return res.render('users/login');
-    },
-    register: (req, res) => {
-        return res.render('users/register');
-    },
     cart: (req, res) => {
         return res.render('products/cart', {products: products});
     },

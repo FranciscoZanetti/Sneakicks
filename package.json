@@ -5,19 +5,20 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FranciscoZanetti/grupo_5_sacachispas.git"
   },
-  "author": "",
+  "author": "sacachispas",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FranciscoZanetti/grupo_5_sacachispas/issues"
   },
   "homepage": "https://github.com/FranciscoZanetti/grupo_5_sacachispas#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "ejs": "^3.1.7",
     "express": "^4.17.3",
