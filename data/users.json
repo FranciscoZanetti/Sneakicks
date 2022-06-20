@@ -360,15 +360,6 @@
 		"image": "1654891269005-image-user.jpg"
 	},
 	{
-		"id": 1654891269230,
-		"first_name": "Alan",
-		"last_name": "User",
-		"email": "alankasis@gmail.com",
-		"password": "$2a$10$DN.xHn1C2U7i8qA0zB6Fte32Cxr8tuQ27WIOzd78RGj1B0kh/vgpy",
-		"category": "user",
-		"image": "1654891269005-image-user.jpg"
-	},
-	{
 		"id": 1655302882813,
 		"first_name": "Rois",
 		"last_name": "Edites",
@@ -376,5 +367,14 @@
 		"password": "$2a$10$U0FGE3O0vYByhqlrSjR3J.wbQvH2TVw3uHKEjL2c8P/1cnFcNsTXe",
 		"category": "user",
 		"image": "1655302882679-image-user.png"
+	},
+	{
+		"id": 1655391002240,
+		"first_name": "Alan",
+		"last_name": "Test",
+		"email": "alankasis@gmail.com",
+		"password": "$2a$10$BEyqFFTCZREJ7Il5XT0beuaUt8uRuKqoxKNmTa1ytfbwsvmr1Ny7q",
+		"category": "user",
+		"image": "1655391002090-image-user.png"
 	}
 ]

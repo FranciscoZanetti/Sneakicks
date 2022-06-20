@@ -26,8 +26,8 @@ router.post('/register', uploadFile.single("user_image"), userMiddlewares.valida
 
 router.get('/:id/profile', usersController.profile);
 
-router.get('/:id/edit/', usersController.edit)
+router.get('/:id/edit', usersController.edit);
 
-router.post('/:id/edit/', userMiddlewares.validateUpdateUser, usersController.update)
+router.post('/edit', userMiddlewares.validateUpdateUser, usersController.update);
 
 module.exports = router;

@@ -11,12 +11,6 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
@@ -32,12 +26,12 @@
 
         <main>
             <div class="register-container">
-                <form action="/users/register" class="form" method="post" enctype="multipart/form-data">
+                <form action="/users/edit" class="form" method="post" enctype="multipart/form-data">
                     <h1>Edita tu perfil</h1>
                     <section class="form-container">
-                        <input class="input-form" type="text" name="first_name" placeholder="Nombres" value=<%=req.session.first_name %> required maxlength="30">
-                        <input class="input-form" type="text" name="last_name" placeholder="Apellidos" required maxlength="30">
-                        <input class="input-form" type="email"  name="email" placeholder="Email" required maxlength="30">
+                        <input class="input-form" type="text" name="first_name" placeholder="Nombres" value=<%=user.first_name %> required maxlength="30">
+                        <input class="input-form" type="text" name="last_name" placeholder="Apellidos" value=<%=user.last_name %> required maxlength="30">
+                        <input class="input-form" type="email"  name="email" placeholder="Email" value=<%=user.email %> required maxlength="30">
                         <input class="input-form" type="password"  name="password" placeholder="Contraseña" required maxlength="30">
                         <article class="product-item">
                             <p class="item-header">Foto de perfil</p>

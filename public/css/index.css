@@ -62,6 +62,13 @@ body {
     border: solid;
 }
 
+.carrousel_small_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .carrousel_text {
     color: black;
     font-size: 14px;

@@ -4,14 +4,14 @@ const bcrypt = require('bcryptjs');
 
 const { validationResult } = require("express-validator");
 
-const usersJSON = fs.readFileSync('./data/users.json', {encoding: 'utf-8'})
+const usersJSON = fs.readFileSync('./data/users.json', { encoding: 'utf-8' })
 const users = JSON.parse(usersJSON);
 
 const controller = {
     login: (req, res) => {
         let errors = validationResult(req);
 
-        if (!errors.isEmpty()){
+        if (!errors.isEmpty()) {
             console.log(errors)
             res.render("users/login", { errors: errors.mapped(), old: req.body });
 
@@ -19,9 +19,10 @@ const controller = {
 
             let user = users.find(user => {
                 if (user.email == req.body.email) {
-                    return user   
+                    return user
                 }
             })
+
             req.session.email = user.email;
             req.session.first_name = user.first_name
             req.session.last_name = user.last_name
@@ -42,7 +43,7 @@ const controller = {
     create: (req, res) => {
         let errors = validationResult(req);
 
-        if (!errors.isEmpty() || !req.file){
+        if (!errors.isEmpty() || !req.file) {
             console.log(errors)
             res.render("users/register", { errors: errors.mapped(), old: req.body });
         } else {
@@ -60,58 +61,65 @@ const controller = {
                 image: req.file.filename,
             }
 
-            console.log(newUser);
-
             users.push(newUser);
             usersStringified = JSON.stringify(users, null, '\t');
             fs.writeFileSync("./data/users.json", usersStringified);
+
+            req.session.email = newUser.email;
+            req.session.first_name = newUser.first_name
+            req.session.last_name = newUser.last_name
+            req.session.user_id = newUser.id
+            req.session.image = newUser.image
 
             return res.redirect('/');
         }
     },
     profile: (req, res) => {
-        let user = users.find(item => {
-			return item.id == req.params.id;
-		});
+        console.log(req.session)
 
-        return res.render('users/profile', {user: user});
+        let user = users.find(item => {
+            return item.id == req.params.id;
+        });
+
+        console.log(req.session)
+
+        return res.render('users/profile', { user: user });
     },
     update: (req, res) => {
         let errors = validationResult(req);
 
-        if (!errors.isEmpty() || !req.file){
+        let user = users.find(item => {
+            return item.id == req.params.id;
+        });
+
+        if (!errors.isEmpty()) {
             console.log(errors)
-            res.render("users/update/", { errors: errors.mapped(), old: req.body });
+            res.render("users/edit", { errors: errors.mapped(), old: req.body, user: user });
         } else {
-            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
 
-            let newUser = {
-                id: Date.now(),
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-                password: encryptedPassword,
-                category: "user",
-                image: req.file.filename,
-            }
+            users.forEach(user => {
+                if (user.id == req.params.id) {
+                    user.first_name = req.body.first_name;
+                    user.last_name = req.body.last_name;
+                    user.email = req.body.email;
+                    user.password = (req.body.password ? bcrypt.hashSync(req.body.password, 10) : user.password);
+                    user.image = (req.file.filename ? req.file.filename : user.image)
+                }
+            })
 
-            console.log(newUser);
-
-            users.push(newUser);
+            console.log(users);
             usersStringified = JSON.stringify(users, null, '\t');
             fs.writeFileSync("./data/users.json", usersStringified);
 
-            return res.redirect('/');
+            return res.redirect('');
         }
     },
     edit: (req, res) => {
         let user = users.find(item => {
-			return item.id == req.params.id;
-		});
+            return item.id == req.params.id;
+        });
 
-        
-
-        return res.render('users/edit', {user: user});
+        return res.render('users/edit', { user: user });
     },
 }
 
