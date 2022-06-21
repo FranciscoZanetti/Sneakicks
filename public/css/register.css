@@ -13,8 +13,21 @@ body{
     margin: 0;
 }
 
+.error-div {
+    width: auto;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 7px;
+    padding: 0.3rem 0rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
 .form-container{
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .tengo-cuenta{
@@ -33,6 +46,10 @@ body{
     text-align: center;
     transition: all 0.4s;
     width: 90%;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 .input-form:hover{
@@ -65,10 +82,23 @@ button:hover{
     justify-content: center;
 }
 
+.item-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 main {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.product-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.3rem;
 }
 
 .radios{
@@ -121,9 +151,6 @@ main {
         background-color: #ABABAB;
     }
 
-    .register-button {
-        width: 50%;
-    }
 }
 
 @media (min-width: 992px){}

@@ -2,61 +2,72 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="/css/register.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
-    <title>Registro | Sneakicks</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="/css/register.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+  <title>Registro | Sneakicks</title>
 
 </head>
 
 <body>
 
-    <%- include('../partials/header'); %>
+  <%- include('../partials/header'); %>
 
-        <main>
-            <div class="register-container">
-                <form action="/users/register" class="form" method="post" enctype="multipart/form-data">
-                    <h1>CREA TU CUENTA</h1>
-                    <section class="form-container">
-                        <input class="input-form" type="text" name="first_name" placeholder="Nombres" required maxlength="30">
-                        <input class="input-form" type="text" name="last_name" placeholder="Apellidos" required maxlength="30">
-                        <input class="input-form" type="email"  name="email" placeholder="Email" required maxlength="30">
-                        <input class="input-form" type="password"  name="password" placeholder="Contraseña" required maxlength="30">
-                        <article class="product-item">
-                            <p class="item-header">Foto de perfil</p>
-                            <div class="item-images">
-                                <input type="file" name="user_image" accept=".jpg,.jpeg,.png" id="item-images">
-                            </div>
-                        </article>
-                    </section>
-                    <div class="register_button-container">
-                        <input class="register-button" type="submit" value="Registrarse" name="register-button"></input>
-                        <div class="register-child">
-                            <p><a href="/users/login">¿Ya tienes Cuenta? Iniciar Seccion</a>
-                        </div>
-                    </div>
-                </form>
+    <main>
+      <div class="register-container">
+        <form action="/users/register" class="form" method="post" enctype="multipart/form-data">
+          <h1>CREA TU CUENTA</h1>
+          <section class="form-container">
+            <% if (typeof errors !='undefined' ) { %>
+              <div class="error-div">
+                <p style="color: red">
+                  <%= errors.errors[0].msg %>
+                </p>
+              </div>
+              <% } %>
+                <input class="input-form" type="text" name="first_name" placeholder="Nombres" required maxlength="30">
+                <input class="input-form" type="text" name="last_name" placeholder="Apellidos" required maxlength="30">
+                <input class="input-form" type="email" name="email" placeholder="Email" required maxlength="30">
+                <input class="input-form" type="password" name="password" placeholder="Contraseña" required
+                  maxlength="30">
+                <article class="product-item">
+                  <p class="item-header">Foto de perfil</p>
+                  <div class="item-images">
+                    <label class="register-button">
+                      <p style="font-size: 0.8rem; margin: 0">Seleccionar archivo</p>
+                      <input type="file" name="user_image" accept=".jpg,.jpeg,.png" id="item-images">
+                    </label>
+                  </div>
+                </article>
+          </section>
+          <div class="register_button-container">
+            <input class="register-button" type="submit" value="Registrarse" name="register-button"></input>
+            <div class="register-child">
+              <p><a href="/users/login">¿Ya tienes Cuenta? Iniciar Seccion</a>
             </div>
-        </main>
+          </div>
+        </form>
+      </div>
+    </main>
 
-        <%- include('../partials/footer'); %>
+    <%- include('../partials/footer'); %>
 
 </body>
 

@@ -28,7 +28,9 @@
                 <div class="input-container-padre">
                     <% if (typeof errors != 'undefined') { %>
                         <div class="error-div">
-                            <p style="color: red">Usuario o contraseña incorrectos</p>
+                            <p style="color: red">
+                                <%= errors.errors[0].msg %> 
+                            </p>
                         </div>
                     <% } %>
                         <input class="text-input" type="mail" name="email" placeholder="Usuario" required>

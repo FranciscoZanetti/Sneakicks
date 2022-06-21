@@ -13,8 +13,7 @@ const controller = {
         let errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            console.log(errors)
-            res.render("users/login", { errors: errors.mapped(), old: req.body });
+            res.render("users/login", { errors: errors, old: req.body });
 
         } else {
 
@@ -47,7 +46,7 @@ const controller = {
 
         if (!errors.isEmpty() || !req.file) {
             console.log(errors)
-            res.render("users/register", { errors: errors.mapped(), old: req.body });
+            res.render("users/register", { errors: errors, old: req.body });
         } else {
             let aux = path.parse(req.file.filename);
 

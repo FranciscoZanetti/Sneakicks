@@ -32,7 +32,7 @@ const userMiddlewares = {
     ],
     validateUpdateUser: [
         check("first_name")
-            .notEmpty().withMessage("* Este campo es obligatorio"),
+        .notEmpty().withMessage("* Este campo es obligatorio"),
         check("last_name")
             .notEmpty().withMessage("* Este campo es obligatorio"),
         check("email")
