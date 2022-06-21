@@ -26,14 +26,13 @@
             <h1>INICIAR SESIÓN</h1>
             <form method="POST" action="/users/login">
                 <div class="input-container-padre">
-                    <div class="input-container-hijo">
-                        <input  type="mail" name="email" placeholder="Usuario" required>
-                    </div>
-                </div>
-                <div class="input-container-padre"> 
-                    <div class="input-container-hijo">
-                        <input type="password" name="password" placeholder="Contraseña" required>
-                    </div>
+                    <% if (typeof errors != 'undefined') { %>
+                        <div class="error-div">
+                            <p style="color: red">Usuario o contraseña incorrectos</p>
+                        </div>
+                    <% } %>
+                        <input class="text-input" type="mail" name="email" placeholder="Usuario" required>
+                        <input class="text-input" type="password" name="password" placeholder="Contraseña" required>
                 </div>
                 <div class="boton_padre">
                     <button class="shop_button" name="button" type="submit">Ingresar</button>
