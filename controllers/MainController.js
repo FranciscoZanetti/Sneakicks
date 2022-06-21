@@ -6,6 +6,7 @@ const products = JSON.parse(productsJSON);
 
 const controller = {
     index: (req, res) => {
+        console.log(req.session)
         return res.render('index', {products: products});
     },
     cart: (req, res) => {

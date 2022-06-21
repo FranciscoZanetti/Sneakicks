@@ -30,4 +30,6 @@ router.get('/:id/edit', usersController.edit);
 
 router.post('/edit', userMiddlewares.validateUpdateUser, usersController.update);
 
+router.post('/signout', usersController.signout)
+
 module.exports = router;

@@ -3,6 +3,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 
 const { validationResult } = require("express-validator");
+const session = require('express-session');
 
 const usersJSON = fs.readFileSync('./data/users.json', { encoding: 'utf-8' })
 const users = JSON.parse(usersJSON);
@@ -35,7 +36,8 @@ const controller = {
         }
     },
     renderLogin: (req, res) => {
-        return res.render('users/login');
+        console.log(req.session);
+        return res.render('users/login', {user_info : req.session});
     },
     register: (req, res) => {
         return res.render('users/register');
@@ -51,7 +53,7 @@ const controller = {
 
             let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
 
-            let newUser = {
+            let editedUser = {
                 id: Date.now(),
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
@@ -61,29 +63,30 @@ const controller = {
                 image: req.file.filename,
             }
 
-            users.push(newUser);
+            users.push(editedUser);
             usersStringified = JSON.stringify(users, null, '\t');
             fs.writeFileSync("./data/users.json", usersStringified);
 
-            req.session.email = newUser.email;
-            req.session.first_name = newUser.first_name
-            req.session.last_name = newUser.last_name
-            req.session.user_id = newUser.id
-            req.session.image = newUser.image
+            req.session.email = editedUser.email;
+            req.session.first_name = editedUser.first_name
+            req.session.last_name = editedUser.last_name
+            req.session.user_id = editedUser.id
+            req.session.image = editedUser.image
 
             return res.redirect('/');
         }
     },
     profile: (req, res) => {
-        console.log(req.session)
+        if (typeof req.session.user_id == 'undefined') {
+            console.log(req.session)
+            return res.send("401 - Debe ingresar al sitio para poder ver su perfil")
+        }
 
-        let user = users.find(item => {
-            return item.id == req.params.id;
-        });
-
-        console.log(req.session)
-
-        return res.render('users/profile', { user: user });
+        if (req.params.id == req.session.user_id) {
+            return res.render('users/profile');
+        } else {
+            return res.send('401 - El perfil de usuario al que intenta acceder es privado')
+        }
     },
     update: (req, res) => {
         let errors = validationResult(req);
@@ -94,33 +97,44 @@ const controller = {
 
         if (!errors.isEmpty()) {
             console.log(errors)
-            res.render("users/edit", { errors: errors.mapped(), old: req.body, user: user });
+            console.log(req.body)
+            return res.render("users/edit", { errors: errors.mapped() });
         } else {
 
-            users.forEach(user => {
-                if (user.id == req.params.id) {
-                    user.first_name = req.body.first_name;
-                    user.last_name = req.body.last_name;
-                    user.email = req.body.email;
-                    user.password = (req.body.password ? bcrypt.hashSync(req.body.password, 10) : user.password);
-                    user.image = (req.file.filename ? req.file.filename : user.image)
-                }
-            })
+            let editedUser = {
+                id: req.session.user_id,
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+                password: (req.body.password ? bcrypt.hashSync(req.body.password, 10) : user.password),
+                category: "user",
+                image: (req.file.filename ? req.file.filename : user.image),
+            }
 
-            console.log(users);
+            users.forEach( (user, index) => {
+                if (user.id == req.params.id){
+                    users[index] = editedUser;  
+                }
+            });
+
             usersStringified = JSON.stringify(users, null, '\t');
             fs.writeFileSync("./data/users.json", usersStringified);
 
-            return res.redirect('');
+            req.session.email = editedUser.email;
+            req.session.first_name = editedUser.first_name
+            req.session.last_name = editedUser.last_name
+            req.session.image = editedUser.image
+
+            return res.redirect('/');
         }
     },
     edit: (req, res) => {
-        let user = users.find(item => {
-            return item.id == req.params.id;
-        });
-
-        return res.render('users/edit', { user: user });
+        return res.render('users/edit');
     },
+    signout: (req, res) => {
+        req.session.destroy();
+        return res.redirect('/')
+    }
 }
 
 module.exports = controller;

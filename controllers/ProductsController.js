@@ -116,6 +116,7 @@ const controller = {
             }else{
                 editedShoe.main_picture = product.main_picture;
             };
+            
             products.forEach( (product, index) => {
                 if (product.id == req.params.id){
                     products[index] = editedShoe;

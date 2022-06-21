@@ -61,6 +61,11 @@ body {
 
 .profile-title {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .edit-button {
@@ -75,7 +80,7 @@ body {
     padding: 5px;
     text-align: center;
     transition: box-shadow .15s,transform .15s;
-    width: 50%;
+    white-space: nowrap;
 }
 
 .edit-button:hover {

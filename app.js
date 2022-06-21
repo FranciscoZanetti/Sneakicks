@@ -10,10 +10,17 @@ const session = require('express-session');
 app.use(session({
   secret: "SneakicksWebsite",
   cookie: {
-    maxAge:269999999999
+    maxAge:269999999999,
+    httpOnly: false,
+    secure: false
   },
   saveUninitialized: true,
   resave:true}));
+
+app.use(function(req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Servidor iniciado en puerto ${port} - http://localhost:${port}`)

@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
@@ -26,9 +24,9 @@
         <main class="main-container">
             <div class="left-container">
                 <div class="top-container">
-                    <h3>Hola de nuevo <%= user.first_name %>!</h3>
+                    <h3>Hola de nuevo <%= session.first_name %>!</h3>
                     <div class="avatar-container">
-                        <img src="/img/users/<%= user.image %>" alt="User profile picture" width="100px"
+                        <img src="/img/users/<%= session.image %>" alt="User profile picture" width="100px"
                             height="auto">
                     </div>
                 </div>
@@ -43,19 +41,24 @@
 
                 <div class="profile-title">
                     <h3>Tu perfil</h3>
+                    <form action="/users/signout" method="POST">
+                        <button class='edit-button' type="submit" value="Cerrar sesion">
+                            Cerrar sesion - <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </button>
+                    </form>
                 </div>
                 <li>
-                    <ul>Name: <%= user.first_name %>
-                            <%= user.last_name %>
+                    <ul>Name: <%= session.first_name %>
+                            <%= session.last_name %>
                     </ul>
-                    <ul>Email: <%= user.email %>
+                    <ul>Email: <%= session.email %>
                     </ul>
                     <ul>Avatar:</ul>
                     <div class="small-avatar-container">
-                        <img src="/img/users/<%= user.image %>" height="60px">
+                        <img src="/img/users/<%= session.image %>" height="60px">
                     </div>
                 </li>
-                <form action="/users/<%= user.id %>/edit" method="GET">
+                <form action="/users/<%= session.user_id %>/edit" method="GET">
                     <button class='edit-button' type="submit" value="Editar perfil">Editar Perfil</button>
                 </form>
             </div>
