@@ -28,7 +28,7 @@ router.get('/:id/profile', usersController.profile);
 
 router.get('/:id/edit', usersController.edit);
 
-router.post('/edit', userMiddlewares.validateUpdateUser, usersController.update);
+router.post('/:id/edit', uploadFile.single("user_image"), userMiddlewares.validateUpdateUser, usersController.update);
 
 router.post('/signout', usersController.signout)
 

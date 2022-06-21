@@ -22,10 +22,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`Servidor iniciado en puerto ${port} - http://localhost:${port}`)
-})
-
 app.use(express.static('public'));
 
 app.use(methodOverride('_method'));
@@ -38,5 +34,9 @@ app.set('view engine', 'ejs');
 app.use('/', mainRoutes);
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
+
+app.listen(process.env.PORT || port, () => {
+  console.log(`Servidor iniciado en puerto ${port} - http://localhost:${port}`)
+})
 
 module.exports = app;

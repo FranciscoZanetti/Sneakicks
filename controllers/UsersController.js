@@ -91,14 +91,10 @@ const controller = {
     update: (req, res) => {
         let errors = validationResult(req);
 
-        let user = users.find(item => {
-            return item.id == req.params.id;
-        });
-
         if (!errors.isEmpty()) {
             console.log(errors)
             console.log(req.body)
-            return res.render("users/edit", { errors: errors.mapped() });
+            return res.render("users/edit", { errors: errors.mapped(), old: req.body });
         } else {
 
             let editedUser = {
@@ -106,13 +102,13 @@ const controller = {
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
-                password: (req.body.password ? bcrypt.hashSync(req.body.password, 10) : user.password),
+                password: (req.body.password ? bcrypt.hashSync(req.body.password, 10) : req.session.password),
                 category: "user",
-                image: (req.file.filename ? req.file.filename : user.image),
+                image: (req.file ? req.file.filename : req.session.image),
             }
 
             users.forEach( (user, index) => {
-                if (user.id == req.params.id){
+                if (user.id == req.session.user_id){
                     users[index] = editedUser;  
                 }
             });

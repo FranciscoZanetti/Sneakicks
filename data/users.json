@@ -373,8 +373,17 @@
 		"first_name": "Alan",
 		"last_name": "Kasis",
 		"email": "alankasis@gmail.com",
-		"password": "$2a$10$BEyqFFTCZREJ7Il5XT0beuaUt8uRuKqoxKNmTa1ytfbwsvmr1Ny7q",
+		"password": "$2a$10$vH2O3EvuzlUIgcccshGoyewEKZDdMRmOwBCMGwvuDr14tq21ifu/6",
 		"category": "user",
 		"image": "1654891269005-image-user.jpg"
+	},
+	{
+		"id": 1655818727207,
+		"first_name": "Juan",
+		"last_name": "Carlos",
+		"email": "juancarlos@hotmail.com",
+		"password": "$2a$10$iWxuRNqI32Xi7HthWL9VBObdf1ZjEwFVmhr5ZOKLX58NH/zH88vJW",
+		"category": "user",
+		"image": "1655818727097-image-user.jpg"
 	}
 ]

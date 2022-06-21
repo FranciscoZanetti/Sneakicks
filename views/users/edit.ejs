@@ -26,7 +26,7 @@
 
         <main>
             <div class="register-container">
-                <form action="/users/edit" class="form" method="POST" enctype="multipart/form-data">
+                <form action="/users/<%= session.id %>/edit" class="form" method="POST" enctype="multipart/form-data">
                     <h1>Edita tu perfil</h1>
                     <section class="form-container">
                         <input class="input-form" type="text" name="first_name" placeholder="Nombres" value=<%=session.first_name %> required maxlength="30">
@@ -41,7 +41,7 @@
                         </article>
                     </section>
                     <div class="register_button-container">
-                        <input class="register-button" type="submit" value="Confirmar cambios" name="register-button"></input>
+                        <input class="register-button" type="submit" value="Confirmar cambios" name="edit-button"></input>
                     </div>
                 </form>
             </div>

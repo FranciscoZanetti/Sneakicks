@@ -31,8 +31,10 @@ const userMiddlewares = {
             .notEmpty().withMessage("* Este campo es obligatorio")
     ],
     validateUpdateUser: [
-        check("first_name").notEmpty().withMessage("* Este campo es obligatorio"),
-        check("last_name").notEmpty().withMessage("* Este campo es obligatorio"),
+        check("first_name")
+            .notEmpty().withMessage("* Este campo es obligatorio"),
+        check("last_name")
+            .notEmpty().withMessage("* Este campo es obligatorio"),
         check("email")
             .notEmpty().withMessage("* Este campo es obligatorio")
             .isEmail().withMessage("* Ingrese un email valido"),
