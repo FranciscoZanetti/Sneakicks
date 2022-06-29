@@ -40,11 +40,39 @@ main{
 .container{
     background-color: white;
     width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .directory{
     display: none;
 }
+
+.add-container{
+    display: flex;
+    justify-content: right;
+}
+
+    .add{
+        background-color: #37548f;
+        padding-left: var(--vw-0-5rem);
+        padding-right: var(--vw-0-5rem);
+        padding-top: var(--vw-0-5rem);
+        padding-bottom: var(--vw-0-5rem);
+        border-radius: 7px;
+        margin-top: var(--vw-2rem);
+    }
+
+        .add-text{
+            margin-top: 0;
+            margin-bottom: 0;
+            color: white;
+            font-size: var(--vw-1rem);
+        }
+
+        .add i{
+            display: none;
+        }
 
 .product-pc{
     display: none;
@@ -609,9 +637,7 @@ main form button:hover{
 
 
 
-.recomended{
-    margin-left: 5%;
-}
+
 
 
 /* footer a {
@@ -890,6 +916,39 @@ header a{
             display: block;
             font-size: var(--vw-1rem);
         }
+
+        .add-container{
+            display: flex;
+            justify-content: right;
+        }
+        
+            .add{
+                display: block;
+                background-color: #37548f;
+                padding-left: var(--vw-0-5rem);
+                padding-right: var(--vw-0-5rem);
+                padding-top: var(--vw-0-5rem);
+                padding-bottom: var(--vw-0-5rem);
+                border-radius: 7px;
+                margin-top: var(--vw-2rem);
+                transition: background-color, 100ms;
+            }
+
+            .add:hover{
+                background-color: #4c77cc;
+                cursor: pointer;
+            }
+        
+                .add-text{
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    color: white;
+                    font-size: var(--vw-1-1rem);
+                }
+        
+                .add i{
+                    display: none;
+                }
 
         .product-pc{
             display: block;

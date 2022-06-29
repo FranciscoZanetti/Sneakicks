@@ -154,6 +154,10 @@
         display: none !important;
     }
 
+    .partial-header .logo img{
+        width: 9rem;
+    }
+
 }
 
 @media (min-width: 1200px){}

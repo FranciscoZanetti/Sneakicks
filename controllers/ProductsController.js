@@ -144,13 +144,26 @@ const controller = {
             }
         });
 
-        productsStringified = JSON.stringify(productsAfterDelete);
+        productsStringified = JSON.stringify(productsAfterDelete, null, '\t');
         console.log(productsStringified);
         fs.writeFileSync("./data/products.json", productsStringified);
+
+        let reviewsAfterDelete = [];
+        reviews.forEach( review => {
+            console.log(review.id == req.params.id);
+            if (review.id != req.params.id){
+                reviewsAfterDelete.push(review);
+            }
+        });
+
+        reviewsStringified = JSON.stringify(reviewsAfterDelete, null, '\t');
+        console.log(reviewsStringified);
+        fs.writeFileSync("./data/reviews.json", reviewsStringified);
 
         return res.redirect("/products/");
     },
     productList: (req, res) => {
+        console.log(products);
         return res.render("products/productList", {products: products});
     },
     addReview: (req, res) => {
