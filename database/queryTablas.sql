@@ -6,12 +6,12 @@ CREATE TABLE `sneakicks`.`products` (
   `brand_name` VARCHAR(30) NOT NULL,
   `name` VARCHAR(40) NOT NULL,
   `colorwave` VARCHAR(20) NOT NULL,
-  `whole_name` VARCHAR(60) GENERATED ALWAYS AS (CONCAT(`name`, ' ', `colorwave`)),
+  `whole_name` VARCHAR(60) NOT NULL,
   `discount` TINYINT(2) UNSIGNED NOT NULL,
   `price_original` DECIMAL(10,2) UNSIGNED NOT NULL,
   `price_final` DECIMAL(10,2) UNSIGNED NOT NULL,
   `shoe_condition` VARCHAR(10) NOT NULL,
-  `stock` TINYINT(2) UNSIGNED NOT NULL,
+  `stock` INT UNSIGNED NOT NULL,
   `story` VARCHAR(5000) NOT NULL,
   `main_picture` VARCHAR(200) NOT NULL,
   `picture1` VARCHAR(200) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `sneakicks`.`reviews` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
     
-CREATE TABLE `sneakicks`.`products-sizes` (
+CREATE TABLE `sneakicks`.`products_sizes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT UNSIGNED NOT NULL,
   `product` INT NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `sneakicks`.`products_carts` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cart_id` INT NOT NULL,
   `product_id` INT NOT NULL,
-  `units` INT NOT NULL,
+  `units` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `cart_id`
     FOREIGN KEY (`cart_id`)
@@ -82,10 +82,10 @@ CREATE TABLE `sneakicks`.`products_carts` (
     ON UPDATE CASCADE);
 
   
-CREATE TABLE `sneakicks`.`cart` (
+CREATE TABLE `sneakicks`.`carts` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `charges` MEDIUMINT NOT NULL,
-  `total_amount` MEDIUMINT NOT NULL,
+  `charges` MEDIUMINT UNSIGNED NOT NULL,
+  `total_amount` MEDIUMINT UNSIGNED NOT NULL,
   `id_user` INT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `id_user`
@@ -97,9 +97,11 @@ CREATE TABLE `sneakicks`.`cart` (
 CREATE TABLE `sneakicks`.`bills` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_cart` INT NOT NULL,
+  `customer` VARCHAR(100) NOT NULL,
+  `datetime` DATETIME NOT NULL
   PRIMARY KEY (`id`),
   CONSTRAINT `id_cart`
     FOREIGN KEY (`id_cart`)
     REFERENCES `sneakicks`.`cart` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT);
