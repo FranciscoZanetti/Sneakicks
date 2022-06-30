@@ -120,12 +120,12 @@ article{
             background-color: #ebebeb;
             padding-top: var(--vw-0-5rem);
             padding-bottom: var(--vw-0-5rem);
-            padding-right: 5%;
-            padding-left: 5%;
+            padding-right: 2%;
+            padding-left: 2%;
             margin-bottom: var(--vw-0-8rem);
             display: flex;
             align-items: center;
-            justify-content: left;
+            justify-content: space-between;
             width: 30%;
             margin-left: var(--vw-1rem);
             margin-right: var(--vw-1rem);
@@ -133,27 +133,34 @@ article{
             flex-grow: 0;
         }
 
-        .item-size:hover{
-            cursor: pointer;
-        }
-
-            .item-checkbox{
-                border: none;
-                height: var(--vw-1rem);
-            }
-
-            .item-checkbox{
-                cursor: pointer;
-            }
-
             .item-size label{
                 padding-left: var(--vw-0-5rem);
-                flex-grow: 1;
+                font-size: var(--vw-1rem);
             }
 
-            .item-size label:hover{
-                cursor: pointer;
+            .size-input-container{
+                width: 40%;
+                display: flex;
+                justify-content: space-around;
+                background-color: #ebebeb;
+                border-radius: 7px;
+                border: none;
             }
+
+                .size-input{
+                    border: none;
+                    border-radius: 7px;
+                    width: 70%;
+                    font-size: var(--vw-1rem);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #ebebeb;
+                }
+
+                .size-input-container span{
+                    font-size: var(--vw-1rem);
+                }
 
     .discount-container{
         background-color: #ebebeb;

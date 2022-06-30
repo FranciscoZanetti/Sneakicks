@@ -66,8 +66,12 @@
                     <div id="product-size">
                         <% for (let i=3; i<=15.5; i=i+0.5) { %>
                             <div class="item-size">
-                                <input type="checkbox" name="size" value="<%= i %>" class="item-checkbox" id="<%= i %>" checked>
-                                <label for="<%= i %>"><%= i %></label>
+                                <!-- <input type="checkbox" name="size" value="<%= i %>" class="item-checkbox" id="<%= i %>" checked> -->
+                                <label for="<%= i %>"><%= i %> :</label>
+                                <div class="size-input-container">
+                                    <input type="number" class="size-input" name="size" value="<%= locals.old && old.size ? old.size : '0' %>">
+                                    <span>u</span>
+                                </div>
                             </div>
                         <% } %>
                     </div>
