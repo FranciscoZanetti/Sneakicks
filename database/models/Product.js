@@ -45,7 +45,7 @@ module.exports = function(sequelize, dataTypes){
             allowNull: false
         },
         stock: {
-            type: dataTypes.INT.UNSIGNED,
+            type: dataTypes.TINYINT(2).UNSIGNED,
             allowNull: false
         },
         story: {

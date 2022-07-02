@@ -9,6 +9,8 @@ const session = require('express-session');
 const usersJSON = fs.readFileSync('./data/users.json', { encoding: 'utf-8' })
 const users = JSON.parse(usersJSON);
 
+const Users = db.User
+
 const controller = {
     login: (req, res) => {
         let errors = validationResult(req);
@@ -49,31 +51,33 @@ const controller = {
             console.log(errors)
             res.render("users/register", { errors: errors, old: req.body });
         } else {
-            let aux = path.parse(req.file.filename);
 
             let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
 
-            let editedUser = {
-                id: Date.now(),
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-                password: encryptedPassword,
-                category: "user",
-                image: req.file.filename,
-            }
+            Users
+            .create(
+                {
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                    password: encryptedPassword,
+                    category: "user",
+                    image: req.file.filename,
+                }
+            )
+            .then(()=> {
+                let user_id = 1;
 
-            users.push(editedUser);
-            usersStringified = JSON.stringify(users, null, '\t');
-            fs.writeFileSync("./data/users.json", usersStringified);
+                req.session.user_id = user_id;
+                req.session.email = req.body.email;
+                req.session.first_name = req.body.first_name;
+                req.session.last_name = req.body.last_name;
+                req.session.image = req.file.filename;
 
-            req.session.email = editedUser.email;
-            req.session.first_name = editedUser.first_name
-            req.session.last_name = editedUser.last_name
-            req.session.user_id = editedUser.id
-            req.session.image = editedUser.image
+                user_id += 1;
 
-            return res.redirect('/');
+                return res.redirect('/')})       
+            .catch(error => res.send(error))
         }
     },
     profile: (req, res) => {

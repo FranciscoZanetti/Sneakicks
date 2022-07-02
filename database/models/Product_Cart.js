@@ -29,14 +29,7 @@ module.exports = function(sequelize, dataTypes){
 
     let Product_Cart = sequelize.define(alias, cols, config);
 
-    Product_Size.associate = function(models){
-        Product_Cart.belongsTo(models.Product,
-            {
-                as: "product",
-                foreignKey: "product_id",
-                onDelete: "cascade",
-                onUpdate: "cascade"
-            });
+    Product_Cart.associate = function(models){
         Product_Cart.belongsTo(models.Cart,
             {
                 as: "cart",
@@ -48,13 +41,6 @@ module.exports = function(sequelize, dataTypes){
             {
                 as: "product",
                 foreignKey: "product_id",
-                onDelete: "cascade",
-                onUpdate: "cascade"
-            });
-        Product_Cart.belongsTo(models.Cart,
-            {
-                as: "cart",
-                foreignKey: "cart_id",
                 onDelete: "cascade",
                 onUpdate: "cascade"
             });

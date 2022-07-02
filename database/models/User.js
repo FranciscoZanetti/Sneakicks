@@ -1,4 +1,4 @@
-module.exports = function(sequelize, dataTypes){
+let User = function(sequelize, dataTypes){
     let alias = "User";
 
     let cols = {
@@ -51,3 +51,5 @@ module.exports = function(sequelize, dataTypes){
 
     return User;
 }
+
+module.exports = User;

@@ -30,7 +30,7 @@ module.exports = function(sequelize, dataTypes){
     let Bill = sequelize.define(alias, cols, config);
 
     Bill.associate = function(models){
-        Cart.belongsTo(models.Cart,
+        Bill.belongsTo(models.Cart,
             {
                 as: "cart",
                 foreignKey: "id_cart",

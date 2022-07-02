@@ -32,14 +32,14 @@ module.exports = function(sequelize, dataTypes){
     Product_Size.associate = function(models){
         Product_Size.belongsTo(models.Product,
             {
-                as: "product",
+                as: "product_size",
                 foreignKey: "size",
                 onDelete: "cascade",
                 onUpdate: "cascade"
             });
         Product_Size.belongsTo(models.Size,
             {
-                as: "size",
+                as: "size_id",
                 foreignKey: "size",
                 onDelete: "cascade",
                 onUpdate: "cascade"
