@@ -19,6 +19,14 @@ module.exports = function(sequelize, dataTypes){
         id_user: {
             type: dataTypes.INTEGER,
             allowNull: true
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true
         }
     }
 

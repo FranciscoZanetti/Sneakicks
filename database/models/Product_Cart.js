@@ -19,6 +19,14 @@ module.exports = function(sequelize, dataTypes){
         product_id: {
             type: dataTypes.INTEGER,
             allowNull: false
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true
         }
     }
 

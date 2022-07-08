@@ -380,6 +380,27 @@ article{
         font-size: var(--vw-0-8rem);
     }
 
+@media (min-width: 582px){
+
+    .item-size{
+        margin-left: var(--vw-0-8rem);
+        margin-right: var(--vw-0-8rem);
+        width: 35%;
+        max-width: 170px;
+    }
+    .item-size label{
+        font-size: var(--vw-0-8rem);
+    }
+    .size-input{
+        font-size: var(--vw-0-8rem);
+    }
+    .size-input-container{
+        width: 55%;
+    }
+    .size-input-container span{
+        font-size: var(--vw-0-8rem);
+    }
+}
 
 @media (min-width: 768px){
 
@@ -438,4 +459,13 @@ article{
         h2{
             font-size: 1.8rem;
         }
+    .item-size label{
+        font-size: var(--vw-1rem);
+    }
+    .size-input{
+        font-size: var(--vw-1rem);
+    }
+    .size-input-container span{
+        font-size: var(--vw-1rem);
+    }
 }

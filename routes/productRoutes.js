@@ -23,11 +23,11 @@ router.get('/', productsController.productList);
 
 router.get('/create', productsController.manageProduct);
 
-router.post('/create', uploadFile.single("main_picture"),  productMiddlewares.validateManageProduct, productsController.create);
+router.post('/create', uploadFile.array("product_pictures"),  productMiddlewares.validateManageProduct, productsController.create);
 
 router.get('/:id', productsController.productDetail);
 
-router.put('/:id/edit', uploadFile.single("main_picture"),  productMiddlewares.validateManageProduct, productsController.editPut);
+router.put('/:id/edit', uploadFile.array("product_pictures"),  productMiddlewares.validateManageProduct, productsController.editPut);
 
 router.get('/:id/edit', productsController.editGet);
 

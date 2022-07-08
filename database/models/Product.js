@@ -29,7 +29,7 @@ module.exports = function(sequelize, dataTypes){
             allowNull: false
         },
         discount: {
-            type: dataTypes.TINYINT(2).UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
         price_original: {
@@ -40,12 +40,12 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.DECIMAL(10,2).UNSIGNED,
             allowNull: false
         },
-        shoe_condition: {
-            type: dataTypes.STRING(10),
+        release_year: {
+            type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
-        stock: {
-            type: dataTypes.TINYINT(2).UNSIGNED,
+        shoe_condition: {
+            type: dataTypes.STRING(10),
             allowNull: false
         },
         story: {
@@ -70,6 +70,14 @@ module.exports = function(sequelize, dataTypes){
         },
         picture4: {
             type: dataTypes.STRING(200),
+            allowNull: true
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
             allowNull: true
         }
     }

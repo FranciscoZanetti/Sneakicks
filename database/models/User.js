@@ -31,6 +31,14 @@ let User = function(sequelize, dataTypes){
         image: {
             type: dataTypes.STRING(200),
             allowNull: false
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true
         }
     }
 

@@ -72,10 +72,13 @@
                 <article class="product-item">
                     <p class="item-header">Talles</p>
                     <div id="product-size">
-                        <% for (let i=3; i<=15.5; i=i+0.5) { %>
+                        <% for (let size of sizeArray) { %>
                             <div class="item-size">
-                                <input type="checkbox" name="size" value="<%= i %>" class="item-checkbox" id="<%= i %>" checked>
-                                <label for="<%= i %>"><%= i %></label>
+                                <label for="<%= size.size*10 %>"><%= size.size %> :</label>
+                                <div class="size-input-container">
+                                    <input type="number" class="size-input" name="size_<%= size.size*10 %>" value="<%= locals.old && old.size ? old.size : size.quantity %>">
+                                    <span>u</span>
+                                </div>
                             </div>
                         <% } %>
                     </div>
@@ -138,19 +141,10 @@
                         </div>
                 </article>
                 <article class="product-item">
-                    <p class="item-header">Imágenes del producto</p>
+                    <p class="item-header">Selecciona entre 2 y 5 imágenes (la primera será la principal)</p>
                     <div class="item-images">
-                        <input type="file" name="main_picture" accept=".jpg,.jpeg,.png" id="item-images">
+                        <input type="file" name="product_pictures" accept=".jpg,.jpeg,.png" id="item-images" multiple>
                     </div>
-                </article>
-                <article class="product-item">
-                    <label for="item-stock" class="item-label">Stock (unidades)</label>
-                    <% if ( locals.errors && errors.stock ){ %>
-                        <div class="error-message-container">
-                            <p class="error-message"><%= errors.stock.msg %></p>
-                        </div>
-                    <% } %>
-                    <input type="number" min="0" class="item-input" id="item-stock" name="stock" value="<%= locals.old && old.stock ? old.stock : product.stock %>">
                 </article>
                 <article class="product-item" id="product-buttons">
                     <div class="item-submit">

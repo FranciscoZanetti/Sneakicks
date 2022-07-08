@@ -12,13 +12,17 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.STRING(100),
             allowNull: false
         },
-        datetime: {
-            type: dataTypes.DATE,
-            allowNull: false
-        },
         id_cart: {
             type: dataTypes.INTEGER,
             allowNull: false
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: false
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true
         }
     }
 

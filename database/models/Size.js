@@ -3,20 +3,21 @@ module.exports = function(sequelize, dataTypes){
 
     let cols = {
         id: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.DECIMAL(3,1),
             primaryKey: true,
-            autoIncrement: true,
             allowNull: false
         },
         number: {
-            type: dataTypes.DECIMAL(2,2).UNSIGNED,
+            type: dataTypes.DECIMAL(3,1).UNSIGNED,
             allowNull: false
         }
     }
 
     let config = {
         tableName: "sizes",
-        timeStamps: false
+        timeStamps: false,
+        createdAt: false,
+        updatedAt: false
     }
 
     let Size = sequelize.define(alias, cols, config);

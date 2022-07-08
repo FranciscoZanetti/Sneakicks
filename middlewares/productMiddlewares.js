@@ -18,7 +18,6 @@ const productMiddlewares = {
         check("release_year")
             .isInt().withMessage("* Debe ser un año válido"),
         check("story").notEmpty().withMessage("* Este campo es obligatorio"),
-        check("stock").notEmpty().withMessage("* Este campo es obligatorio")
     ],
     validateReviewForm: [
         check("stars").notEmpty().withMessage("* Debes agregar un puntaje de estrellas"),

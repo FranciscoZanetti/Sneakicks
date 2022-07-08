@@ -17,8 +17,16 @@ module.exports = function(sequelize, dataTypes){
             allowNull: false
         },
         size: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.DECIMAL(3,1),
             allowNull: false
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true
         }
     }
 

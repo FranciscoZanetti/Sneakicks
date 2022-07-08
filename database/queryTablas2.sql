@@ -8,24 +8,28 @@ CREATE TABLE `sneakicks`.`products` (
   `name` VARCHAR(40) NOT NULL,
   `colorwave` VARCHAR(20) NOT NULL,
   `whole_name` VARCHAR(60) NOT NULL,
-  `discount` TINYINT(2) UNSIGNED NOT NULL,
+  `discount` INT UNSIGNED NOT NULL,
   `price_original` DECIMAL(10,2) UNSIGNED NOT NULL,
   `price_final` DECIMAL(10,2) UNSIGNED NOT NULL,
+  `release_year` INT UNSIGNED NOT NULL,
   `shoe_condition` VARCHAR(10) NOT NULL,
-  `stock` INT UNSIGNED NOT NULL,
   `story` VARCHAR(5000) NOT NULL,
   `main_picture` VARCHAR(200) NOT NULL,
   `picture1` VARCHAR(200) NOT NULL,
   `picture2` VARCHAR(200) NULL,
   `picture3` VARCHAR(200) NULL,
   `picture4` VARCHAR(200) NULL,
+  `createdAt` DATE NULL,
+  `updatedAt` DATE NULL,
   PRIMARY KEY (`id`) );
   
 CREATE TABLE `sneakicks`.`reviews` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `stars` TINYINT(1) NOT NULL,
+  `stars` INT NOT NULL,
   `text` VARCHAR(1000) NOT NULL,
   `id_product` INT NOT NULL,
+  `createdAt` DATE NULL,
+  `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `id_product`
     FOREIGN KEY (`id_product`)
@@ -34,15 +38,17 @@ CREATE TABLE `sneakicks`.`reviews` (
     ON UPDATE CASCADE);
     
 CREATE TABLE `sneakicks`.`sizes` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `number` DECIMAL(2,2) UNSIGNED NOT NULL,
+  `id` DECIMAL(3,1) NOT NULL,
+  `number` DECIMAL(3,1) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `sneakicks`.`products_sizes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT UNSIGNED NOT NULL,
   `product` INT NOT NULL,
-  `size` INT NOT NULL,
+  `size` DECIMAL(3,1) NOT NULL,
+  `createdAt` DATE NULL,
+  `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `size`
     FOREIGN KEY (`size`)
@@ -63,6 +69,8 @@ CREATE TABLE `sneakicks`.`users` (
   `password` VARCHAR(45) NOT NULL,
   `category` VARCHAR(20) NOT NULL,
   `image` VARCHAR(200) NOT NULL,
+  `createdAt` DATE NULL,
+  `updatedAt` DATE NULL,
   PRIMARY KEY (`id`));
   
   CREATE TABLE `sneakicks`.`carts` (
@@ -70,6 +78,8 @@ CREATE TABLE `sneakicks`.`users` (
   `charges` MEDIUMINT UNSIGNED NOT NULL,
   `total_amount` MEDIUMINT UNSIGNED NOT NULL,
   `id_user` INT NULL,
+  `createdAt` DATE NULL,
+  `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `id_user`
     FOREIGN KEY (`id_user`)
@@ -82,6 +92,8 @@ CREATE TABLE `sneakicks`.`products_carts` (
   `cart_id` INT NOT NULL,
   `product_id` INT NOT NULL,
   `units` INT UNSIGNED NOT NULL,
+  `createdAt` DATE NULL,
+  `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `cart_id`
     FOREIGN KEY (`cart_id`)
@@ -99,6 +111,8 @@ CREATE TABLE `sneakicks`.`bills` (
   `id_cart` INT NOT NULL,
   `customer` VARCHAR(100) NOT NULL,
   `datetime` DATETIME NOT NULL,
+  `createdAt` DATE NOT NULL,
+  `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `id_cart`
     FOREIGN KEY (`id_cart`)

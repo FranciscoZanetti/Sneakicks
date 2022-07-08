@@ -14,3 +14,8 @@
 // fs.writeFileSync("./data/reviews.json", reviewsStringified);
 
 // console.log(reviewsStringified);
+
+let string = "numero";
+let numero = 2;
+let resultado = eval("numero");
+console.log(resultado);

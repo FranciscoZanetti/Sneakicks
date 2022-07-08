@@ -9,7 +9,7 @@ module.exports = function(sequelize, dataTypes){
             allowNull: false
         },
         stars: {
-            type: dataTypes.TINYINT(1),
+            type: dataTypes.INTEGER,
             allowNull: false
         },
         text: {
@@ -19,6 +19,14 @@ module.exports = function(sequelize, dataTypes){
         id_product: {
             type: dataTypes.INTEGER,
             allowNull: false
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true
         }
     }
 
