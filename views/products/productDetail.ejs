@@ -138,7 +138,7 @@
                                     <select name="size" id="size">
                                         <option selected disabled hidden> </option>
                                         <% for (let size of sizeArray){ %>
-                                            <option value="<%= size.number %>" ><%= size.number %></option>
+                                            <option value="<%= size.size %>" ><%= size.size %></option>
                                         <% } %>
                                     </select>
                                     <span class="custom-arrow-size"></span>
@@ -178,7 +178,7 @@
                         </section>
 
                         <!-- FALTA COMPLETAR FUNCIONAMIENTO -->
-                        
+
                         <!-- <% if (product.stock <=5 && product.stock > 0){ %>
                             <p class="form-stock-avaiable"><%= product.stock %> Unidades disponibles</p>
                         <% } %>

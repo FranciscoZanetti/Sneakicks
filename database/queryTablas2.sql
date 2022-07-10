@@ -110,7 +110,6 @@ CREATE TABLE `sneakicks`.`bills` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_cart` INT NOT NULL,
   `customer` VARCHAR(100) NOT NULL,
-  `datetime` DATETIME NOT NULL,
   `createdAt` DATE NOT NULL,
   `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
