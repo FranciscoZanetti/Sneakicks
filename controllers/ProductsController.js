@@ -57,6 +57,27 @@ const controller = {
     cart: (req, res) => {
         return res.render('products/cart', {products: products});
     },
+    addToCart: (req, res) => {
+        if (!req.session.user_id || req.session.user_id == undefined){
+            res.redirect('/products/:id');
+            alert("Inicia sesión para agregar al carrito");
+        }else{
+            db.Product_Size.findOne({
+                where: {
+                    product: req.params.id,
+                    size: req.body.size
+                }
+            })
+            .then(result => {
+                if (result.quantity == 0){
+                    res.redirect('/products/:id');
+                    alert("Sin stock de este talle!");
+                }else{
+                    
+                }
+            })
+        }
+    },
     manageProduct: (req, res) => {
         return res.render('products/manageProduct');
     },

@@ -65,7 +65,7 @@ const controller = {
                     image: req.file.filename,
                 }
             )
-            .then(()=> {
+            .then((userCreated)=> {
                 let user_id = 1;
 
                 req.session.user_id = user_id;
@@ -76,7 +76,10 @@ const controller = {
 
                 user_id += 1;
 
-                return res.redirect('/')})       
+                db.Cart.create({
+                    id_user: userCreated.id
+                }).then(x => {return res.redirect('/')});
+            })       
             .catch(error => res.send(error))
         }
     },

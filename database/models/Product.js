@@ -109,12 +109,12 @@ module.exports = function(sequelize, dataTypes){
                 as: "product_size",
                 foreignKey: "product"
             });
-        Product.belongsToMany(models.Cart,
+        Product.belongsToMany(models.User,
             {
-                as: "carts",
+                as: "users",
                 through: models.Product_Cart,
                 foreignKey: "product_id",
-                otherKey: "cart_id",
+                otherKey: "user_id",
                 // timeStamps: false
             });
         Product.hasMany(models.Product_Cart,

@@ -50,10 +50,23 @@ let User = function(sequelize, dataTypes){
     let User = sequelize.define(alias, cols, config);
 
     User.associate = function(models){
-        User.hasMany(models.Cart,
+        User.hasMany(models.Order,
             {
-                as: "carts",
+                as: "orders",
                 foreignKey: "id_user"
+            });
+        User.belongsToMany(models.Product,
+            {
+                as: "products",
+                through: models.Product_Cart,
+                foreignKey: "user_id",
+                otherKey: "product_id",
+                // timeStamps: false
+            });
+        User.hasMany(models.Product_Cart,
+            {
+                as: "product_cart",
+                foreignKey: "user_id"
             });
     }
 

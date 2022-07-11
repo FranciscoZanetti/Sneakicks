@@ -12,7 +12,7 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
-        cart_id: {
+        user_id: {
             type: dataTypes.INTEGER,
             allowNull: false
         },
@@ -38,10 +38,10 @@ module.exports = function(sequelize, dataTypes){
     let Product_Cart = sequelize.define(alias, cols, config);
 
     Product_Cart.associate = function(models){
-        Product_Cart.belongsTo(models.Cart,
+        Product_Cart.belongsTo(models.User,
             {
-                as: "cart",
-                foreignKey: "cart_id",
+                as: "user",
+                foreignKey: "user_id",
                 onDelete: "cascade",
                 onUpdate: "cascade"
             });

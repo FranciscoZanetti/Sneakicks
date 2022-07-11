@@ -73,11 +73,12 @@ CREATE TABLE `sneakicks`.`users` (
   `updatedAt` DATE NULL,
   PRIMARY KEY (`id`));
   
-  CREATE TABLE `sneakicks`.`carts` (
+  CREATE TABLE `sneakicks`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `charges` MEDIUMINT UNSIGNED NOT NULL,
-  `total_amount` MEDIUMINT UNSIGNED NOT NULL,
+  `charges` MEDIUMINT UNSIGNED NULL,
+  `total_amount` MEDIUMINT UNSIGNED NULL,
   `id_user` INT NULL,
+  `user_fullname` VARCHAR(50) NOT NULL,
   `createdAt` DATE NULL,
   `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
@@ -87,17 +88,17 @@ CREATE TABLE `sneakicks`.`users` (
     ON DELETE SET NULL
     ON UPDATE CASCADE);
   
-CREATE TABLE `sneakicks`.`products_carts` (
+CREATE TABLE `sneakicks`.`products_cart` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `cart_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
   `product_id` INT NOT NULL,
   `units` INT UNSIGNED NOT NULL,
   `createdAt` DATE NULL,
   `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `cart_id`
-    FOREIGN KEY (`cart_id`)
-    REFERENCES `sneakicks`.`carts` (`id`)
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `sneakicks`.`users` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `product_id`
@@ -106,15 +107,15 @@ CREATE TABLE `sneakicks`.`products_carts` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
     
-CREATE TABLE `sneakicks`.`bills` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `id_cart` INT NOT NULL,
-  `customer` VARCHAR(100) NOT NULL,
-  `createdAt` DATE NOT NULL,
-  `updatedAt` DATE NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `id_cart`
-    FOREIGN KEY (`id_cart`)
-    REFERENCES `sneakicks`.`carts` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT);
+-- CREATE TABLE `sneakicks`.`bills` (
+--   `id` INT NOT NULL AUTO_INCREMENT,
+--   `id_cart` INT NOT NULL,
+--   `customer` VARCHAR(100) NOT NULL,
+--   `createdAt` DATE NOT NULL,
+--   `updatedAt` DATE NULL,
+--   PRIMARY KEY (`id`),
+--   CONSTRAINT `id_cart`
+--     FOREIGN KEY (`id_cart`)
+--     REFERENCES `sneakicks`.`carts` (`id`)
+--     ON DELETE RESTRICT
+--     ON UPDATE RESTRICT);

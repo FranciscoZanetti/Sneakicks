@@ -27,6 +27,8 @@ router.post('/create', uploadFile.array("product_pictures"),  productMiddlewares
 
 router.get('/:id', productsController.productDetail);
 
+router.post('/:id', productsController.addToCart);
+
 router.put('/:id/edit', uploadFile.array("product_pictures"),  productMiddlewares.validateManageProduct, productsController.editPut);
 
 router.get('/:id/edit', productsController.editGet);
