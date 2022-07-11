@@ -21,52 +21,77 @@
       <div class="cart-labels">
         <h2>TUS PRODUCTOS</h2>
       </div>
-        <% for( let producto of products.slice(0,3) ) { %> 
-          <div class="cart-product">
-            <div class="item">
-              <div class="product-image">
-                <img src="/img/products/<%= producto.main_picture %>" alt="Placholder Image 2" class="product-frame">
-              </div>
-              <div class="product-details">
-                <div class="details">
-                  <h1><strong><%= producto.brand_name %></strong> <%= producto.name %></h1>
-                  <p><strong>Talle 41</strong></p>
-                  <p>SKU - 232321939</p>
+        <% if (productsCart){ %>
+          <% for( let productCart of productsCart ) { %> 
+            <div class="cart-product">
+              <div class="item">
+                <div class="product-image">
+                  <img src="/img/products/<%= productCart.product.main_picture %>" alt="Placholder Image 2" class="product-frame">
                 </div>
-                <div class="product-lower-container">
-                  <div class="price"><%= producto.price_original %></div>
-                  <div class="quantity">
-                    <input type="number" value="2" min="1" class="quantity-field">
+                <div class="product-details">
+                  <div class="details">
+                    <h1><strong><%= productCart.product.brand_name %></strong> <%= productCart.product.name %></h1>
+                    <p><strong>Talle <%= productsCart.size %></strong></p>
+                    <p>ID <%= productCart.product_id</p>
                   </div>
-                  <div class="remove">
-                    <button>Quitar</button>
+                  <div class="product-lower-container">
+                    <div class="price"><%= productCart.product.price_original %></div>
+                    <div class="quantity">
+                      <input type="number" value="<%= productCart.units %>" min="1" class="quantity-field">
+                    </div>
+                    <div class="remove">
+                      <button>Quitar</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        <% } %>       
+          <% } %>
+        <% }else{ %>
+          <div class="cart-product">No tienes productos en el carrito</div>
+        <% } %>
     </div>
-    <div class="summary">
+    <form action="/cart" method="post" class="summary">
       <div class="summary-total-items"><span class="total-items"></span> Tu carrito de compras</div>
       <div class="summary-subtotal">
-        <div class="subtotal-title">Subtotal</div>
-        <div class="subtotal-value final-value" id="cart-subtotal">16500.00</div>
+        <% if (productsCart){ %>
+          <% for (productCart of productsCart){ %>
+            <div class="subtotal-title"><%= productCart.product.whole_name %>  X<%= productCart.units %></div>
+            <div class="subtotal-value final-value" id="cart-subtotal"><%= productCart.product.price_final * productCart.units %></div>
+          <% } %>
+        <% } %>
+        <% if (ammount){ %>
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="cart-subtotal"><%= ammount %></div>
+        <% }else{ %>
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="cart-subtotal">0.00</div>
+        <% } %>
       </div>
       <div class="summary-delivery">
         <select name="delivery-collection" class="summary-delivery-selection">
             <option value="0" selected="selected">Seleccionar tipo de envio</option>
-            <option value="collection">Comun (5-7 dias habiles)</option>
-            <option value="first-class">Rapido (3-5 dias habiles)</option>
-            <option value="second-class">Hamilton (1-2 dias habiles)</option>
+            <% if (shippings){ %>
+              <% for (shipping of shippings){ %>
+                <option value="first-class"><%= shipping.name %> <%= shipping.description %></option>
+              <% } %>
+              <!-- <option value="first-class">Rapido (3-5 dias habiles)</option>
+              <option value="second-class">Hamilton (1-2 dias habiles)</option>
+              <option value="collection">Comun (5-7 dias habiles)</option> -->
+            <% } %>
         </select>
       </div>
       <div class="summary-total">
-        <div class="total-title">Total</div>
-        <div class="total-value final-value" id="cart-total">16500.00</div>
+        <% if (ammount){ %>
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="cart-total">16500.00</div>
+        <% }else{ %>
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="cart-total">0.00</div>
+        <% } %>
       </div>
       <div class="summary-checkout">
-        <button class="checkout-cta">Checkout</button>
+        <button class="checkout-cta" type="submit">Checkout</button>
       </div>
     </div>
   </main>

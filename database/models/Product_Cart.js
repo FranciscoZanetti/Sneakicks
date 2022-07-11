@@ -12,6 +12,14 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
+        size: {
+            type: dataTypes.DECIMAL(3,1).UNSIGNED,
+            allowNull: false
+        },
+        bought: {
+            type: dataTypes.INTEGER.UNSIGNED,
+            allowNull: false
+        },
         user_id: {
             type: dataTypes.INTEGER,
             allowNull: false

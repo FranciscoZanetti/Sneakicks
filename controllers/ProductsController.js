@@ -54,13 +54,11 @@ const controller = {
                 return res.render('products/productDetail', {product: resultProduct, sizeArray: resultProduct_Size, colorwaveArray: colorwavesArray, productReviews: resultReview, recomendedProducts: recomendedProducts});
             });
     },
-    cart: (req, res) => {
-        return res.render('products/cart', {products: products});
-    },
     addToCart: (req, res) => {
         if (!req.session.user_id || req.session.user_id == undefined){
-            res.redirect('/products/:id');
-            alert("Inicia sesión para agregar al carrito");
+            // Window.alert("Inicia sesión para agregar al carrito");
+            console.log("Inicia sesión para agregar al carrito");
+            return res.redirect('/products/:id');
         }else{
             db.Product_Size.findOne({
                 where: {
@@ -70,12 +68,44 @@ const controller = {
             })
             .then(result => {
                 if (result.quantity == 0){
-                    res.redirect('/products/:id');
-                    alert("Sin stock de este talle!");
+                    // Window.alert("Sin stock de este talle!");
+                    console.log("Sin stock de este talle!");
+                    return res.redirect('/products/:id');
                 }else{
-                    
+                    let count = db.Product_Cart.count({
+                        where: {
+                            user_id: req.session.user_id,
+                            product_id: req.params.id,
+                            bought: 0
+                        }
+                    })
+                    .then(x => {
+                        if (count > 0){
+                            db.Product_Cart.increment(
+                                'units',
+                                {
+                                    by: 1,
+                                    where: {
+                                        user_id: req.session.user_id,
+                                        product_id: req.params.id,
+                                        bought: 0
+                                    }
+                                }
+                            );
+                        }else{
+                            db.Product_Cart.create({
+                                units: 1,
+                                size: req.body.size,
+                                bought: 0,
+                                user_id: req.session.user_id,
+                                product_id: req.params.id,
+                            });
+                        }
+                        return x;
+                    })
+                    .then(x => {return res.redirect('/products/:id');});
                 }
-            })
+            });
         }
     },
     manageProduct: (req, res) => {

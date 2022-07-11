@@ -24,6 +24,10 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.STRING(50),
             allowNull: false
         },
+        id_shipping: {
+            type: dataTypes.INTEGER,
+            allowNull: false
+        },
         createdAt: {
             type: dataTypes.DATE,
             allowNull: true
@@ -48,6 +52,13 @@ module.exports = function(sequelize, dataTypes){
                 foreignKey: "id_user",
                 onDelete: "set null",
                 onUpdate: "cascade"
+            });
+        Order.hasMany(models.Shipping,
+            {
+                as: "shipping",
+                foreignKey: "id_shipping",
+                onDelete: "no action",
+                onUpdate: "no action"
             });
         // Order.hasOne(models.Bill,
         //     {

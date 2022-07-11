@@ -86,13 +86,20 @@ CREATE TABLE `sneakicks`.`users` (
     FOREIGN KEY (`id_user`)
     REFERENCES `sneakicks`.`users` (`id`)
     ON DELETE SET NULL
-    ON UPDATE CASCADE);
+    ON UPDATE CASCADE,
+  CONSTRAINT `id_shipping`
+    FOREIGN KEY (`id_shipping`)
+    REFERENCES `sneakicks`.`shippings` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
   
 CREATE TABLE `sneakicks`.`products_cart` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `product_id` INT NOT NULL,
   `units` INT UNSIGNED NOT NULL,
+  `size` DECIMAL(3,1) UNSIGNED NOT NULL,
+  `bought` INT UNSIGNED NOT NULL,
   `createdAt` DATE NULL,
   `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
@@ -106,6 +113,13 @@ CREATE TABLE `sneakicks`.`products_cart` (
     REFERENCES `sneakicks`.`products` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
+  
+CREATE TABLE `sneakicks`.`shippings` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `cost` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`));
     
 -- CREATE TABLE `sneakicks`.`bills` (
 --   `id` INT NOT NULL AUTO_INCREMENT,
