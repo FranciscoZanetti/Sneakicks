@@ -113,27 +113,33 @@ const controller = {
     },
     create: (req, res) => {
         let errors = validationResult(req);
+        console.log(req.files);
 
-        if (!errors.isEmpty() || !req.files || req.files.length < 2){
+        if (!errors.isEmpty() || !req.files || req.files.length < 1){
             res.render("products/manageProduct", { errors: errors.mapped(), old: req.body });
             console.log("req.files: "+req.files);
         }else{
             let mainPic = req.files[0].filename;
-            let pic1 = req.files[1].filename;
+            let pic1;
             let pic2;
             let pic3;
             let pic4;
-            if (req.files[2].filename){
+            if (req.files[1]){
+                pic1 = req.files[1].filename;
+            }else{
+                pic1 = null;
+            }
+            if (req.files[2]){
                 pic2 = req.files[2].filename;
             }else{
                 pic2 = null;
             }
-            if (req.files[3].filename){
+            if (req.files[3]){
                 pic3 = req.files[3].filename;
             }else{
                 pic3 = null;
             }
-            if (req.files[4].filename){
+            if (req.files[4]){
                 pic4 = req.files[4].filename;
             }else{
                 pic4 = null;
@@ -444,23 +450,28 @@ const controller = {
                     )
                         .then(result => {
 
-                            if (req.files && req.files.length >=2){
+                            if (req.files && req.files.length >=1){
                                 let mainPic = req.files[0].filename;
-                                let pic1 = req.files[1].filename;
+                                let pic1;
                                 let pic2;
                                 let pic3;
                                 let pic4;
-                                if (req.files[2].filename){
+                                if (req.files[1]){
+                                    pic1 = req.files[1].filename;
+                                }else{
+                                    pic1 = null;
+                                }
+                                if (req.files[2]){
                                     pic2 = req.files[2].filename;
                                 }else{
                                     pic2 = null;
                                 }
-                                if (req.files[3].filename){
+                                if (req.files[3]){
                                     pic3 = req.files[3].filename;
                                 }else{
                                     pic3 = null;
                                 }
-                                if (req.files[4].filename){
+                                if (req.files[4]){
                                     pic4 = req.files[4].filename;
                                 }else{
                                     pic4 = null;

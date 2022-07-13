@@ -15,7 +15,7 @@ CREATE TABLE `sneakicks`.`products` (
   `shoe_condition` VARCHAR(10) NOT NULL,
   `story` VARCHAR(5000) NOT NULL,
   `main_picture` VARCHAR(200) NOT NULL,
-  `picture1` VARCHAR(200) NOT NULL,
+  `picture1` VARCHAR(200) NULL,
   `picture2` VARCHAR(200) NULL,
   `picture3` VARCHAR(200) NULL,
   `picture4` VARCHAR(200) NULL,
