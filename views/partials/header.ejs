@@ -15,6 +15,14 @@
                     </div>
                     <div class="top-right-navbar">
                             <ul>
+                                <% if (typeof session.category != 'undefined') { %>
+                                    <% if (typeof session.category == 'admin') { %>
+                                    <li><a href="/users/<%= session.user_id %>/profile">
+                                        <div class="user_button">
+                                            <p>Panel de administrador</p>
+                                        </div>
+                                    <% } %>
+                                <% } %>
                                 <% if (typeof session.user_id != 'undefined') { %>
                                     <li><a href="/users/<%= session.user_id %>/profile">
                                         <div class="user_button">

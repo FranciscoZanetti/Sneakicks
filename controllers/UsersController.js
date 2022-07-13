@@ -6,10 +6,24 @@ const db = require('../database/models');
 const { validationResult } = require("express-validator");
 const session = require('express-session');
 
-const usersJSON = fs.readFileSync('./data/users.json', { encoding: 'utf-8' })
-const users = JSON.parse(usersJSON);
-
 const Users = db.User
+
+const setSessionData = async (email, req) => {
+    return await Users.findOne({
+        where: { email }
+    }).then(response => {
+        return response.toJSON()
+    }).then(response => {
+        let user = response;
+        req.session.user_id = user.id;
+        req.session.email = req.body.email;
+        req.session.first_name = (req.body.first_name ? req.body.first_name : user.first_name);
+        req.session.last_name = (req.body.last_name ? req.body.last_name : user.last_name);
+        req.session.category = user.category;
+        req.session.image = (req.file ? req.file.filename : user.image);
+        req.session.save();
+    })
+}
 
 const controller = {
     login: (req, res) => {
@@ -19,29 +33,21 @@ const controller = {
             res.render("users/login", { errors: errors, old: req.body });
 
         } else {
-
-            let user = users.find(user => {
-                if (user.email == req.body.email) {
-                    return user
-                }
-            })
-
-            req.session.email = user.email;
-            req.session.first_name = user.first_name
-            req.session.last_name = user.last_name
-            req.session.user_id = user.id
-            req.session.image = user.image
-
-            console.log(req.session)
+            setSessionData(req.body.email, req);
 
             return res.redirect('/');
         }
     },
     renderLogin: (req, res) => {
-        console.log(req.session);
-        return res.render('users/login', {user_info : req.session});
+        if (req.session.user_id) {
+            res.redirect(`${req.session.user_id}/profile`)
+        }
+        return res.render('users/login', { user_info: req.session });
     },
     register: (req, res) => {
+        if (req.session.user_id) {
+            res.redirect(`${req.session.user_id}/profile`)
+        }
         return res.render('users/register');
     },
     create: (req, res) => {
@@ -51,88 +57,62 @@ const controller = {
             console.log(errors)
             res.render("users/register", { errors: errors, old: req.body });
         } else {
-
-            let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
-
-            Users
-            .create(
+            Users.create(
                 {
                     first_name: req.body.first_name,
                     last_name: req.body.last_name,
                     email: req.body.email,
-                    password: encryptedPassword,
+                    password: bcrypt.hashSync(req.body.password, 10),
                     category: "user",
                     image: req.file.filename,
                 }
             )
-            .then((userCreated)=> {
-                let user_id = 1;
+                .then(function () {
+                    setSessionData(req.body.email, req);
 
-                req.session.user_id = user_id;
-                req.session.email = req.body.email;
-                req.session.first_name = req.body.first_name;
-                req.session.last_name = req.body.last_name;
-                req.session.image = req.file.filename;
-
-                user_id += 1;
-
-                db.Cart.create({
-                    id_user: userCreated.id
-                }).then(x => {return res.redirect('/')});
-            })       
-            .catch(error => res.send(error))
+                })
+                .then(function () {
+                    res.redirect('/');
+                })
+                .catch(error => res.send(error))
         }
     },
     profile: (req, res) => {
         if (typeof req.session.user_id == 'undefined') {
-            console.log(req.session)
-            return res.send("401 - Debe ingresar al sitio para poder ver su perfil")
+            return res.status(401).send("401 - Debe ingresar al sitio para poder ver su perfil")
         }
 
         if (req.params.id == req.session.user_id) {
             return res.render('users/profile');
         } else {
-            return res.send('401 - El perfil de usuario al que intenta acceder es privado')
+            return res.status(401).send('401 - El perfil de usuario al que intenta acceder es privado')
         }
     },
     update: (req, res) => {
         let errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            console.log(errors)
-            console.log(req.body)
             return res.render("users/edit", { errors: errors.mapped(), old: req.body });
         } else {
-
-            let editedUser = {
-                id: req.session.user_id,
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-                password: (req.body.password ? bcrypt.hashSync(req.body.password, 10) : req.session.password),
-                category: "user",
-                image: (req.file ? req.file.filename : req.session.image),
-            }
-
-            users.forEach( (user, index) => {
-                if (user.id == req.session.user_id){
-                    users[index] = editedUser;  
+            Users.update(
+                {
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    password: (req.body.password ? bcrypt.hashSync(req.body.password, 10) : req.session.password),
+                    category: "user",
+                    image: (req.file ? req.file.filename : req.session.image),
+                }, {
+                    where : { id : req.session.user_id }
                 }
-            });
-
-            usersStringified = JSON.stringify(users, null, '\t');
-            fs.writeFileSync("./data/users.json", usersStringified);
-
-            req.session.email = editedUser.email;
-            req.session.first_name = editedUser.first_name
-            req.session.last_name = editedUser.last_name
-            req.session.image = editedUser.image
-
+            ).then(() => {
+                req.session.destroy();
+            })
+            
             return res.redirect('/');
         }
     },
     edit: (req, res) => {
-        return res.render('users/edit');
+        return res.render('users/edit', { session : req.session });
     },
     signout: (req, res) => {
         req.session.destroy();

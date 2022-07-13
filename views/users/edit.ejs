@@ -29,22 +29,28 @@
                 <form action="/users/<%= session.id %>/edit" class="form" method="POST" enctype="multipart/form-data">
                     <h1>Edita tu perfil</h1>
                     <section class="form-container">
-                        <input class="input-form" type="text" name="first_name" placeholder="Nombres" value=<%=session.first_name %> required maxlength="30">
-                        <input class="input-form" type="text" name="last_name" placeholder="Apellidos" value=<%=session.last_name %> required maxlength="30">
-                        <input class="input-form" type="email"  name="email" placeholder="Email" value=<%=session.email %> required maxlength="50">
-                        <input class="input-form" type="password"  name="password" placeholder="Contraseña" required maxlength="30">
+                        <article>
+                            <input class="input-form" type="text" name="first_name" placeholder="Nombres"
+                                value=<%=session.first_name %> required maxlength="30">
+                            <input class="input-form" type="text" name="last_name" placeholder="Apellidos"
+                                value=<%=session.last_name %> required maxlength="30">
+                            <input class="input-form" type="password" name="password" placeholder="Contraseña" required
+                                maxlength="30">
+                        </article>
                         <article class="product-item">
                             <p class="item-header">Foto de perfil</p>
                             <div class="item-images">
-                              <label class="register-button">
-                                <p style="font-size: 0.8rem; margin: 0">Seleccionar archivo</p>
-                                <input type="file" name="user_image" accept=".jpg,.jpeg,.png" id="item-images">
-                              </label>
+                                <label class="register-button">
+                                    <p style="font-size: 0.8rem; margin: 0">Seleccionar archivo</p>
+                                    <input type="file" name="user_image" accept=".jpg,.jpeg,.png" id="item-images">
+                                </label>
                             </div>
-                          </article>
+                        </article>
                     </section>
+                    <p> * Deberá volver a iniciar sesión para ver reflejados sus cambios</p>
                     <div class="register_button-container">
-                        <input class="register-button" type="submit" value="Confirmar cambios" name="edit-button"></input>
+                        <input class="register-button" type="submit" value="Confirmar cambios"
+                            name="edit-button"></input>
                     </div>
                 </form>
             </div>

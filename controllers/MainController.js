@@ -2,9 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
 
-const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'})
-const products = JSON.parse(productsJSON);
-
 const controller = {
     index: (req, res) => {
         console.log(req.session)
