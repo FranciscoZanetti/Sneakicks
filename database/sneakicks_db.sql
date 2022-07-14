@@ -1,5 +1,6 @@
 DROP SCHEMA IF EXISTS `sneakicks` ;
-CREATE SCHEMA `sneakicks` ;
+CREATE DATABASE `sneakicks`;
+USE `sneakicks`;
 
 CREATE TABLE `sneakicks`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -66,11 +67,21 @@ CREATE TABLE `sneakicks`.`users` (
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
   `category` VARCHAR(20) NOT NULL,
   `image` VARCHAR(200) NOT NULL,
   `createdAt` DATE NULL,
   `updatedAt` DATE NULL,
+  PRIMARY KEY (`id`));
+  
+  INSERT INTO `users` (`id`,`first_name`,`last_name`,`email`,`password`,`category`,`image`,`createdAt`,`updatedAt`) 
+  VALUES (DEFAULT,'Daniel','Duque','dani_duque@aol.com','$2a$10$DYJM02GIjljMM5P5YrrMqe/5dTrha/Fv1GJacKd80noN4.2TUDygq','admin','hidratado.png', NULL, NULL);
+  
+  CREATE TABLE `sneakicks`.`shippings` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `cost` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`));
   
   CREATE TABLE `sneakicks`.`orders` (
@@ -79,6 +90,7 @@ CREATE TABLE `sneakicks`.`users` (
   `total_amount` MEDIUMINT UNSIGNED NULL,
   `id_user` INT NULL,
   `user_fullname` VARCHAR(50) NOT NULL,
+  `id_shipping` INT NULL,
   `createdAt` DATE NULL,
   `updatedAt` DATE NULL,
   PRIMARY KEY (`id`),
@@ -113,13 +125,6 @@ CREATE TABLE `sneakicks`.`products_cart` (
     REFERENCES `sneakicks`.`products` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
-  
-CREATE TABLE `sneakicks`.`shippings` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
-  `cost` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`));
     
 -- CREATE TABLE `sneakicks`.`bills` (
 --   `id` INT NOT NULL AUTO_INCREMENT,
