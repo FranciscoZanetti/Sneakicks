@@ -109,7 +109,11 @@ const controller = {
         }
     },
     manageProduct: (req, res) => {
-        return res.render('products/manageProduct');
+        if (req.session.category == 'admin') {
+            return res.render('products/manageProduct');
+        } else {
+            return res.status(401).send('No tiene permisos para realizar esa acción')
+        }
     },
     create: (req, res) => {
         let errors = validationResult(req);

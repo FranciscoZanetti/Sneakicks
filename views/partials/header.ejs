@@ -16,10 +16,10 @@
                     <div class="top-right-navbar">
                             <ul>
                                 <% if (typeof session.category != 'undefined') { %>
-                                    <% if (typeof session.category == 'admin') { %>
-                                    <li><a href="/users/<%= session.user_id %>/profile">
+                                    <% if (session.category == 'admin') { %>
+                                    <li><a href="/products/create">
                                         <div class="user_button">
-                                            <p>Panel de administrador</p>
+                                            Crear producto
                                         </div>
                                     <% } %>
                                 <% } %>

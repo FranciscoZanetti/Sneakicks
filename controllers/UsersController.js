@@ -112,6 +112,12 @@ const controller = {
         }
     },
     edit: (req, res) => {
+        if (typeof req.session.user_id == 'undefined') {
+            return res.status(401).send("401 - Debe ingresar al sitio para poder editar su perfil")
+        } else if (req.session.user_id != req.params.id) {
+            return res.status(401).send("401 - No tiene permisos para editar este perfil perfil")
+        }
+
         return res.render('users/edit', { session : req.session });
     },
     signout: (req, res) => {
