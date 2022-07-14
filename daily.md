@@ -56,3 +56,13 @@
 - En este sprint fue un poco más fácil por el hecho que era bastante similar al CRUD de productos, en este caso era hacer el CRUD de usuarios, en lo que corresponde al registro no hubo dificultad por ser similar al de productos, tuvimos dificultad en la parte de login al uso de Session, no estábamos logrando que la información agregada en req.session se mantenga en las distintas páginas. 
 
 - Para solucionarlo se configuro de la cookie, poniendo secure y httponly en false Y logramos poder llamarla desde otras paginas, pero solamente configurando a req.session como una variable local de express. 
+
+# SPRINT 6
+
+- En este sprint fue uno de los más complicados, pero superamos el reto, en la primera reunión analizamos bien las consignas del proyecto y nos sirvió para crear el tablero de trabajo.
+
+- Nos dividimos en pareja para realizar las consignas del sprint, por un lado, se trabajó todo lo del producto y otro trabajo lo de usuarios
+
+- Hicimos unas actualizaciones en el retro y daily con respecto a markdown
+
+- Hubo retos para cerrar el tema de usuarios con la parte asincrónica y en los productos con el (.this)

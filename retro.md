@@ -154,3 +154,38 @@ Se realizó un análisis retrospectivo del funcionamiento del grupo en el Sprint
 
 - No dar respuesta a los mensajes grupales por largos periodos de tiempo 
 - Trabajar menos individual y más en equipo.  
+
+# SPRINT 6
+
+Se realizó un análisis retrospectivo del funcionamiento del grupo en el Sprint anterior utilizando la metodología propuesta de “Estrella de Mar”, buscando mejorar el funcionamiento del equipo de cara a este Sprint.
+
+## Comenzar a hacer
+
+- Para crear el tablero hicimos una reunión para analizar bien cuáles eran las actividades y repartirlas al grupo de trabajo
+- En el trello agregamos estimación a las tareas a fin de avaluar cuales eran más prioritarias
+- Revisar documentación y tutoriales a fin de completar el sprint
+
+## Hacer más
+
+- Hacer más reuniones de equipo y comentar los a veces del proyecto
+- Dar respuesta rápida en el grupo WhatsApp a las dudas e inquietudes que surgir en el proyecto
+- Trabajar de manera más colaborativa
+- Hacer una previa antes de entregar el proyecto
+
+## Continuar haciendo.
+
+- Entregando los Sprint adecuadamente
+- Aportando material para la realización del Sprint
+- Utilizando Git y Trello como herramienta de trabajo
+- Revisando documentación y materiales de apoyo
+
+## Hacer menos
+
+- Reuniones cortas y sin especificar las actividades a realizar y
+- Dejar el sprint listo por lo menos un día antes de la entrega
+- Cargar a una persona con más trabajo
+
+## Dejar de hacer
+
+- Dejar todo a última hora 
+
