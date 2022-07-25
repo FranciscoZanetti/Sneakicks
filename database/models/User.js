@@ -21,7 +21,7 @@ let User = function(sequelize, dataTypes){
             allowNull: false
         },
         password: {
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(200),
             allowNull: false
         },
         category: {
