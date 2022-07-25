@@ -24,13 +24,13 @@ module.exports = function(sequelize, dataTypes){
 
     let config = {
         tableName: "shippings",
-        timeStamps: false
+        timestamps: false
     }
 
     let Shipping = sequelize.define(alias, cols, config);
 
     Shipping.associate = function(models){
-        Shipping.belongsTo(models.Order,
+        Shipping.hasMany(models.Order,
             {
                 as: "order",
                 foreignKey: "id_shipping",

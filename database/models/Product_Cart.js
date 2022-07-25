@@ -39,7 +39,7 @@ module.exports = function(sequelize, dataTypes){
     }
 
     let config = {
-        tableName: "products_carts",
+        tableName: "products_cart",
         timeStamps: false
     }
 

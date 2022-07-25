@@ -55,11 +55,17 @@ const controller = {
             });
     },
     addToCart: (req, res) => {
+        let redirectId = req.params.id;
+        console.log(req.session);
         if (!req.session.user_id || req.session.user_id == undefined){
             // Window.alert("Inicia sesión para agregar al carrito");
-            console.log("Inicia sesión para agregar al carrito");
-            return res.redirect('/products/:id');
+            console.log("\nInicia sesión para agregar al carrito\n");
+            return res.redirect('/products/'+redirectId);
         }else{
+            console.log(req.body);
+            console.log(req.params.id);
+            // let parsedSize = parseFloat(req.body.size);
+            console.log(req.body.size);
             db.Product_Size.findOne({
                 where: {
                     product: req.params.id,
@@ -67,19 +73,20 @@ const controller = {
                 }
             })
             .then(result => {
+                console.log(result);
                 if (result.quantity == 0){
                     // Window.alert("Sin stock de este talle!");
                     console.log("Sin stock de este talle!");
-                    return res.redirect('/products/:id');
+                    return res.redirect('/products/'+redirectId);
                 }else{
-                    let count = db.Product_Cart.count({
+                    db.Product_Cart.count({
                         where: {
                             user_id: req.session.user_id,
                             product_id: req.params.id,
                             bought: 0
                         }
                     })
-                    .then(x => {
+                    .then(count => {
                         if (count > 0){
                             db.Product_Cart.increment(
                                 'units',
@@ -101,9 +108,9 @@ const controller = {
                                 product_id: req.params.id,
                             });
                         }
-                        return x;
+                        return count;
                     })
-                    .then(x => {return res.redirect('/products/:id');});
+                    .then(x => {return res.redirect('/products/'+redirectId)});
                 }
             });
         }

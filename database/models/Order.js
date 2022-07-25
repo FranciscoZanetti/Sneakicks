@@ -53,7 +53,7 @@ module.exports = function(sequelize, dataTypes){
                 onDelete: "set null",
                 onUpdate: "cascade"
             });
-        Order.hasMany(models.Shipping,
+        Order.belongsTo(models.Shipping,
             {
                 as: "shipping",
                 foreignKey: "id_shipping",

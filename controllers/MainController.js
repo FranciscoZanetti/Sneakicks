@@ -15,7 +15,7 @@ const controller = {
             let promiseProduct_Cart = db.Product_Cart.findAll({
                 where: {
                     user_id: req.session.user_id,
-                    bougth: 0
+                    bought: 0
                 },
                 include: { association: "product" }
             });
@@ -27,6 +27,7 @@ const controller = {
                         resultsProduct_Cart.forEach(item => {
                             ammount += item.product.price_final * item.units;
                         });
+                        console.log(resultsProduct_Cart);
                         return res.render('products/cart', { productsCart: resultsProduct_Cart, ammount: ammount, shippings: resultsShipping });
                     } else {
                         return res.render('products/cart');
