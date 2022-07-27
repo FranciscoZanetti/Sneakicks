@@ -12,7 +12,7 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.STRING(30),
             allowNull: false
         },
-        brand_name: {
+        id_brand: {
             type: dataTypes.STRING(30),
             allowNull: false
         },
@@ -95,7 +95,13 @@ module.exports = function(sequelize, dataTypes){
                 as: "reviews",
                 foreignKey: "id_product"
             });
-
+        Product.belongsTo(models.Brand,
+            {
+                as: "brand",
+                foreignKey: "id_brand",
+                onDelete: "no action",
+                onUpdate: "no action"
+            });
         Product.belongsToMany(models.Size,
             {
                 as: "sizes",

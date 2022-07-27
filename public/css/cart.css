@@ -124,7 +124,7 @@ li.subtotal:before {
 }
 
 .price,
-.quantity,
+.stock,
 .remove {
   width: 30%;
 }
@@ -183,7 +183,7 @@ li.subtotal:before {
   padding: 1rem 0;
 }
 
-.quantity-field {
+.stock-field {
   background-color: #ccc;
   border: 1px solid #aaa;
   border-radius: 4px;

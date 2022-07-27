@@ -8,7 +8,7 @@ module.exports = function(sequelize, dataTypes){
             autoIncrement: true,
             allowNull: false
         },
-        quantity: {
+        stock: {
             type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },

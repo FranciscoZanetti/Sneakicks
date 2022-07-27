@@ -5,7 +5,7 @@ USE `sneakicks`;
 CREATE TABLE `sneakicks`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `category` VARCHAR(30) NOT NULL,
-  `brand_name` VARCHAR(30) NOT NULL,
+  `id_brand` INT NOT NULL,
   `name` VARCHAR(40) NOT NULL,
   `colorwave` VARCHAR(20) NOT NULL,
   `whole_name` VARCHAR(60) NOT NULL,
@@ -22,7 +22,19 @@ CREATE TABLE `sneakicks`.`products` (
   `picture4` VARCHAR(200) NULL,
   `createdAt` DATE NULL,
   `updatedAt` DATE NULL,
-  PRIMARY KEY (`id`) );
+  PRIMARY KEY (`id`) ),
+  CONSTRAINT `id_brand`
+  FOREIGN KEY (`id_brand`)
+  REFERENCES `sneakicks`.`brands` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+CREATE TABLE `sneakicks`.`brands` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `createdAt` DATETIME NULL,
+  `updatedAt` DATETIME NULL;
+  PRIMARY KEY (`id`));
   
 CREATE TABLE `sneakicks`.`reviews` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -41,11 +53,12 @@ CREATE TABLE `sneakicks`.`reviews` (
 CREATE TABLE `sneakicks`.`sizes` (
   `id` DECIMAL(3,1) NOT NULL,
   `number` DECIMAL(3,1) UNSIGNED NOT NULL,
+  `centimeters` DECIMAL(3,1) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `sneakicks`.`products_sizes` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `quantity` INT UNSIGNED NOT NULL,
+  `stock` INT UNSIGNED NOT NULL,
   `product` INT NOT NULL,
   `size` DECIMAL(3,1) NOT NULL,
   `createdAt` DATE NULL,

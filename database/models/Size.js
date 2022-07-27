@@ -10,6 +10,10 @@ module.exports = function(sequelize, dataTypes){
         number: {
             type: dataTypes.DECIMAL(3,1).UNSIGNED,
             allowNull: false
+        },
+        centimeters: {
+            type: dataTypes.DECIMAL(3,1).UNSIGNED,
+            allowNull: false
         }
     }
 

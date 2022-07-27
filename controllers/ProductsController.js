@@ -12,24 +12,9 @@ const reviews = JSON.parse(reviewsJSON);
 
 const controller = {
 	productDetail: (req, res) => {
-		// let product = products.find(item => {
-		// 	return item.id == req.params.id;
-		// });
-        // let sizeArray = product.size;
-        // sizeArray = sizeArray.sort( (a,b) => {return a-b});
-        // let recomendedProducts = products.filter(element => element.id != req.params.id);
-        // let colorwaveArray = [];
-        // products.forEach(element => {
-        //     if ((element.name == product.name) && (element.id != product.id)){
-        //         colorwaveArray.push(element.colorwave);
-        //     }
-        // });
-
-        // productReviews = reviews.filter(review => review.id == product.id);
-        // productReviews.reverse();
         let colorwavesArray = [];
 
-        let promiseProduct = db.Product.findByPk(req.params.id);
+        let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
         let promiseProduct_Size = db.Product_Size.findAll({
             where: {
                 product: req.params.id
@@ -40,7 +25,7 @@ const controller = {
                 id_product: req.params.id
             }
         });
-        let promiseColorwaves = db.Product.findAll();
+        let promiseColorwaves = db.Product.findAll({include: {association: "brand"}});
         Promise.all([promiseProduct, promiseProduct_Size, promiseReview, promiseColorwaves])
             .then(([resultProduct, resultProduct_Size, resultReview, resultColorwaves]) => {
                 resultColorwaves.forEach(result => {
@@ -74,7 +59,7 @@ const controller = {
             })
             .then(result => {
                 console.log(result);
-                if (result.quantity == 0){
+                if (result.stock == 0){
                     // Window.alert("Sin stock de este talle!");
                     console.log("Sin stock de este talle!");
                     return res.redirect('/products/'+redirectId);
@@ -155,52 +140,48 @@ const controller = {
             }else{
                 pic4 = null;
             }
-            db.Product.create({
-                brand_name: req.body.brand_name,
-                category: req.body.category,
-                colorwave: req.body.colorwave,
-                discount: req.body.discount,
-                name: req.body.name,
-                whole_name: req.body.name+" '"+req.body.colorwave+"'",
-                release_year: req.body.release_year,
-                price_original: req.body.price_original,
-                price_final: (100 - req.body.discount) * req.body.price_original / 100,
-                shoe_condition: req.body.shoe_condition,
-                story: req.body.story,
-                main_picture: mainPic,
-                picture1: pic1,
-                picture2: pic2,
-                picture3: pic3,
-                picture4: pic4
-            })
+            db.Brand.findOrCreate(
+                {
+                    where: {
+                        name: req.body.brand_name
+                    },
+                    defaults: {
+                        name: req.body.brand_name
+                    }
+                }
+            )
+            .then(brand => {
+                db.Product.create({
+                    id_brand: brand.id,
+                    category: req.body.category,
+                    colorwave: req.body.colorwave,
+                    discount: req.body.discount,
+                    name: req.body.name,
+                    whole_name: req.body.name+" '"+req.body.colorwave+"'",
+                    release_year: req.body.release_year,
+                    price_original: req.body.price_original,
+                    price_final: (100 - req.body.discount) * req.body.price_original / 100,
+                    shoe_condition: req.body.shoe_condition,
+                    story: req.body.story,
+                    main_picture: mainPic,
+                    picture1: pic1,
+                    picture2: pic2,
+                    picture3: pic3,
+                    picture4: pic4
+                })
                 .then( created => {
                     db.Product_Size.create({
                         product: created.id,
                         size: 3.0,
-                        quantity: req.body.size_30
+                        stock: req.body.size_30
                     });
                     return created.id;
                 })
-                // .then(created => {
-                //     id_created = created.id;
-                //     return id_created;
-                // })
-                // async function fillSizes (id_created){
-                //     for (let i=30; i<=155; i+50){
-                //         if (i==30){
-                //             db.Product_Size.create({
-                //                 product: id_created,
-                //                 size: 3.0,
-                //                 quantity: sizesArray
-                //             })
-                //         }
-                //     }
-                // }
                 .then(id_created => {
                     db.Product_Size.create({
                         product: id_created,
                         size: 3.5,
-                        quantity: req.body.size_35
+                        stock: req.body.size_35
                     });
                     return id_created;
                 })
@@ -208,7 +189,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 4.0,
-                        quantity: req.body.size_40
+                        stock: req.body.size_40
                     });
                     return id_created;
                 })
@@ -216,7 +197,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 4.5,
-                        quantity: req.body.size_45
+                        stock: req.body.size_45
                     });
                     return id_created;
                 })
@@ -224,7 +205,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 5.0,
-                        quantity: req.body.size_50
+                        stock: req.body.size_50
                     });
                     return id_created;
                 })
@@ -232,14 +213,14 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 5.5,
-                        quantity: req.body.size_55
+                        stock: req.body.size_55
                     });
                     return id_created;
                 }).then(id_created => {
                     db.Product_Size.create({
                         product: id_created,
                         size: 6.0,
-                        quantity: req.body.size_60
+                        stock: req.body.size_60
                     });
                     return id_created;
                 })
@@ -247,7 +228,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 6.5,
-                        quantity: req.body.size_65
+                        stock: req.body.size_65
                     });
                     return id_created;
                 })
@@ -255,7 +236,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 7.0,
-                        quantity: req.body.size_70
+                        stock: req.body.size_70
                     });
                     return id_created;
                 })
@@ -263,7 +244,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 7.5,
-                        quantity: req.body.size_75
+                        stock: req.body.size_75
                     });
                     return id_created;
                 })
@@ -271,7 +252,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 8.0,
-                        quantity: req.body.size_80
+                        stock: req.body.size_80
                     });
                     return id_created;
                 })
@@ -279,7 +260,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 8.5,
-                        quantity: req.body.size_85
+                        stock: req.body.size_85
                     });
                     return id_created;
                 })
@@ -287,7 +268,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 9.0,
-                        quantity: req.body.size_90
+                        stock: req.body.size_90
                     });
                     return id_created;
                 })
@@ -295,7 +276,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 9.5,
-                        quantity: req.body.size_95
+                        stock: req.body.size_95
                     });
                     return id_created;
                 })
@@ -303,7 +284,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 10.0,
-                        quantity: req.body.size_100
+                        stock: req.body.size_100
                     });
                     return id_created;
                 })
@@ -311,7 +292,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 10.5,
-                        quantity: req.body.size_105
+                        stock: req.body.size_105
                     });
                     return id_created;
                 })
@@ -319,7 +300,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 11.0,
-                        quantity: req.body.size_110
+                        stock: req.body.size_110
                     });
                     return id_created;
                 })
@@ -327,7 +308,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 11.5,
-                        quantity: req.body.size_115
+                        stock: req.body.size_115
                     });
                     return id_created;
                 })
@@ -335,7 +316,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 12.0,
-                        quantity: req.body.size_120
+                        stock: req.body.size_120
                     });
                     return id_created;
                 })
@@ -343,7 +324,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 12.5,
-                        quantity: req.body.size_125
+                        stock: req.body.size_125
                     });
                     return id_created;
                 })
@@ -351,7 +332,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 13.0,
-                        quantity: req.body.size_130
+                        stock: req.body.size_130
                     });
                     return id_created;
                 })
@@ -359,14 +340,14 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 13.5,
-                        quantity: req.body.size_135
+                        stock: req.body.size_135
                     });
                     return id_created;
                 }).then(id_created => {
                     db.Product_Size.create({
                         product: id_created,
                         size: 14.0,
-                        quantity: req.body.size_140
+                        stock: req.body.size_140
                     });
                     return id_created;
                 })
@@ -374,7 +355,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 14.5,
-                        quantity: req.body.size_145
+                        stock: req.body.size_145
                     });
                     return id_created;
                 })
@@ -382,7 +363,7 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 15.0,
-                        quantity: req.body.size_150
+                        stock: req.body.size_150
                     });
                     return id_created;
                 })
@@ -390,25 +371,18 @@ const controller = {
                     db.Product_Size.create({
                         product: id_created,
                         size: 15.5,
-                        quantity: req.body.size_155
+                        stock: req.body.size_155
                     });
                     return id_created;
                 })
                 .then(id_created => {
                     return res.redirect('/products/'+id_created);
                 });
+            });
         }
     },
     editGet: (req, res) => {
-        // let product = products.find(item => {
-		// 	return item.id == req.params.id;
-		// });
-        // console.log(product);
-        // let sizeArray = product.size;
-
-        // return res.render('products/editProduct', {product: product, sizeArray: sizeArray});
-
-        let promiseProduct = db.Product.findByPk(req.params.id);
+        let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
         let promiseProduct_Size = db.Product_Size.findAll({
             where: {
                 product: req.params.id
@@ -422,18 +396,12 @@ const controller = {
     },
     editPut: (req, res) => {
 
-        let promiseProduct = db.Product.findByPk(req.params.id);
+        let promiseProduct = db.Product.findByPk(req.params.id, {indlude: {association: "brand"}});
         let promiseProduct_Size = db.Product_Size.findAll({
             where: {
                 product: req.params.id
             }
         });
-
-        // let product = products.find(item => {
-		// 	return item.id == req.params.id;
-		// });
-        // let sizeArray = product.size;
-
         let errors = validationResult(req);
         Promise.all([promiseProduct, promiseProduct_Size])
             .then(([resultProduct, resultProduct_Size]) => {
@@ -441,24 +409,35 @@ const controller = {
                     res.render("products/editProduct", { errors: errors.mapped(), old: req.body, product: resultProduct, sizeArray: resultProduct_Size });
                 }else{
                     let edited_id = req.params.id;
-                    db.Product.update(
+                    db.Brand.findOrCreate(
                         {
-                            brand_name: req.body.brand_name,
-                            category: req.body.category,
-                            colorwave: req.body.colorwave,
-                            discount: req.body.discount,
-                            name: req.body.name,
-                            whole_name: req.body.name+" '"+req.body.colorwave+"'",
-                            release_year: req.body.release_year,
-                            price_original: req.body.price_original,
-                            price_final: (100 - req.body.discount) * req.body.price_original / 100,
-                            shoe_condition: req.body.shoe_condition,
-                            story: req.body.story
-                        },
-                        {
-                            where: {id: edited_id}
+                            where: {
+                                name: req.body.brand_name
+                            },
+                            defaults: {
+                                name: req.body.brand_name
+                            }
                         }
                     )
+                    .then(brand => {
+                        db.Product.update(
+                            {
+                                id_brand: brand.id,
+                                category: req.body.category,
+                                colorwave: req.body.colorwave,
+                                discount: req.body.discount,
+                                name: req.body.name,
+                                whole_name: req.body.name+" '"+req.body.colorwave+"'",
+                                release_year: req.body.release_year,
+                                price_original: req.body.price_original,
+                                price_final: (100 - req.body.discount) * req.body.price_original / 100,
+                                shoe_condition: req.body.shoe_condition,
+                                story: req.body.story
+                            },
+                            {
+                                where: {id: edited_id}
+                            }
+                        )
                         .then(result => {
 
                             if (req.files && req.files.length >=1){
@@ -498,14 +477,14 @@ const controller = {
                                     {
                                         where: {id: edited_id}
                                     }
-                                )
+                                );
                             }
-                            
+                            // CHEQUEAR CODIGO DE EDIT PUT
                         });
                     
                         let promise30 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_30,
+                                stock: req.body.size_30,
                             },
                             {
                                 where: {
@@ -516,7 +495,7 @@ const controller = {
                         );
                         let promise35 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_35,
+                                stock: req.body.size_35,
                             },
                             {
                                 where: {
@@ -527,7 +506,7 @@ const controller = {
                         );
                         let promise40 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_40,
+                                stock: req.body.size_40,
                             },
                             {
                                 where: {
@@ -538,7 +517,7 @@ const controller = {
                         );
                         let promise45 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_45,
+                                stock: req.body.size_45,
                             },
                             {
                                 where: {
@@ -549,7 +528,7 @@ const controller = {
                         );
                         let promise50 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_50,
+                                stock: req.body.size_50,
                             },
                             {
                                 where: {
@@ -560,7 +539,7 @@ const controller = {
                         );
                         let promise55 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_55,
+                                stock: req.body.size_55,
                             },
                             {
                                 where: {
@@ -571,7 +550,7 @@ const controller = {
                         );
                         let promise60 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_60,
+                                stock: req.body.size_60,
                             },
                             {
                                 where: {
@@ -582,7 +561,7 @@ const controller = {
                         );
                         let promise65 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_65,
+                                stock: req.body.size_65,
                             },
                             {
                                 where: {
@@ -593,7 +572,7 @@ const controller = {
                         );
                         let promise70 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_70,
+                                stock: req.body.size_70,
                             },
                             {
                                 where: {
@@ -604,7 +583,7 @@ const controller = {
                         );
                         let promise75 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_75,
+                                stock: req.body.size_75,
                             },
                             {
                                 where: {
@@ -615,7 +594,7 @@ const controller = {
                         );
                         let promise80 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_80,
+                                stock: req.body.size_80,
                             },
                             {
                                 where: {
@@ -626,7 +605,7 @@ const controller = {
                         );
                         let promise85 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_35,
+                                stock: req.body.size_35,
                             },
                             {
                                 where: {
@@ -637,7 +616,7 @@ const controller = {
                         );
                         let promise90 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_90,
+                                stock: req.body.size_90,
                             },
                             {
                                 where: {
@@ -648,7 +627,7 @@ const controller = {
                         );
                         let promise95 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_95,
+                                stock: req.body.size_95,
                             },
                             {
                                 where: {
@@ -659,7 +638,7 @@ const controller = {
                         );
                         let promise100 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_100,
+                                stock: req.body.size_100,
                             },
                             {
                                 where: {
@@ -670,7 +649,7 @@ const controller = {
                         );
                         let promise105 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_105,
+                                stock: req.body.size_105,
                             },
                             {
                                 where: {
@@ -681,7 +660,7 @@ const controller = {
                         );
                         let promise110 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_110,
+                                stock: req.body.size_110,
                             },
                             {
                                 where: {
@@ -692,7 +671,7 @@ const controller = {
                         );
                         let promise115 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_115,
+                                stock: req.body.size_115,
                             },
                             {
                                 where: {
@@ -703,7 +682,7 @@ const controller = {
                         );
                         let promise120 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_120,
+                                stock: req.body.size_120,
                             },
                             {
                                 where: {
@@ -714,7 +693,7 @@ const controller = {
                         );
                         let promise125 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_125,
+                                stock: req.body.size_125,
                             },
                             {
                                 where: {
@@ -725,7 +704,7 @@ const controller = {
                         );
                         let promise130 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_130,
+                                stock: req.body.size_130,
                             },
                             {
                                 where: {
@@ -736,7 +715,7 @@ const controller = {
                         );
                         let promise135 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_135,
+                                stock: req.body.size_135,
                             },
                             {
                                 where: {
@@ -747,7 +726,7 @@ const controller = {
                         );
                         let promise140 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_140,
+                                stock: req.body.size_140,
                             },
                             {
                                 where: {
@@ -758,7 +737,7 @@ const controller = {
                         );
                         let promise145 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_145,
+                                stock: req.body.size_145,
                             },
                             {
                                 where: {
@@ -769,7 +748,7 @@ const controller = {
                         );
                         let promise150 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_150,
+                                stock: req.body.size_150,
                             },
                             {
                                 where: {
@@ -780,7 +759,7 @@ const controller = {
                         );
                         let promise155 = db.Product_Size.update(
                             {
-                                quantity: req.body.size_155,
+                                stock: req.body.size_155,
                             },
                             {
                                 where: {
@@ -789,6 +768,8 @@ const controller = {
                                 }
                             }
                         );
+                    });
+                        
                         Promise.all([promise30, promise35, promise40, promise45, promise50, promise55, promise60, promise65, promise70,
                         promise75, promise80, promise85, promise90, promise100, promise105, promise110, promise115, promise120,
                         promise125, promise130, promise135, promise140, promise145, promise150, promise155])
@@ -798,92 +779,21 @@ const controller = {
                                     return res.redirect("/products/"+edited_id);
                                 });
                 }
-            })
-        // if (!errors.isEmpty()){
-        //     res.render("products/editProduct", { errors: errors.mapped(), old: req.body, product: product, sizeArray: sizeArray });
-        // }else{
-        //     let discountInt = parseInt(req.body.discount);
-        //     let price_originalInt = parseInt(req.body.price_original);
-        //     let price_finalInt = (100-discountInt) * price_originalInt / 100;
-
-        //     let editedShoe = {
-        //         brand_name: req.body.brand_name,
-        //         category: req.body.category,
-        //         colorwave: req.body.colorwave,
-        //         discount: req.body.discount,
-        //         id: product.id,
-        //         name: req.body.name,
-        //         whole_name: req.body.name+" '"+req.body.colorwave+"'",
-        //         release_year: req.body.release_year,
-        //         price_original: req.body.price_original,
-        //         price_final: JSON.stringify(price_finalInt),
-        //         shoe_condition: req.body.shoe_condition,
-        //         story: req.body.story,
-        //         size: req.body.size,
-        //         stock: req.body.stock
-        //     }
-        //     if (req.file){
-        //         editedShoe.main_picture = req.file.filename;
-        //     }else{
-        //         editedShoe.main_picture = product.main_picture;
-        //     };
-            
-        //     products.forEach( (product, index) => {
-        //         if (product.id == req.params.id){
-        //             products[index] = editedShoe;
-        //         }
-        //     });
-
-        //     productsStringified = JSON.stringify(products, null, '\t');
-        //     fs.writeFileSync("./data/products.json", productsStringified);
-
-        //     return res.redirect("/products/"+editedShoe.id);
-        // }
+            });
     },
     deleteGet: (req, res) => {
-        // let product = products.find(item => {
-		// 	return item.id == req.params.id;
-		// });
-        // return res.render("products/deleteProduct", {product: product});
         db.Product.findByPk(req.params.id)
             .then(result => {return res.render("products/deleteProduct", {product: result})});
     },
     deleteDelete: (req, res) => {
-        // let productsAfterDelete = [];
-        // products.forEach( product => {
-        //     console.log(product.id == req.params.id);
-        //     if (product.id != req.params.id){
-        //         productsAfterDelete.push(product);
-        //     }
-        // });
-
-        // productsStringified = JSON.stringify(productsAfterDelete, null, '\t');
-        // console.log(productsStringified);
-        // fs.writeFileSync("./data/products.json", productsStringified);
-
-        // let reviewsAfterDelete = [];
-        // reviews.forEach( review => {
-        //     console.log(review.id == req.params.id);
-        //     if (review.id != req.params.id){
-        //         reviewsAfterDelete.push(review);
-        //     }
-        // });
-
-        // reviewsStringified = JSON.stringify(reviewsAfterDelete, null, '\t');
-        // console.log(reviewsStringified);
-        // fs.writeFileSync("./data/reviews.json", reviewsStringified);
-
-        // return res.redirect("/products/");
         db.Product.destroy({
             where: {id: req.params.id}
         })
-            .then(result => {return res.redirect("/products/")});
+        .then(result => {return res.redirect("/products/")});
     },
     productList: (req, res) => {
-        // console.log(products);
-        // return res.render("products/productList", {products: products});
-        db.Product.findAll()
-            .then(results => {return res.render("products/productList", {products: results})});
+        db.Product.findAll({include: {association: "brand"}})
+        .then(results => {return res.render("products/productList", {products: results})});
     },
     addReview: (req, res) => {
         let errors = validationResult(req);
@@ -892,18 +802,6 @@ const controller = {
             res.redirect('/products/'+idProduct);
         }
         else{
-            // let newReview = {
-            //     id: req.params.id,
-            //     stars: req.body.stars,
-            //     text: req.body.text
-            // }
-            // console.log("body: ", req.body);
-            // console.log(newReview);
-
-            // reviews.push(newReview);
-            // reviewsStringified = JSON.stringify(reviews, null, '\t');
-            // fs.writeFileSync("./data/reviews.json", reviewsStringified);
-
             db.Review.create({
                 stars: req.body.stars,
                 stars: req.body.stars,

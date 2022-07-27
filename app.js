@@ -4,6 +4,9 @@ const port = 3000
 const mainRoutes = require('./routes/mainRoutes');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
+const mainApiRoutes = require('./routes/apis/main');
+const productsApiRoutes = require('./routes/apis/products');
+const usersApiRoutes = require('./routes/apis/users');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
@@ -34,6 +37,9 @@ app.set('view engine', 'ejs');
 app.use('/', mainRoutes);
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
+app.use('/api/main', mainApiRoutes);
+app.use('/api/products', productsApiRoutes);
+app.use('/api/users', usersApiRoutes);
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Servidor iniciado en puerto ${port} - http://localhost:${port}`)
