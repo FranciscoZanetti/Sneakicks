@@ -22,7 +22,7 @@ module.exports = {
                 }
                 brand.count = counter;
             });
-            return res.json(brands);
+            return res.json({brands: brands});
         })
 
         // let promiseBrands = db.Brand.findAll({
@@ -63,7 +63,7 @@ module.exports = {
 
         // let brands = buildApi();
         // console.log(brands);
-        // return res.json(brands);
+        // return res.json({brands: brands});
     },
     search: (req, res) => {
         db.Product.findAll(
@@ -83,6 +83,6 @@ module.exports = {
                 ]
             }
         )
-        .then(products => {return res.json(products)});
+        .then(products => {return res.json({products: products})});
     }
 }

@@ -77,7 +77,7 @@ module.exports = {
                     women: counterWomen,
                     kids: counterKids
                 },
-                products
+                products: products
             });
         });
     },
@@ -88,7 +88,7 @@ module.exports = {
                 {association: "brand"}, {association: "product_sizes"}, {association: "reviews"}
             ]
         });
-        let promiseOtherColorwaves = db.Product.findAll();
+        let promiseOtherColorwaves = db.Product.findAll({include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]});
         Promise.all([promiseProduct, promiseOtherColorwaves])
         .then(([product, colorwaves]) => {
             colorwaves.forEach(colorwave => {
@@ -111,12 +111,13 @@ module.exports = {
                     checkerKids = true;
                 }
             });
+            let recomended = colorwaves.filter(element => element.id != req.params.id && (product.brand.name == element.brand.name || product.colorwave == element.colorwave));
             product.hasStock = {
                 men: checkerMen,
                 women: checkerWomen,
                 kids: checkerKids
             }
-            return res.json(product);
+            return res.json({product: product, colorwaves: otherColorwaves, recomended: recomended});
         });
     },
     create: (req, res) => {
@@ -794,7 +795,7 @@ module.exports = {
         db.Product.destroy({
             where: {id: req.params.id}
         })
-        .then(result => {return res.json(result)});
+        .then(result => {return res.json({result: result})});
     },
     addReview: (req, res) => {
         let errors = validationResult(req);
@@ -802,7 +803,7 @@ module.exports = {
         db.Product.findByPk(req.params.id, {include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]})
         .then(product => {
             if (!errors.isEmpty()){
-                return res.json(product);
+                return res.json({product: product});
             }
             else{
                 db.Review.create({
@@ -812,7 +813,83 @@ module.exports = {
                     id_product: idProduct
                 })
                 .then(review => {
-                    return res.json(product);
+                    return res.json({product: product});
+                });
+            }
+        });
+    },
+    addToCart: (req, res) => {
+        let redirectId = req.params.id;
+        let promiseProduct = db.Product.findByPk(req.params.id, {include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]});
+        let promiseRecomended = db.Product.findAll({include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]});
+        Promise.all([promiseProduct, promiseRecomended])
+        .then(([product, recomended]) => {
+            console.log(req.session);
+            if (!req.session.user_id || req.session.user_id == undefined){
+                // Window.alert("Inicia sesión para agregar al carrito");
+                console.log("\nInicia sesión para agregar al carrito\n");
+                return res.json({
+                    product: product,
+                    status: "has to login"
+                });
+            }
+            else{
+                console.log(req.body);
+                console.log(req.params.id);
+                // let parsedSize = parseFloat(req.body.size);
+                console.log(req.body.size);
+                db.Product_Size.findOne({
+                    where: {
+                        product: req.params.id,
+                        size: req.body.size
+                    }
+                })
+                .then(result => {
+                    console.log(result);
+                    if (result.stock == 0){
+                        // Window.alert("Sin stock de este talle!");
+                        console.log("Sin stock de este talle!");
+                        return res.json({
+                            product: product,
+                            status: "no stock"
+                        });
+                    }else{
+                        db.Product_Cart.count({
+                            where: {
+                                user_id: req.session.user_id,
+                                product_id: req.params.id,
+                                bought: 0
+                            }
+                        })
+                        .then(count => {
+                            if (count > 0){
+                                db.Product_Cart.increment(
+                                    'units',
+                                    {
+                                        by: 1,
+                                        where: {
+                                            user_id: req.session.user_id,
+                                            product_id: req.params.id,
+                                            bought: 0
+                                        }
+                                    }
+                                );
+                            }else{
+                                db.Product_Cart.create({
+                                    units: 1,
+                                    size: req.body.size,
+                                    bought: 0,
+                                    user_id: req.session.user_id,
+                                    product_id: req.params.id,
+                                });
+                            }
+                            return count;
+                        })
+                        .then(x => {return res.json({
+                            product: product,
+                            status: "added"
+                        })});
+                    }
                 });
             }
         });
