@@ -15,3 +15,5 @@ const storage = multer.diskStorage({
 const uploadFile = multer({ storage });
 
 const usersApiController = require('../../controllers/apis/usersApiController');
+
+module.exports = router;

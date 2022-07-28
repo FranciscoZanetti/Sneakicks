@@ -4,6 +4,8 @@ const path = require('path');
 
 const mainApiController = require('../../controllers/apis/mainApiController');
 
-router.get('/', mainApiController.index);
+router.get('/brands', mainApiController.brands);
 
-router.get('/cart', mainApiController.cart);
+// router.get('/cart', mainApiController.cart);
+
+module.exports = router;

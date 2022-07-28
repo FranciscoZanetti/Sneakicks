@@ -112,7 +112,7 @@ module.exports = function(sequelize, dataTypes){
             });
         Product.hasMany(models.Product_Size,
             {
-                as: "product_size",
+                as: "product_sizes",
                 foreignKey: "product"
             });
         Product.belongsToMany(models.User,

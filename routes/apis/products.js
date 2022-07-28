@@ -16,5 +16,7 @@ const uploadFile = multer({storage});
 
 const productsApiController = require('../../controllers/apis/productsApiController');
 
-router.get('/');
-router.get('/:id');
+router.get('/', productsApiController.list);
+router.get('/:id', productsApiController.detail);
+
+module.exports = router;
