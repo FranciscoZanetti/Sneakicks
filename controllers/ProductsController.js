@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
+const fetch = require("node-fetch");
 
 const { validationResult } = require("express-validator");
 
@@ -12,32 +13,41 @@ const reviews = JSON.parse(reviewsJSON);
 
 const controller = {
 	productDetail: (req, res) => {
-        let colorwavesArray = [];
+        // let colorwavesArray = [];
 
-        let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
-        let promiseProduct_Size = db.Product_Size.findAll({
-            where: {
-                product: req.params.id
-            }
-        });
-        let promiseReview = db.Review.findAll({
-            where: {
-                id_product: req.params.id
-            }
-        });
-        let promiseColorwaves = db.Product.findAll({include: {association: "brand"}});
-        Promise.all([promiseProduct, promiseProduct_Size, promiseReview, promiseColorwaves])
-            .then(([resultProduct, resultProduct_Size, resultReview, resultColorwaves]) => {
-                resultColorwaves.forEach(result => {
-                    if ((result.name == resultProduct.name) && (result.id != resultProduct.id)){
-                        colorwavesArray.push(result.colorwave);
-                    }
-                });
-                let recomendedProducts = resultColorwaves.filter(element => element.id != req.params.id);
-                resultReview.reverse();
+        // let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
+        // let promiseProduct_Size = db.Product_Size.findAll({
+        //     where: {
+        //         product: req.params.id
+        //     }
+        // });
+        // let promiseReview = db.Review.findAll({
+        //     where: {
+        //         id_product: req.params.id
+        //     }
+        // });
+        // let promiseColorwaves = db.Product.findAll({include: {association: "brand"}});
+        // Promise.all([promiseProduct, promiseProduct_Size, promiseReview, promiseColorwaves])
+        //     .then(([resultProduct, resultProduct_Size, resultReview, resultColorwaves]) => {
+        //         resultColorwaves.forEach(result => {
+        //             if ((result.name == resultProduct.name) && (result.id != resultProduct.id)){
+        //                 colorwavesArray.push(result.colorwave);
+        //             }
+        //         });
+        //         let recomendedProducts = resultColorwaves.filter(element => element.id != req.params.id);
+        //         resultReview.reverse();
 
-                return res.render('products/productDetail', {product: resultProduct, sizeArray: resultProduct_Size, colorwaveArray: colorwavesArray, productReviews: resultReview, recomendedProducts: recomendedProducts});
-            });
+        //         return res.render('products/productDetail', {product: resultProduct, sizeArray: resultProduct_Size, colorwaveArray: colorwavesArray, productReviews: resultReview, recomendedProducts: recomendedProducts});
+        //     });
+        
+        fetch("http://localhost:3000/api/products/"+req.params.id)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            console.log(result.colorwaves);
+            console.log(result.colorwaves.length);
+            return res.render('products/productDetail', {product: result.product}, {otherColorwaves: result.colorwaves}, {recomended: result.recomended});
+        });
     },
     addToCart: (req, res) => {
         let redirectId = req.params.id;

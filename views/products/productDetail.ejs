@@ -85,7 +85,7 @@
                     <div class="star-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
         
                     <div class="product-info-brand">
-                        <p id="product-info-brand"><%= product.brand_name %></p>
+                        <p id="product-info-brand"><%= product.brand.name %></p>
                     </div>
 
                     <div class="images-big"><img src="/img/products/<%= product.main_picture %>" alt=<%= product.name %>></div>
@@ -129,7 +129,7 @@
                         </article>
                     </section>
         
-                    <form class="product-info-form" action="/products/<%= product.id %>" method="post">
+                    <form class="product-info-form" action="api/products/<%= product.id %>" method="post">
         
                         <section class="form-size">
                             <div class="size-select-container-parent">
@@ -137,8 +137,8 @@
                                     <label for="size">Talle:</label>
                                     <select name="size" id="size">
                                         <option selected disabled hidden> </option>
-                                        <% for (let size of sizeArray){ %>
-                                            <option value="<%= size.size %>" ><%= size.size %></option>
+                                        <% for (let product_size of product.product_sizes){ %>
+                                            <option value="<%= product_size.number %>" ><%= product_size.number %></option>
                                         <% } %>
                                     </select>
                                     <span class="custom-arrow-size"></span>
@@ -165,13 +165,13 @@
                                 <label for="colorwave">Modelo:</label>
                                 <select name="colorwave" id="colorwave">
                                     <option value="<%= product.colorwave %>" selected><%= product.colorwave %></option>
-                                    <% if ( colorwaveArray.length >=1 ){ %>
-                                        <% for ( let colorwave of colorwaveArray ){ %>
-                                            <option value="<%= colorwave %>"><%= colorwave %></option>
-                                            <!-- <option value="Bordeaux">Bordeaux</option>
-                                            <option value="Olive Green" selected>Olive Green</option> -->
+                                        <% if ( otherColorwaves.length >= 1){ %>
+                                            <% for ( let colorwave of otherColorwaves){ %>
+                                                <option value="<%= colorwave %>"><%= colorwave %></option>
+                                                <!-- <option value="Bordeaux">Bordeaux</option>
+                                                <option value="Olive Green" selected>Olive Green</option> -->
+                                            <% } %>
                                         <% } %>
-                                    <% } %>
                                 </select>
                                 <span class="custom-arrow-colorwave"></span>
                             </div>
@@ -210,7 +210,7 @@
                 <article class="details-text">
 
                     <h3>Reseñas</h3>
-                        <form class="text-review" action="/products/<%= product.id %>/adding-review" method="POST">
+                        <form class="text-review" action="api/products/<%= product.id %>/adding-review" method="POST">
                             <p class="text-subtitle">Deja una reseña</p>
                             <% if(locals.errors && errors.stars){ %>
                                 <p id="stars-text-error-message"><%= errors.stars.msg %></p>
@@ -247,7 +247,7 @@
 
                         <p class="text-subtitle">Reseñas del público</p>
 
-                        <% for (let review of productReviews){ %>
+                        <% for (let review of product.reviews){ %>
                             <article class="previous-reviews-review">
                                 <div class="review-stars">
                                     <% if (review.stars == 5){ %>

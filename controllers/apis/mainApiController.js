@@ -6,6 +6,9 @@ const op = db.Sequelize.Op;
 const { validationResult } = require("express-validator");
 const { Sequelize } = require('../../database/models');
 
+const fetch = require("node-fetch");
+// import fetch from 'node-fetch';
+
 module.exports = {
     brands: (req, res) => {
 
@@ -84,5 +87,28 @@ module.exports = {
             }
         )
         .then(products => {return res.json({products: products})});
+    },
+    home: (req, res) => {
+        fetch("http://localhost:3000/api/products/")
+        .then(response => response.json())
+        .then(list => {
+            let bargains = [];
+            let used = [];
+            let newones = [];
+            list.products.forEach(product => {
+                if (product.discount > 0)
+                    bargains.push(product);
+                if (product.shoe_condition == "used")
+                    used.push(product);
+                if (product.shoe_condition == "new_no_def")
+                    newones.push(product);
+            });
+            list.bargains = bargains;
+            list.used = used;
+            list.new = newones;
+            return res.json({
+                list
+            });
+        });
     }
 }
