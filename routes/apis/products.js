@@ -17,6 +17,7 @@ const uploadFile = multer({storage});
 const productsApiController = require('../../controllers/apis/productsApiController');
 
 router.get('/', productsApiController.list);
+router.get('/by-size-range', productsApiController.listBySizeRange);
 router.post('/create', uploadFile.array("product_pictures"), productMiddlewares.validateManageProduct, productsApiController.create);
 router.get('/:id', productsApiController.detail);
 router.post('/:id', productsApiController.addToCart);

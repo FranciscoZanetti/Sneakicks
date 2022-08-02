@@ -47,22 +47,9 @@ module.exports = {
                         checkerKids = true;
                     }
                 });
-                // let i = 0;
-                // while (i < product.product_sizes.length){
-                //     if (!checkerMen && product.product_sizes[i].size > 7.0 && product.product_sizes[i].stock > 0){
-                //         counterMen += 1;
-                //         checkerMen = true;
-                //     }
-                //     if (!checkerWomen && product.product_sizes[i].size > 4.0 && product.product_sizes[i].size < 10.0 && product.product_sizes[i].stock > 0){
-                //         counterWomen += 1;
-                //         checkerWomen = true;
-                //     }
-                //     if (!checkerKids && product.product_sizes[i].size < 7.0 && product.product_sizes[i].stock > 0){
-                //         counterKids += 1;
-                //         checkerKids = true;
-                //     }
-                //     i++;
-                // }
+                product['checkerMen'] = checkerMen;
+                product.checkerWomen = checkerWomen;
+                product.checkerKids = checkerKids;
                 product.detail = "http://localhost:3000/api/products/"+product.id;
             });
             return res.json({
@@ -77,7 +64,57 @@ module.exports = {
                     women: counterWomen,
                     kids: counterKids
                 },
-                products: products
+                products: products,
+            });
+        });
+    },
+    listBySizeRange: (req, res) => {
+        db.Product.findAll({
+            include: [
+                {association: "brand"},
+                {association: "reviews"},
+                {association: "product_sizes"}
+            ]
+        })
+        .then(products => {
+            let counterMen = 0;
+            let counterWomen = 0;
+            let counterKids = 0;
+            let productsMen = [];
+            let productsWomen = [];
+            let productsKids = [];
+            products.forEach(product => {
+                let checkerMen = false;
+                let checkerWomen = false;
+                let checkerKids = false;
+                product.product_sizes.forEach(product_size => {
+                    if (!checkerMen && product_size.size > 7.0 && product_size.stock > 0){
+                        counterMen += 1;
+                        productsMen.push(product);
+                        checkerMen = true;
+                    }
+                    if (!checkerWomen && product_size.size > 4.0 && product_size.size < 10.0 && product_size.stock > 0){
+                        counterWomen += 1;
+                        productsWomen.push(product);
+                        checkerWomen = true;
+                    }
+                    if (!checkerKids && product_size.size < 7.0 && product_size.stock > 0){
+                        counterKids += 1;
+                        productsKids.push(product);
+                        checkerKids = true;
+                    }
+                });
+            });
+            return res.json({
+                count: products.length,
+                countBySizeRange: {
+                    men: counterMen,
+                    women: counterWomen,
+                    kids: counterKids
+                },
+                productsMen: productsMen,
+                productsWomen: productsWomen,
+                productsKids: productsKids,
             });
         });
     },

@@ -35,8 +35,7 @@
             </div>
             <h2 class="center_text">NOVEDADES</h2>
             <div class="preview-container">
-                <% for( let product of products ) { %>
-                    <% if (product.shoe_condition=="new_no_defects" ) { %>
+                <% for( let product of result.new ) { %>
                         <div class="preview-container_item">
                             <a href="/products/<%= product.id %>">
                                 <div class="preview_image">
@@ -44,7 +43,7 @@
                                 </div>
                                 <div class="preview_content">
                                     <h3 class="half-margin">
-                                        <%= product.brand_name %>
+                                        <%= product.brand.name %>
                                     </h3>
                                     <p class="half-margin">
                                         <%= product.whole_name %>
@@ -55,13 +54,11 @@
                                 </div>
                             </a>
                         </div>
-                        <% } %>
-                            <% } %>
+                <% } %>
             </div>
             <h2 class="center_text">OFERTAS</h2>
             <div class="preview-container">
-                <% for( let product of products ) { %>
-                    <% if (product.shoe_condition=="used" ) { %>
+                <% for( let product of result.bargains ) { %>
                         <div class="preview-container_item">
                             <a href="/products/<%= product.id %>">
                                 <div class="preview_image">
@@ -69,7 +66,7 @@
                                 </div>
                                 <div class="preview_content">
                                     <h3 class="half-margin">
-                                        <%= product.brand_name %>
+                                        <%= product.brand.name %>
                                     </h3>
                                     <p class="half-margin">
                                         <%= product.whole_name %>
@@ -80,8 +77,7 @@
                                 </div>
                             </a>
                         </div>
-                        <% } %>
-                            <% } %>
+                <% } %>
             </div>
             <div class="carrousel_container">
                 <img src="/img/designs/banneroffer.jpg" alt="Oferta Pony" class="lower_banner">

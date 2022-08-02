@@ -8,6 +8,6 @@ router.get('/', mainApiController.home);
 
 router.get('/brands', mainApiController.brands);
 
-// router.get('/cart', mainApiController.cart);
+
 
 module.exports = router;

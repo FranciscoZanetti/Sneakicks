@@ -2,13 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
 const bcrypt = require('bcryptjs');
+const fetch = require("node-fetch");
 
 const controller = {
     index: (req, res) => {
-        console.log(bcrypt.hashSync('qwerty'));
-        console.log(req.session)
-        db.Product.findAll()
-            .then(results => { return res.render('index', { products: results }) });
+        // console.log(bcrypt.hashSync('qwerty'));
+        // console.log(req.session)
+        // db.Product.findAll()
+        //     .then(results => { return res.render('index', { products: results }) });
+        fetch("http://localhost:3000/api/main/")
+        .then(response => response.json())
+        .then(result => {return res.render('index', { result: result.list })});
     },
     cart: (req, res) => {
         if (req.session.user_id && req.session.user_id != undefined) {

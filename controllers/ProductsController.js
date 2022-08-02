@@ -4,6 +4,7 @@ const db = require('../database/models');
 const fetch = require("node-fetch");
 
 const { validationResult } = require("express-validator");
+const { response } = require('express');
 
 const productsJSON = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
 const products = JSON.parse(productsJSON);
@@ -46,7 +47,8 @@ const controller = {
             console.log(result);
             console.log(result.colorwaves);
             console.log(result.colorwaves.length);
-            return res.render('products/productDetail', {product: result.product}, {otherColorwaves: result.colorwaves}, {recomended: result.recomended});
+            console.log(result.product.product_sizes);
+            return res.render('products/productDetail', {result: result});
         });
     },
     addToCart: (req, res) => {
@@ -392,17 +394,22 @@ const controller = {
         }
     },
     editGet: (req, res) => {
-        let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
-        let promiseProduct_Size = db.Product_Size.findAll({
-            where: {
-                product: req.params.id
-            }
+        // let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
+        // let promiseProduct_Size = db.Product_Size.findAll({
+        //     where: {
+        //         product: req.params.id
+        //     }
+        // });
+        // Promise.all([promiseProduct, promiseProduct_Size])
+        //     .then(([resultProduct, resultProduct_Size]) => {
+        //         console.log(resultProduct_Size);
+        //         return res.render('products/editProduct', {product: resultProduct, sizeArray: resultProduct_Size});
+        //     });
+        fetch("http://localhost:3000/api/products/"+req.params.id)
+        .then(response => response.json())
+        .then(result => {
+            return res.render('products/editProduct', {product: result.product});
         });
-        Promise.all([promiseProduct, promiseProduct_Size])
-            .then(([resultProduct, resultProduct_Size]) => {
-                console.log(resultProduct_Size);
-                return res.render('products/editProduct', {product: resultProduct, sizeArray: resultProduct_Size});
-            });
     },
     editPut: (req, res) => {
 
@@ -792,8 +799,9 @@ const controller = {
             });
     },
     deleteGet: (req, res) => {
-        db.Product.findByPk(req.params.id)
-            .then(result => {return res.render("products/deleteProduct", {product: result})});
+        // db.Product.findByPk(req.params.id)
+        //     .then(result => {return res.render("products/deleteProduct", {product: result})});
+        return res.render("products/deleteProduct", {productId: req.params.id});
     },
     deleteDelete: (req, res) => {
         db.Product.destroy({
@@ -802,8 +810,14 @@ const controller = {
         .then(result => {return res.redirect("/products/")});
     },
     productList: (req, res) => {
-        db.Product.findAll({include: {association: "brand"}})
-        .then(results => {return res.render("products/productList", {products: results})});
+        // db.Product.findAll({include: {association: "brand"}})
+        // .then(results => {return res.render("products/productList", {products: results})});
+        fetch("http://localhost:3000/api/products")
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            return res.render("products/productList", {result: result});
+        });
     },
     addReview: (req, res) => {
         let errors = validationResult(req);
