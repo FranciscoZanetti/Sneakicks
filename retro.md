@@ -189,3 +189,35 @@ Se realizó un análisis retrospectivo del funcionamiento del grupo en el Sprint
 
 - Dejar todo a última hora 
 
+# SPRINT 7
+
+Se realizó un análisis retrospectivo del funcionamiento del grupo en el Sprint anterior utilizando la metodología propuesta de “Estrella de Mar”, buscando mejorar el funcionamiento del equipo de cara a este Sprint.
+
+## Comenzar a hacer
+
+- Tener en cuenta que las validaciones más importantes son las del lado del servidor.
+- En las validaciones que hacemos del lado del cliente es una comodidad para ellos.
+
+
+## Hacer más
+
+- Hacer más reuniones de equipo y comentar los a veces del proyecto
+- Dar respuesta rápida en el grupo WhatsApp a las dudas e inquietudes que surgir en el proyecto
+- Hacer una previa antes de entregar el proyecto
+
+## Continuar haciendo.
+
+- Aportando material para la realización del Sprint
+- Utilizando Git y Trello como herramienta de trabajo
+- Revisando documentación y materiales de apoyo
+
+## Hacer menos
+
+- Reuniones cortas y sin especificar las actividades a realizar y
+- Dejar el sprint listo por lo menos un día antes de la entrega
+- Cargar a una persona con más trabajo
+
+## Dejar de hacer
+
+- Dejar todo a última hora 
+
