@@ -205,7 +205,7 @@ module.exports = {
             )
             .then(brand => {
                 db.Product.create({
-                    id_brand: brand.id,
+                    id_brand: brand[0].id,
                     category: req.body.category,
                     colorwave: req.body.colorwave,
                     discount: req.body.discount,
@@ -463,7 +463,7 @@ module.exports = {
                 .then(brand => {
                     db.Product.update(
                         {
-                            id_brand: brand.id,
+                            id_brand: brand[0].id,
                             category: req.body.category,
                             colorwave: req.body.colorwave,
                             discount: req.body.discount,
@@ -813,14 +813,20 @@ module.exports = {
                             }
                         );
                         Promise.all([promise30, promise35, promise40, promise45, promise50, promise55, promise60, promise65, promise70,
-                            promise75, promise80, promise85, promise90, promise100, promise105, promise110, promise115, promise120,
-                            promise125, promise130, promise135, promise140, promise145, promise150, promise155])
+                            promise75, promise80, promise85, promise90, promise95, promise100, promise105, promise110, promise115,
+                            promise120, promise125, promise130, promise135, promise140, promise145, promise150, promise155])
                         .then(([result30, result35, result40, result45, result50, result55, result60, result65, result70,
                             result75, result80, result85, result90, result100, result105, result110, result115, result120,
                             result125, result130, result135, result140, result145, result150, result155]) => {
                                 // return res.redirect("/products/"+edited_id);
-                                return res.json({
-                                    product: updatedProduct
+                                db.Product.findByPk(req.params.id, {
+                                    include: [{association: "brand"}, {association: "reviews"}, {association: "product_sizes"}]
+                                })
+                                .then(product => {
+                                    return res.json({
+                                        product: product,
+                                        rowsUpdated: updatedProduct
+                                    });
                                 });
                             });
                     });
