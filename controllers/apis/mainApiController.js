@@ -151,5 +151,32 @@ module.exports = {
                 status: "denied"
             });
         }
+    },
+    cartDelete: (req, res) => {
+        if (req.session.user_id && req.session.user_id != undefined) {
+            db.Product_Cart.destroy({
+                where: {
+                    user_id: req.session.user_id,
+                    bought: 0
+                },
+                include: { association: "product" }
+            })
+            .then((deleted) => {
+                return res.json({
+                    cart: {
+                        rowsDeleted: deleted
+                    },
+                    status: "success"
+                });
+            });
+        } else {
+            // Window.alert("Inicia sesión para acceder al carrito");
+            console.log("Inicia sesión para acceder al carrito");
+            // return res.redirect("users/login");
+            return res.json({
+                status: "denied"
+            });
+        }
     }
+    // FALTA TEMA DE ACTUALIZAR CARRITO (EJEMPLO UNIDADES);
 }
