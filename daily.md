@@ -66,3 +66,10 @@
 - Hicimos unas actualizaciones en el retro y daily con respecto a markdown
 
 - Hubo retos para cerrar el tema de usuarios con la parte asincrónica y en los productos con el (.this)
+
+# SPRINT 7 
+
+- En este sprint se tienen la mayoría de las validaciones desde sprint anteriores y parte de las
+validaciones faltantes se complementan con el próximo sprint.
+
+- Hicimos pocas reuniones y esta vez unimos dos tableros de trabajo el del sprint 7 y el 8.
