@@ -197,6 +197,7 @@ Se realizó un análisis retrospectivo del funcionamiento del grupo en el Sprint
 
 - Tener en cuenta que las validaciones más importantes son las del lado del servidor.
 - En las validaciones que hacemos del lado del cliente es una comodidad para ellos.
+- Empezamos a trabajar con APIs ya que todas las validaciones del front-end estaban completadas.
 
 
 ## Hacer más
@@ -208,6 +209,7 @@ Se realizó un análisis retrospectivo del funcionamiento del grupo en el Sprint
 ## Continuar haciendo.
 
 - Aportando material para la realización del Sprint
+- La parte del back-end la trabajaremos con react 
 - Utilizando Git y Trello como herramienta de trabajo
 - Revisando documentación y materiales de apoyo
 

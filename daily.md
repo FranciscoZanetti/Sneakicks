@@ -69,7 +69,10 @@
 
 # SPRINT 7 
 
-- En este sprint se tienen la mayoría de las validaciones desde sprint anteriores y parte de las
-validaciones faltantes se complementan con el próximo sprint.
+- Este  sprint  tiene  algo  particular  porque  ya  la  mayoría  del  trabajo  estaba  hecho,  como  grupo decidimos adelantar parte del sprint 8 y nos concentramos en APIs, lo consultamos con el profesor para tener su aval.
 
-- Hicimos pocas reuniones y esta vez unimos dos tableros de trabajo el del sprint 7 y el 8.
+- Como  grupo  generalmente  nos  dividimos  los  trabajos  en  parejas  Alan  y  Fede  se  encargan  de  los usuarios, Francisco y Alexander de los productos.
+
+- Para validaciones del back-end decidimos como grupo trabajarlo con react. 
+
+- Por tal razón el tablero de trabajo unimos los dos sprint el 7 y 8.
