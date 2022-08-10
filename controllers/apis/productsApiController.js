@@ -9,7 +9,7 @@ module.exports = {
         db.Product.findAll({
             include: [
                 {association: "brand"},
-                {association: "reviews"},
+                // {association: "reviews"},
                 {association: "product_sizes"}
             ]
         })
@@ -72,7 +72,7 @@ module.exports = {
         db.Product.findAll({
             include: [
                 {association: "brand"},
-                {association: "reviews"},
+                // {association: "reviews"},
                 {association: "product_sizes"}
             ]
         })
@@ -122,7 +122,9 @@ module.exports = {
         let otherColorwaves = [];
         let promiseProduct = db.Product.findByPk(req.params.id, {
             include: [
-                {association: "brand"}, {association: "product_sizes"}, {association: "reviews"}
+                {association: "brand"},
+                {association: "product_sizes"},
+                // {association: "reviews"}
             ]
         });
         let promiseOtherColorwaves = db.Product.findAll({include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]});
@@ -133,7 +135,6 @@ module.exports = {
                     otherColorwaves.push(colorwave.colorwave);
                 }
             });
-            product.reviews.reverse();
             let checkerMen = false;
             let checkerWomen = false;
             let checkerKids = false;
@@ -820,7 +821,11 @@ module.exports = {
                             result125, result130, result135, result140, result145, result150, result155]) => {
                                 // return res.redirect("/products/"+edited_id);
                                 db.Product.findByPk(req.params.id, {
-                                    include: [{association: "brand"}, {association: "reviews"}, {association: "product_sizes"}]
+                                    include: [
+                                        {association: "brand"},
+                                        // {association: "reviews"},
+                                        {association: "product_sizes"}
+                                    ]
                                 })
                                 .then(product => {
                                     return res.json({
@@ -840,31 +845,55 @@ module.exports = {
         })
         .then(result => {return res.json({result: result})});
     },
+    reviews: (req, res) => {
+        db.Review.findAll({
+            where: {id_product: req.params.id}
+        })
+        .then(result => {
+            result.reverse();
+            return res.json({reviews: result})
+        });
+    },
     addReview: (req, res) => {
         let errors = validationResult(req);
-        let idProduct = req.params.id;
-        db.Product.findByPk(req.params.id, {include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]})
-        .then(product => {
-            if (!errors.isEmpty()){
-                return res.json({product: product});
-            }
-            else{
-                db.Review.create({
-                    stars: req.body.stars,
-                    stars: req.body.stars,
-                    text: req.body.text,
-                    id_product: idProduct
-                })
-                .then(review => {
-                    return res.json({product: product});
+        if (!errors.isEmpty()){
+            return res.json({
+                errors: errors.mapped(),
+                status: 200
+            });
+        }
+        else{
+            db.Review.create({
+                stars: req.body.stars,
+                stars: req.body.stars,
+                text: req.body.text,
+                id_product: idProduct
+            })
+            .then(review => {
+                return res.json({
+                    review: review,
+                    status: 400
                 });
-            }
-        });
+            });
+        }
     },
     addToCart: (req, res) => {
         let redirectId = req.params.id;
-        let promiseProduct = db.Product.findByPk(req.params.id, {include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]});
-        let promiseRecomended = db.Product.findAll({include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]});
+        let promiseProduct = db.Product.findByPk(req.params.id, {
+            include: [
+                {association: "brand"},
+                // {association: "reviews"},
+                {association: "product_sizes"}
+            ]
+        });
+        let promiseRecomended = db.Product.findAll(
+            {
+                include: [
+                    {association: "brand"},
+                    // {association: "reviews"},
+                    {association: "product_sizes"}
+                ]
+            });
         Promise.all([promiseProduct, promiseRecomended])
         .then(([product, recomended]) => {
             console.log(req.session);

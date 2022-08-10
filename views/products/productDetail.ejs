@@ -20,7 +20,7 @@
     <%- include('../partials/header'); %>
 
     <main>
-        <% if (result){ %>
+        <% if (result && reviews){ %>
         <div class="container">
 
             <div class="directory">
@@ -236,7 +236,9 @@
 
                         <p class="text-subtitle">Reseñas del público</p>
 
-                        <% for (let review of result.product.reviews){ %>
+                        <% if (reviews){ %>
+
+                        <% for (let review of reviews){ %>
                             <article class="previous-reviews-review">
                                 <div class="review-stars">
                                     <% if (review.stars == 5){ %>
@@ -257,6 +259,8 @@
                                 </div>
                                 <p class="paragrafs"><%= review.text %></p>
                             </article>
+                        <% } %>
+
                         <% } %>
 
                         <!-- <article class="previous-reviews-review">

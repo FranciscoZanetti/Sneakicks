@@ -9,6 +9,7 @@ const productsApiRoutes = require('./routes/apis/products');
 const usersApiRoutes = require('./routes/apis/users');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const cors = require('cors');
 
 app.use(session({
   secret: "SneakicksWebsite",
@@ -24,6 +25,8 @@ app.use(function(req, res, next) {
   res.locals.session = req.session;
   next();
 });
+
+app.use(cors());
 
 app.use(express.static('public'));
 

@@ -41,14 +41,12 @@ const controller = {
         //         return res.render('products/productDetail', {product: resultProduct, sizeArray: resultProduct_Size, colorwaveArray: colorwavesArray, productReviews: resultReview, recomendedProducts: recomendedProducts});
         //     });
         
-        fetch("http://localhost:3000/api/products/"+req.params.id)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-            console.log(result.colorwaves);
-            console.log(result.colorwaves.length);
-            console.log(result.product.product_sizes);
-            return res.render('products/productDetail', {result: result});
+        let promiseResult = fetch("http://localhost:3000/api/products/"+req.params.id).then(response => response.json());
+        let promiseReviews = fetch("http://localhost:3000/api/products/"+req.params.id+"/reviews").then(response => response.json());
+        Promise.all([promiseResult, promiseReviews])
+        .then(([resultProduct, resultReviews]) => {
+            console.log(resultReviews);
+            return res.render('products/productDetail', {result: resultProduct, reviews: resultReviews.reviews});
         });
     },
     addToCart: (req, res) => {
