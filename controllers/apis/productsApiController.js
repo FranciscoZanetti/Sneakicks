@@ -52,6 +52,22 @@ module.exports = {
                 product.checkerKids = checkerKids;
                 product.detail = "http://localhost:3000/api/products/"+product.id;
             });
+            let avaiable = [];
+            let unavaiable = [];
+            products.forEach((product) => {
+                let avaiableChecker = false;
+                product.product_sizes.forEach((product_size) => {
+                    if (product_size.stock > 0){
+                        avaiableChecker = true;
+                    }
+                });
+                if (avaiableChecker){
+                    avaiable.push(product);
+                }
+                if (!avaiableChecker){
+                    unavaiable.push(product);
+                }
+            });
             return res.json({
                 count: products.length,
                 countByCategory: {
@@ -65,6 +81,8 @@ module.exports = {
                     kids: counterKids
                 },
                 products: products,
+                avaiable: avaiable,
+                unavaiable: unavaiable
             });
         });
     },
@@ -160,6 +178,7 @@ module.exports = {
     },
     create: (req, res) => {
         let errors = validationResult(req);
+        console.log("REQ.PICTURES", req.body.product_pictures);
         console.log("BODY", req.body);
         console.log(req.body.product_pictures);
         console.log("REQ.FILES", req.files);
