@@ -127,12 +127,12 @@ module.exports = {
                 // {association: "reviews"}
             ]
         });
-        let promiseOtherColorwaves = db.Product.findAll({include: [{association: "brand"}, {association: "product_sizes"}, {association: "reviews"}]});
+        let promiseOtherColorwaves = db.Product.findAll({include: [{association: "brand"}, {association: "product_sizes"}]});
         Promise.all([promiseProduct, promiseOtherColorwaves])
         .then(([product, colorwaves]) => {
             colorwaves.forEach(colorwave => {
                 if ((colorwave.name == product.name) && (colorwave.id != product.id)){
-                    otherColorwaves.push(colorwave.colorwave);
+                    otherColorwaves.push({id: colorwave.id, colorwave: colorwave.colorwave});
                 }
             });
             let checkerMen = false;
@@ -160,13 +160,16 @@ module.exports = {
     },
     create: (req, res) => {
         let errors = validationResult(req);
-        console.log(req.files);
+        console.log("BODY", req.body);
+        console.log(req.body.product_pictures);
+        console.log("REQ.FILES", req.files);
 
         if (!errors.isEmpty() || !req.files || req.files.length < 1){
             console.log("req.files: "+req.files);
             return res.json({
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                status: 400
             });
         }else{
             let mainPic = req.files[0].filename;
@@ -431,7 +434,8 @@ module.exports = {
                 })
                 .then(created => {
                     return res.json({
-                        product: created
+                        product: created,
+                        status: 200
                     });
                 });
             });
@@ -851,7 +855,7 @@ module.exports = {
         })
         .then(result => {
             result.reverse();
-            return res.json({reviews: result})
+            return res.json({reviews: result, productId: req.params.id});
         });
     },
     addReview: (req, res) => {

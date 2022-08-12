@@ -164,8 +164,8 @@
                                 <select name="colorwave" id="colorwave">
                                     <option value="<%= result.product.colorwave %>" selected><%= result.product.colorwave %></option>
                                         <% if ( result.colorwaves.length >= 1){ %>
-                                            <% for ( let colorwave of result.colorwaves){ %>
-                                                <option value="<%= colorwave %>"><%= colorwave %></option>
+                                            <% for ( let colorwaveProduct of result.colorwaves){ %>
+                                                <option value="<%= colorwaveProduct.colorwave %>"><%= colorwaveProduct.colorwave %></option>
                                             <% } %>
                                         <% } %>
                                 </select>
