@@ -16,4 +16,7 @@ const uploadFile = multer({ storage });
 
 const usersApiController = require('../../controllers/apis/usersApiController');
 
+router.get('/', usersApiController.listAll);
+router.get('/:id', usersApiController.listOne);
+
 module.exports = router;
