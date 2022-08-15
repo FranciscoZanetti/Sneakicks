@@ -10,7 +10,7 @@ window.addEventListener("load", function(){
             .then(results => {
                 console.log(results.status);
                 if (results.status == 200){
-                    sessionStorage.setItem("productsCart", [results.cart.products]);
+                    sessionStorage.setItem("productsCart", [JSON.stringify(results.cart.products)]);
                     console.log(sessionStorage.getItem("productsCart"));
                     console.log(JSON.stringify(sessionStorage.getItem("productsCart")));
                     console.log(sessionStorage);

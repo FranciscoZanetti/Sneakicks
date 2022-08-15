@@ -162,10 +162,18 @@ main{
 .product-info-brand{
     margin-left: 5%;
     margin-right: 5%;
+    margin-top: var(--vw-1-1rem);
     font-size: var(--vw-1-1rem);
     font-weight: bold;
     color: #cfcfcf;
+    display: flex;
+    justify-content: space-between;
 }
+
+    #URLparamId{
+        float: right;
+        opacity: 0;
+    }
 
 .product-info-condition{
     margin-left: 5%;

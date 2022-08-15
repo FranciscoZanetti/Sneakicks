@@ -10,7 +10,10 @@ body{
     font-size: 14px;
     color: black;
     background-color:white;
-   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
 
 .error-div {

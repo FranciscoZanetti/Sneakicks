@@ -24,7 +24,7 @@
     <main class="login-main">
         <div class="login-form-container">
             <h1>INICIAR SESIÓN</h1>
-            <form method="POST" action="/users/login">
+            <form method="POST" action="/users/login" id="login-form">
                 <div class="input-container-padre">
                     <% if (typeof errors != 'undefined') { %>
                         <div class="error-div">
@@ -47,6 +47,6 @@
     </main>
     
     <%- include('../partials/footer'); %>
-
+<script src="/scripts/login.js"></script>
 </body>
 </html>
