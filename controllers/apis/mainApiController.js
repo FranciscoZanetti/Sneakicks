@@ -68,26 +68,6 @@ module.exports = {
         // console.log(brands);
         // return res.json({brands: brands});
     },
-    search: (req, res) => {
-        db.Product.findAll(
-            {
-                where: {
-                    [op.or]: [
-                        {whole_name: { [op.like]:  "%" + req.query.keyword + "%"}},
-                        {"$brand.name$": { [op.like]:  "%" + req.query.keyword + "%"}}
-                    ]
-                }
-            },
-            {
-                include: [
-                    {association: "brand"},
-                    {association: "product_sizes"},
-                    {association: "reviews"}
-                ]
-            }
-        )
-        .then(products => {return res.json({products: products})});
-    },
     home: (req, res) => {
         fetch("http://localhost:3000/api/products/")
         .then(response => response.json())
@@ -95,6 +75,9 @@ module.exports = {
             let bargains = [];
             let used = [];
             let newones = [];
+            let today = new Date();
+            let year = String(today.getFullYear());
+            let unreleased = [];
             list.products.forEach(product => {
                 if (product.discount > 0)
                     bargains.push(product);
@@ -102,10 +85,14 @@ module.exports = {
                     used.push(product);
                 if (product.shoe_condition == "new_no_def")
                     newones.push(product);
+                if (product.release_year > year){
+                    unreleased.push(product);
+                }
             });
             list.bargains = bargains;
             list.used = used;
-            list.new = newones;
+            list.newones = newones;
+            list.unreleased = unreleased;
             return res.json({
                 list
             });
@@ -113,6 +100,7 @@ module.exports = {
     },
     cart: (req, res) => {
         if (req.session.user_id && req.session.user_id != undefined) {
+            console.log("\n"+req.session.user_id+"\n");
             let promiseProduct_Cart = db.Product_Cart.findAll({
                 where: {
                     user_id: req.session.user_id,
@@ -123,32 +111,41 @@ module.exports = {
             let promiseShipping = db.Shipping.findAll();
             Promise.all([promiseProduct_Cart, promiseShipping])
                 .then(([resultsProduct_Cart, resultsShipping]) => {
+                    console.log("\n"+ resultsProduct_Cart +"\n");
+                    console.log("\n"+ resultsShipping +"\n");
                     if (resultsProduct_Cart && resultsProduct_Cart != undefined && resultsProduct_Cart.length > 0) {
                         let ammount = 0;
                         resultsProduct_Cart.forEach(item => {
                             ammount += item.product.price_final * item.units;
                         });
                         console.log(resultsProduct_Cart);
+                        console.log("\nHOLA\n");
+                        return res.json({
+                            cart: {
+                                products: resultsProduct_Cart,
+                                ammount: ammount,
+                                shippings: resultsShipping
+                            },
+                            status: 200
+                        });
                         // return res.render('products/cart', { productsCart: resultsProduct_Cart, ammount: ammount, shippings: resultsShipping });
+                    }else{
+                        return res.json({
+                            cart: {
+                                products: [],
+                                ammount: 0,
+                                shippings: resultsShipping
+                            },
+                            status: 200
+                        });
                     }
-                    // else {
-                    //     return res.render('products/cart');
-                    // }
-                    return res.json({
-                        cart: {
-                            products: resultsProduct_Cart,
-                            ammount: ammount,
-                            shippings: resultsShipping
-                        },
-                        status: "success"
-                    });
                 });
         } else {
             // Window.alert("Inicia sesión para acceder al carrito");
             console.log("Inicia sesión para acceder al carrito");
             // return res.redirect("users/login");
             return res.json({
-                status: "denied"
+                status: 400
             });
         }
     },
@@ -177,6 +174,14 @@ module.exports = {
                 status: "denied"
             });
         }
-    }
+    },
+    // logedInChecker: (req, res) => {
+    //     if (req.session.user_id){
+    //         db.User.findByPk(req.session.user_id)
+    //         .then(result => {
+    //             return res.json()
+    //         })
+    //     }
+    // }
     // FALTA TEMA DE ACTUALIZAR CARRITO (EJEMPLO UNIDADES);
 }

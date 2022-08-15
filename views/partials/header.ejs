@@ -24,7 +24,7 @@
                                     <% } %>
                                 <% } %>
                                 <% if (typeof session.user_id != 'undefined') { %>
-                                    <li><a href="/users/<%= session.user_id %>/profile">
+                                    <li><a href="/users/<%= session.user_id %>/profile" id="user-id">
                                         <div class="user_button">
                                             <%= session.first_name %>
                                             <%= session.last_name %>
@@ -40,13 +40,14 @@
             <div class="bottom-navbar-container">
                 <div class="bottom-navbar">
                     <ul>
-                        <li><a href="/products">MEN</a></li>
-                        <li><a href="#">WOMEN</a></li>
-                        <li><a href="#">KIDS</a></li>
+                        <li><a href="/products?sizerange=men">MEN</a></li>
+                        <li><a href="/products?sizerange=women">WOMEN</a></li>
+                        <li><a href="/products?sizerange=kids">KIDS</a></li>
                         <li><a href="#">MARCAS</a></li>
                         <li><a href="#">OFERTAS</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+    <script src="/scripts/header.js"></script>
 </header>

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('../../database/models');
+const op = db.Sequelize.Op;
 
 const { validationResult } = require("express-validator");
 
@@ -142,7 +143,7 @@ module.exports = {
             include: [
                 {association: "brand"},
                 {association: "product_sizes"},
-                // {association: "reviews"}
+                {association: "reviews"}
             ]
         });
         let promiseOtherColorwaves = db.Product.findAll({include: [{association: "brand"}, {association: "product_sizes"}]});
@@ -879,23 +880,27 @@ module.exports = {
     },
     addReview: (req, res) => {
         let errors = validationResult(req);
+        console.log("\n"+errors+"\n");
+        console.log("\n"+req.body+"\n");
+        console.log("\n"+req.body.stars+"\n");
+        console.log("\n"+req.body.text+"\n");
         if (!errors.isEmpty()){
             return res.json({
                 errors: errors.mapped(),
-                status: 200
+                old: req.body,
+                status: 400
             });
         }
         else{
             db.Review.create({
                 stars: req.body.stars,
-                stars: req.body.stars,
                 text: req.body.text,
-                id_product: idProduct
+                id_product: req.params.id
             })
             .then(review => {
                 return res.json({
                     review: review,
-                    status: 400
+                    status: 200
                 });
             });
         }
@@ -988,5 +993,52 @@ module.exports = {
                 });
             }
         });
-    }
+    },
+    search: (req, res) => {
+        console.log(req.query.s);
+        if (req.query.s){
+            // db.Product.findAll(
+            //     {
+            //         include: [
+            //             {
+            //                 association: "brand", 
+            //                 attributes: [["name", "brandname"]]
+            //             },
+            //             {association: "product_sizes"},
+            //             {association: "reviews"}
+            //         ]
+            //     },
+            //     {
+            //         where: {
+            //             [op.or]: [
+            //                 {whole_name: { [op.like]:  "%" + req.query.s + "%"}},
+            //                 {"$brand.brandname$": { [op.like]:  "%" + req.query.s + "%"}}
+            //             ]
+            //         }
+            //     }
+            // )
+            // .then(products => {return res.json({products: products, status: 200})})
+            // .catch(errors => console.log(errors));
+            db.Product.findAll(
+                {
+                    include: [
+                        {association: "brand"},
+                        {association: "product_sizes"},
+                        {association: "reviews"}
+                    ]
+                }
+            )
+            .then(products => {
+                let loweredQuery = req.query.s.toLowerCase();
+                let results = [];
+                // products.forEach(product => {
+                //     if (products.whole_name.include)
+                // })
+            })
+        }
+        else{
+            return res.json({status: 400});
+        }
+        
+    },
 }

@@ -28,20 +28,23 @@
                 <a href="/products/<%= result.product.id %>">> <%= result.product.whole_name %></a>
             </div>
 
-            <section class="edit-delete-container">
-                <div class="edit-delete">
-                    <a href="/products/<%= result.product.id %>/edit" class="edit-delete-a">
-                        <div class="edit-delete-buttons" id="edit-button">
-                            <p>Editar</p>
-                        </div>
-                    </a>
-                    <a href="/products/<%= result.product.id %>/delete" class="edit-delete-a">
-                        <div class="edit-delete-buttons" id="delete-button">
-                            <p>Eliminar</p>
-                        </div>
-                    </a>
-                </div>
-            </section>
+            <!-- <% if (typeof session.user_id != 'undefined') { %> -->
+                <section class="edit-delete-container">
+                    <div class="edit-delete">
+                        <a href="/products/<%= result.product.id %>/edit" class="edit-delete-a">
+                            <div class="edit-delete-buttons" id="edit-button">
+                                <p>Editar</p>
+                            </div>
+                        </a>
+                        <a href="/products/<%= result.product.id %>/delete" class="edit-delete-a">
+                            <div class="edit-delete-buttons" id="delete-button">
+                                <p>Eliminar</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            <!-- <% } %> -->
+
 
             <section class="product">
 
@@ -66,9 +69,9 @@
                         </div>
                     </section>
                     <nav>
-                        <a href="#" id="nav-descripcion"><span>Descripcion</span></a>
-                        <a href="#" id="nav-reseñas"><span>Reseñas</span></a>
-                        <a href="#" id="nav-talles"><span>Guía de talles</span></a>
+                        <a id="nav-descripcion"><span>Descripcion</span></a>
+                        <a id="nav-reseñas"><span>Reseñas</span></a>
+                        <a id="nav-talles"><span>Guía de talles</span></a>
                     </nav>
                 </section>
 
@@ -127,7 +130,7 @@
                         </article>
                     </section>
         
-                    <form class="product-info-form" action="api/products/<%= result.product.id %>" method="post">
+                    <form class="product-info-form" action="/products/<%= result.product.id %>" method="post">
         
                         <section class="form-size">
                             <div class="size-select-container-parent">
@@ -136,26 +139,15 @@
                                     <select name="size" id="size">
                                         <option selected disabled hidden> </option>
                                         <% for (let product_size of result.product.product_sizes){ %>
-                                            <option value="<%= product_size.number %>" ><%= product_size.size %></option>
+                                            <% if (product_size.stock > 0){ %>
+                                                <option value="<%= product_size.size %>" ><%= product_size.size %></option>
+                                            <% } %>
                                         <% } %>
                                     </select>
                                     <span class="custom-arrow-size"></span>
                                 </div>
                             </div>
         
-                            <div class="size-boxes">
-                                <div class="size-boxes-box"><p class="box-number">7</p></div>
-                                <div class="size-boxes-box"><p class="box-number">7.5</p></div>
-                                <div class="size-boxes-box"><p class="box-number">8</p></div>
-                                <div class="size-boxes-box"><p class="box-number">8.5</p></div>
-                                <div class="size-boxes-box"><p class="box-number">9</p></div>
-                                <div class="size-boxes-box"><p class="box-number">9.5</p></div>
-                                <div class="size-boxes-box"><p class="box-number">10</p></div>
-                                <div class="size-boxes-box"><p class="box-number">10.5</p></div>
-                                <div class="size-boxes-box"><p class="box-number">11</p></div>
-                                <div class="size-boxes-box"><p class="box-number">11.5</p></div>
-                                <div class="size-boxes-box"><p class="box-number">12</p></div>
-                            </div>
                         </section>
         
                         <section class="form-colorwaves">
@@ -178,6 +170,18 @@
                         <div class="cart-button">
                             <button type="submit">AGREGAR AL CARRITO</button>
                         </div>
+
+                        <% let stock = false %>
+                        <% for (let product_size of result.product.product_sizes){ %>
+                            <% if (product_size.stock > 0){ %>
+                                <% stock = true %>
+                            <% } %>
+                        <% } %>
+                        <% if (!stock){ %>
+                            <p class="form-stock-unavaiable">SIN STOCK</p>
+                        <% }else{ %>
+                            <p class="form-stock-avaiable">DISPONIBLE</p>
+                        <% } %>
         
                     </form>
         
@@ -196,10 +200,10 @@
                     </p>
                 </article>
 
-                <article class="details-text">
+                <article id="reviews" class="details-text">
 
                     <h3>Reseñas</h3>
-                        <form class="text-review" action="api/products/<%= result.product.id %>/adding-review" method="POST">
+                        <form class="text-review" action="/products/<%= result.product.id %>/adding-review" method="POST">
                             <p class="text-subtitle">Deja una reseña</p>
                             <% if(locals.errors && errors.stars){ %>
                                 <p id="stars-text-error-message"><%= errors.stars.msg %></p>
@@ -294,7 +298,7 @@
 
                 </article>
 
-                <article class="details-text">
+                <article class="details-text" id="sizes">
 
                     <h3>Guía de talles</h3>
 
@@ -391,6 +395,6 @@
     </main>
 
     <%- include('../partials/footer'); %>
-
+    <script src="/scripts/productDetail.js"></script>
 </body>
 </html>

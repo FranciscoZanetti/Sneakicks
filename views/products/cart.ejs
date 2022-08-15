@@ -21,7 +21,7 @@
       <div class="cart-labels">
         <h2>TUS PRODUCTOS</h2>
       </div>
-        <% if (productsCart){ %>
+        <% if (productsCart.length > 0){ %>
           <% for( let productCart of productsCart ) { %> 
             <div class="cart-product">
               <div class="item">
@@ -54,18 +54,15 @@
     <form action="/cart" method="post" class="summary">
       <div class="summary-total-items"><span class="total-items"></span> Tu carrito de compras</div>
       <div class="summary-subtotal">
-        <% if (productsCart){ %>
+        <% if (productsCart.length > 0){ %>
           <% for (productCart of productsCart){ %>
             <div class="subtotal-title"><%= productCart.product.whole_name %>  X<%= productCart.units %></div>
-            <div class="subtotal-value final-value" id="cart-subtotal"><%= productCart.product.price_final * productCart.units %></div>
+            <div class="subtotal-value final-value" id="cart-subtotal"><%= productCart.product.price_final * productCart.units %>.00</div>
           <% } %>
         <% } %>
         <% if (ammount){ %>
           <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="cart-subtotal"><%= ammount %></div>
-        <% }else{ %>
-          <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="cart-subtotal">0.00</div>
+          <div class="subtotal-value final-value" id="cart-subtotal"><%= ammount %>.00</div>
         <% } %>
       </div>
       <div class="summary-delivery">
@@ -80,7 +77,7 @@
               <option value="collection">Comun (5-7 dias habiles)</option> -->
             <% } %>
         </select>
-      </div>
+      </form>
       <div class="summary-total">
         <% if (ammount){ %>
           <div class="total-title">Total</div>
@@ -93,6 +90,7 @@
       <div class="summary-checkout">
         <button class="checkout-cta" type="submit">Checkout</button>
       </div>
+
     </div>
   </main>
   

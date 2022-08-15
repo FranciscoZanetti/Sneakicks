@@ -51,63 +51,147 @@ const controller = {
     },
     addToCart: (req, res) => {
         let redirectId = req.params.id;
+        let errors = validationResult(req);
         console.log(req.session);
         if (!req.session.user_id || req.session.user_id == undefined){
             // Window.alert("Inicia sesión para agregar al carrito");
             console.log("\nInicia sesión para agregar al carrito\n");
             return res.redirect('/products/'+redirectId);
         }else{
-            console.log(req.body);
-            console.log(req.params.id);
-            // let parsedSize = parseFloat(req.body.size);
-            console.log(req.body.size);
-            db.Product_Size.findOne({
-                where: {
-                    product: req.params.id,
-                    size: req.body.size
-                }
-            })
-            .then(result => {
-                console.log(result);
-                if (result.stock == 0){
-                    // Window.alert("Sin stock de este talle!");
-                    console.log("Sin stock de este talle!");
-                    return res.redirect('/products/'+redirectId);
-                }else{
-                    db.Product_Cart.count({
-                        where: {
-                            user_id: req.session.user_id,
-                            product_id: req.params.id,
-                            bought: 0
-                        }
-                    })
-                    .then(count => {
-                        if (count > 0){
-                            db.Product_Cart.increment(
-                                'units',
-                                {
-                                    by: 1,
+            // console.log(req.body);
+            // console.log(req.params.id);
+            // // let parsedSize = parseFloat(req.body.size);
+            // console.log(req.body.size);
+            // db.Product_Size.findOne({
+            //     where: {
+            //         product: req.params.id,
+            //         size: req.body.size
+            //     }
+            // })
+            // .then(result => {
+            //     console.log(result);
+            //     if (result.stock == 0){
+            //         // Window.alert("Sin stock de este talle!");
+            //         console.log("Sin stock de este talle!");
+            //         return res.redirect('/products/'+redirectId);
+            //     }else{
+            //         db.Product_Cart.count({
+            //             where: {
+            //                 user_id: req.session.user_id,
+            //                 product_id: req.params.id,
+            //                 bought: 0
+            //             }
+            //         })
+            //         .then(count => {
+            //             if (count > 0){
+            //                 db.Product_Cart.increment(
+            //                     'units',
+            //                     {
+            //                         by: 1,
+            //                         where: {
+            //                             user_id: req.session.user_id,
+            //                             product_id: req.params.id,
+            //                             bought: 0
+            //                         }
+            //                     }
+            //                 );
+            //             }else{
+            //                 db.Product_Cart.create({
+            //                     units: 1,
+            //                     size: req.body.size,
+            //                     bought: 0,
+            //                     user_id: req.session.user_id,
+            //                     product_id: req.params.id,
+            //                 });
+            //             }
+            //             return count;
+            //         })
+            //         .then(x => {return res.redirect('/products/'+redirectId)});
+            //     }
+            // });
+
+            if (!errors.isEmpty()){
+                return res.redirect("/products/"+redirectId);
+            }else{
+                let promiseProduct = db.Product.findByPk(req.params.id, {
+                    include: [
+                        {association: "brand"},
+                        // {association: "reviews"},
+                        {association: "product_sizes"}
+                    ]
+                });
+                let promiseRecomended = db.Product.findAll(
+                    {
+                        include: [
+                            {association: "brand"},
+                            // {association: "reviews"},
+                            {association: "product_sizes"}
+                        ]
+                    });
+                Promise.all([promiseProduct, promiseRecomended])
+                .then(([product, recomended]) => {
+                    console.log(req.session);
+                    if (!req.session.user_id || req.session.user_id == undefined){
+                        // Window.alert("Inicia sesión para agregar al carrito");
+                        console.log("\nInicia sesión para agregar al carrito\n");
+                        return res.redirect("/products/"+redirectId);
+                    }
+                    else{
+                        console.log(req.body);
+                        console.log(req.params.id);
+                        // let parsedSize = parseFloat(req.body.size);
+                        console.log(req.body.size);
+                        db.Product_Size.findOne({
+                            where: {
+                                product: req.params.id,
+                                size: req.body.size
+                            }
+                        })
+                        .then(result => {
+                            console.log(result);
+                            if (result.stock == 0){
+                                // Window.alert("Sin stock de este talle!");
+                                console.log("Sin stock de este talle!");
+                                return res.redirect("/products/"+redirectId);
+                            }else{
+                                db.Product_Cart.count({
                                     where: {
                                         user_id: req.session.user_id,
                                         product_id: req.params.id,
                                         bought: 0
                                     }
-                                }
-                            );
-                        }else{
-                            db.Product_Cart.create({
-                                units: 1,
-                                size: req.body.size,
-                                bought: 0,
-                                user_id: req.session.user_id,
-                                product_id: req.params.id,
-                            });
-                        }
-                        return count;
-                    })
-                    .then(x => {return res.redirect('/products/'+redirectId)});
-                }
-            });
+                                })
+                                .then(count => {
+                                    if (count > 0){
+                                        db.Product_Cart.increment(
+                                            'units',
+                                            {
+                                                by: 1,
+                                                where: {
+                                                    user_id: req.session.user_id,
+                                                    product_id: req.params.id,
+                                                    bought: 0
+                                                }
+                                            }
+                                        );
+                                    }else{
+                                        db.Product_Cart.create({
+                                            units: 1,
+                                            size: req.body.size,
+                                            bought: 0,
+                                            user_id: req.session.user_id,
+                                            product_id: req.params.id,
+                                        });
+                                    }
+                                    return count;
+                                })
+                                .then(x => {return res.redirect("/products/"+redirectId);});
+                            }
+                        });
+                    }
+                });
+            }
+
         }
     },
     manageProduct: (req, res) => {
@@ -810,13 +894,78 @@ const controller = {
     productList: (req, res) => {
         // db.Product.findAll({include: {association: "brand"}})
         // .then(results => {return res.render("products/productList", {products: results})});
-        fetch("http://localhost:3000/api/products")
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-            return res.render("products/productList", {result: result});
-        });
+        if (req.query){
+            if (req.query.sizerange){
+                fetch("http://localhost:3000/api/products/by-size-range")
+                .then(response => response.json())
+                .then(result => {
+                    if (req.query.sizerange == "men"){
+                        return res.render("products/productList", {results: {productsMen: result.productsMen}});
+                    }
+                    if (req.query.sizerange == "women"){
+                        return res.render("products/productList", {results: {productsWomen: result.productsWomen}});
+                    }
+                    if (req.query.sizerange == "kids"){
+                        return res.render("products/productList", {results: {productsKids: result.productsKids}});
+                    }
+                    else{
+                        fetch("http://localhost:3000/api/products")
+                        .then(response => response.json())
+                        .then(results => {
+                            return res.render("products/productList", {results: {avaiable: results.avaiable, unavaiable: results.unavaiable}});
+                        })
+                    }
+                })
+            }else{
+                fetch("http://localhost:3000/api/products")
+                .then(response => response.json())
+                .then(results => {
+                    return res.render("products/productList", {results: {avaiable: results.avaiable, unavaiable: results.unavaiable}});
+                })
+            }
+
+        }else{
+            fetch("http://localhost:3000/api/products")
+            .then(response => response.json())
+            .then(results => {
+                return res.render("products/productList", {results: {avaiable: results.avaiable, unavaiable: results.unavaiable}});
+            })
+        }
+
+        // fetch("http://localhost:3000/api/products/by-size-range")
+        // .then(response => response.json())
+        // .then(result => {
+        //     if (req.query){
+        //         if (req.query.sizerange == "men"){
+        //             return res.render("products/productList", {result: result.productsMen});
+        //         }
+        //         if (req.query.sizerange == "women"){
+        //             return res.render("products/productList", {result: result.productsWomen});
+        //         }
+        //         if (req.query.sizerange == "kids"){
+        //             return res.render("products/productList", {result: result.productsKids});
+        //         }
+        //         else{
+        //             return res.render("products/productList", {result: {avaiable: results.avaiable, unavaiable: results.unavaiable}});
+        //         }
+        //     }
+        //     else{
+        //         return res.render("products/productList", {result: {avaiable: results.avaiable, unavaiable: results.unavaiable}});
+        //     }
+        // });
     },
+    // listBySizeRange: (req, res) => {
+    //     fetch("http://localhost:3000/api/products/by-size-range")
+    //     .then(response => response.json())
+    //     .then(result => {
+    //         console.log(result);
+    //         if (req.query){
+    //             if (req.query.sizerange == "men"){
+    //                 return res.render("products/productList", {result: result});
+    //             }
+    //         }
+    //     });
+    // },
     addReview: (req, res) => {
         let errors = validationResult(req);
         let idProduct = req.params.id;

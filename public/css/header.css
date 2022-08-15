@@ -1,3 +1,20 @@
+/* :root{
+    --vw-1-5rem: clamp(1.35rem, calc(((24 * 100) / 414) * 1vw), 2.087rem);
+    --vw-1-2rem: clamp(1rem, calc(((19.2 * 100) / 414) * 1vw), 1.669rem);
+    --vw-1rem: clamp(0.9rem, calc(((16 * 100) / 414) * 1vw), 1.391rem);
+    --vw-2rem: clamp(1.8rem, calc(((32 * 100) / 414) * 1vw), 2.782rem);
+    --vw-2-5rem: clamp(2.26rem, calc(((40 * 100) / 414) * 1vw), 3.478rem);
+    --vw-10px: clamp(0.5rem, calc(((10 * 100) / 414) * 1vw), 0.869rem);
+    --vw-20px: clamp(1.13rem, calc(((20 * 100) / 414) * 1vw), 1.739rem);
+    --vw-1-1rem: clamp(0.99rem, calc(((17.6 * 100) / 414) * 1vw), 1.53rem);
+    --vw-0-5rem: clamp(0.45rem, calc(((8 * 100) / 414) * 1vw), 0.695rem);
+    --vw-0-4rem: clamp(0.36rem, calc(((6.4 * 100) / 414) * 1vw), 0.556rem);
+    --vw-0-8rem: clamp(0.7rem, calc(((12.8 * 100) / 414) * 1vw), 1.113rem);
+    --vw-4rem: clamp(3.62rem, calc(((64 * 100) / 414) * 1vw), 5.565rem);
+    --vw-3rem: clamp(2.7rem, calc(((48 * 100) / 414) * 1vw), 4.174rem);
+    --vw-5rem: clamp(4.5rem, calc(((80 * 100) / 414) * 1vw), 6.956rem);
+    --vw-6rem: clamp(5.2rem, calc(((96 * 100) / 414) * 1vw), 8.348rem);
+} */
 
 .partial-header li {
     list-style: none;
@@ -81,10 +98,12 @@
 
 .user_button {
     border: 1px solid black;
+    border: none;
     border-radius: 0.5rem;
     width: auto;
     padding: 0.1rem 0.4rem;
 }
+
 
 @media (min-width: 576px){
     .partial-header {

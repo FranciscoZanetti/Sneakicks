@@ -403,7 +403,7 @@ main form button:hover{
         text-align: center;
         font-weight: bold;
         font-size: var(--vw-1rem);
-        margin-bottom: var(--vw-20px);
+        margin-bottom: var(--vw-10px);
         color: #4EBD24;
     }
 
@@ -411,7 +411,7 @@ main form button:hover{
         text-align: center;
         font-weight: bold;
         font-size: var(--vw-1rem);
-        margin-bottom: var(--vw-20px);
+        margin-bottom: var(--vw-10px);
         color: rgb(216, 24, 24);
     }
 
@@ -512,6 +512,7 @@ main form button:hover{
                     .radio-container input{
                         font-size: var(--vw-1-1rem);
                         /* appearance: none; */
+                        opacity: 0;
                     }
 
                 .form-star-container{

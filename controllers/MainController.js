@@ -30,11 +30,13 @@ const controller = {
                         let ammount = 0;
                         resultsProduct_Cart.forEach(item => {
                             ammount += item.product.price_final * item.units;
+                            console.log(ammount);
                         });
                         console.log(resultsProduct_Cart);
                         return res.render('products/cart', { productsCart: resultsProduct_Cart, ammount: ammount, shippings: resultsShipping });
                     } else {
-                        return res.render('products/cart');
+                        let ammount = 0;
+                        return res.render('products/cart', {productsCart: [], ammount: "", ammount: ammount, shippings: resultsShipping});
                     }
                 });
         } else {

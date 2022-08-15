@@ -18,12 +18,13 @@ const uploadFile = multer({storage});
 const productsApiController = require('../../controllers/apis/productsApiController');
 
 router.get('/', productsApiController.list);
+// router.get('/search', productsApiController.search);
 router.get('/by-size-range', productsApiController.listBySizeRange);
 router.post('/create', uploadFile.array("product_pictures"), productMiddlewares.validateManageProduct, productsApiController.create);
 router.get('/:id', productsApiController.detail);
 router.post('/:id', productsApiController.addToCart);
 router.get('/:id/reviews', productsApiController.reviews);
-router.get('/:id/adding-review', productMiddlewares.validateReviewForm, productsApiController.addReview);
+router.post('/:id/adding-review', productMiddlewares.validateReviewForm, productsApiController.addReview);
 router.put('/:id/edit', uploadFile.array("product_pictures"),  productMiddlewares.validateManageProduct, productsApiController.editPut);
 router.delete('/:id/delete', productsApiController.deleteDelete);
 

@@ -41,7 +41,7 @@
 
                 <div class="profile-title">
                     <h3>Tu perfil</h3>
-                    <form action="/users/signout" method="POST">
+                    <form action="/users/signout" method="POST" id="signout-form">
                         <button class='edit-button' type="submit" value="Cerrar sesion">
                             Cerrar sesion - <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </button>
@@ -66,6 +66,7 @@
 
         <%- include('../partials/footer'); %>
 
+    <script src="/scripts/profile.js"></script>
 </body>
 
 </html>
