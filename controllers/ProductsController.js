@@ -158,6 +158,7 @@ const controller = {
                                     where: {
                                         user_id: req.session.user_id,
                                         product_id: req.params.id,
+                                        size: req.body.size,
                                         bought: 0
                                     }
                                 })
@@ -170,7 +171,8 @@ const controller = {
                                                 where: {
                                                     user_id: req.session.user_id,
                                                     product_id: req.params.id,
-                                                    bought: 0
+                                                    bought: 0,
+                                                    size: req.body.size
                                                 }
                                             }
                                         );

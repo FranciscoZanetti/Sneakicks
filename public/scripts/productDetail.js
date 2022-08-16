@@ -59,13 +59,13 @@ const fetchData = fetch("http://localhost:3000/api/products/" + UrlId)
 
 
                         console.log("Product Sizes despues", sessionStorage.getItem(nameProductSizes));
-                        return "ok";
+                        return results.colorwaves;
                     });
 
 window.addEventListener("load", async () => {
     console.log("hola");
 
-    let Ok = await fetchData;
+    let colorwaves = await fetchData;
 
     
 
@@ -175,6 +175,7 @@ window.addEventListener("load", async () => {
                 });
                 sessionStorage.setItem(nameProductSizes, JSON.stringify(productSizesAux));
                 console.log("actualice los productsSizes");
+                console.log("agregando al carrito: ", {id: selectedProductSize.product, size: selectedProductSize.size});
             }
         }
 
@@ -191,6 +192,7 @@ window.addEventListener("load", async () => {
         productSizesAux.map(productSize => {
             if (productSize.size == event.target.value){
                 selectedProductSize = productSize;
+                console.log(selectedProductSize);
                 if (selectedProductSize.stock > 0){
                     stockShowed.textContent = productSize.stock + " unidades disponibles";
                 }
@@ -202,6 +204,20 @@ window.addEventListener("load", async () => {
             }
         });
 
+    });
+
+    document.querySelector("#colorwave").addEventListener("change", function(event){
+        if (document.querySelector(".product-info-header h2").textContent.includes(event.target.value, 0)){
+            console.log("colorwave match", event.target.value);
+        }
+        if (!document.querySelector(".product-info-header h2").textContent.includes(event.target.value, 0)){
+            console.log("colorwave diferente", event.target.value);
+            colorwaves.map(colorwave => {
+                if (event.target.value == colorwave.colorwave){
+                    window.location.pathname = "/products/" + colorwave.id;
+                }
+            })
+        }
     })
 
 })
