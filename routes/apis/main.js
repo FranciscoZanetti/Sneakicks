@@ -8,6 +8,7 @@ router.get('/', mainApiController.home);
 router.get('/brands', mainApiController.brands);
 router.get('/cart', mainApiController.cart);
 router.delete('/cart', mainApiController.cartDelete);
+router.get('/shippings', mainApiController.shippings);
 //FALTA RUTA DE SEARCH (USA QUERY STRING);
 
 

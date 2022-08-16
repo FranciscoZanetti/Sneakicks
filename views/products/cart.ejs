@@ -37,7 +37,7 @@
                       <!-- <input class="readonly-input" value="%= productCart.product_id %>" readonly> -->
                     </div>
                     <div class="product-lower-container">
-                      <div class="price"><%= productCart.product.price_original %></div>
+                      <div class="price"><%= productCart.product.price_final %></div>
                       <div class="stock">
                         <input id="unit-input-<%= productCart.product_id %>" type="number" value="<%= productCart.units %>" min="1" class="stock-field">
                       </div>
@@ -53,13 +53,13 @@
             <div class="cart-product">No tienes productos en el carrito</div>
           <% } %>
       </div>
-      <form action="/cart" method="post" class="summary">
+      <div class="summary">
         <div class="summary-total-items"><span class="total-items"></span> Tu carrito de compras</div>
         <div class="summary-subtotal">
           <% if (productsCart.length > 0){ %>
             <% for (productCart of productsCart){ %>
-              <div class="subtotal-title"><%= productCart.product.whole_name %>  X<%= productCart.units %></div>
-              <div class="subtotal-value final-value" id="cart-subtotal"><%= productCart.product.price_final * productCart.units %>.00</div>
+              <div class="subtotal-title" id="product-name<%= productCart.id %>"><%= productCart.product.whole_name %>  X<%= productCart.units %></div>
+              <div class="subtotal-value final-value" id="product-price<%= productCart.id %>"><%= productCart.product.price_final * productCart.units %>.00</div>
             <% } %>
           <% } %>
           <% if (ammount){ %>
@@ -69,21 +69,20 @@
         </div>
         <div class="summary-delivery">
           <select name="delivery-collection" class="summary-delivery-selection">
-              <option value="0" selected="selected">Seleccionar tipo de envio</option>
-              <% if (shippings){ %>
-                <% for (shipping of shippings){ %>
-                  <option value="first-class"><%= shipping.name %> <%= shipping.description %></option>
+              <option value="0" selected="selected" disabled hidden>Seleccionar tipo de envio</option>
+              <% if (productsCart.length > 0){ %>
+                <% if (shippings){ %>
+                  <% for (shipping of shippings){ %>
+                    <option value="<%= shipping.name %>"><%= shipping.name %> <%= shipping.description %></option>
+                  <% } %>
                 <% } %>
-                <!-- <option value="first-class">Rapido (3-5 dias habiles)</option>
-                <option value="second-class">Hamilton (1-2 dias habiles)</option>
-                <option value="collection">Comun (5-7 dias habiles)</option> -->
               <% } %>
           </select>
-        </form>
+        </div>
         <div class="summary-total">
           <% if (ammount){ %>
             <div class="total-title">Total</div>
-            <div class="total-value final-value" id="cart-total">16500.00</div>
+            <div class="total-value final-value" id="cart-total"><%= ammount %></div>
           <% }else{ %>
             <div class="total-title">Total</div>
             <div class="total-value final-value" id="cart-total">0.00</div>

@@ -175,6 +175,15 @@ module.exports = {
             });
         }
     },
+    shippings: (req, res) => {
+        db.Shipping.findAll()
+        .then(results => {
+            return res.json(results);
+        });
+    }
+
+
+
     // logedInChecker: (req, res) => {
     //     if (req.session.user_id){
     //         db.User.findByPk(req.session.user_id)
