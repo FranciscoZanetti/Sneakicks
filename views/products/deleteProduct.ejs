@@ -23,7 +23,7 @@
 
     <main id="deleteProduct-main">
         <div class="main-container">
-            <form action="api/products/<%= productId %>/delete?_method=DELETE" method="post" enctype="multipart/form-data">
+            <form action="/products/<%= productId %>/delete?_method=DELETE" method="post" enctype="multipart/form-data">
                 <p class="header">¿ Estás seguro de que deseas eliminar el producto ID: <%= productId %> ?</p>
                 <div class="buttons-container">
                     <div class="buttons">

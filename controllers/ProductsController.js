@@ -196,6 +196,12 @@ const controller = {
 
         }
     },
+    removeFromCart: (req, res) => {
+        db.Product_Cart.destroy({
+            where: {id: req.params.id}
+        })
+        .then(x => {return res.redirect('/cart')});
+    },
     manageProduct: (req, res) => {
         if (req.session.category == 'admin') {
             return res.render('products/manageProduct');

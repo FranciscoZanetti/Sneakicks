@@ -152,6 +152,15 @@ li.subtotal:before {
 .details {
   width: 70%;
   text-align: left;
+  position: relative;
+}
+
+.readonly-input{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 0px;
+  opacity: 0;
 }
 
 .remove button {
@@ -212,13 +221,23 @@ li.subtotal:before {
   width: 3.75rem;
 }
 
+.stock-field-errors{
+  background-color: rgb(250, 201, 201);
+  border: 1px solid rgb(220, 40, 40);
+  border-radius: 4px;
+  font-size: 0.625rem;
+  padding: 2px;
+  width: 3.75rem;
+}
+
 .summary {
   background-color: #eee;
   border: 1px solid #aaa;
   padding: 1rem;
   width: 100%;
   box-sizing: border-box;
-  height: auto;
+  /* height: auto; */
+  height: fit-content;
 }
 
 .summary-total-items {

@@ -35,6 +35,8 @@ router.get('/:id/edit', productsController.editGet);
 
 router.delete('/:id/delete', productsController.deleteDelete);
 
+router.delete('/:id/remove-from-cart', productsController.removeFromCart);
+
 router.get('/:id/delete', productsController.deleteGet);
 
 router.post('/:id/adding-review', productMiddlewares.validateReviewForm, productsController.addReview);

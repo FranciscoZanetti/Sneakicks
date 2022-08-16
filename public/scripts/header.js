@@ -1,9 +1,10 @@
+
 window.addEventListener("load", function(){
     // console.log(document.querySelector("#user-id"));
     // console.log(sessionStorage.getItem("productsCart"));
     if ( document.querySelector("#user-id") ){
-        console.log("session products", sessionStorage.getItem("products"));
-        if (sessionStorage.getItem("products") == null){
+        console.log("session products", sessionStorage.getItem("productsCart"));
+        if (sessionStorage.getItem("productsCart") == null){
             // console.log("voy a fetchear");
             fetch("http://localhost:3000/api/main/cart")
             .then(response => response.json())
@@ -13,7 +14,7 @@ window.addEventListener("load", function(){
                     sessionStorage.setItem("productsCart", [JSON.stringify(results.cart.products)]);
                     // console.log(sessionStorage.getItem("productsCart"));
                     // console.log(JSON.stringify(sessionStorage.getItem("productsCart")));
-                    // console.log(sessionStorage);
+                    console.log("productsCart MONTADO", sessionStorage);
                 }
                 if (results.status == 400){
                     console.log("no se pudo");
