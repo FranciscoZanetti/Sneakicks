@@ -258,6 +258,21 @@ window.addEventListener("load", async function(){
                 //     }
                 // });
                 console.log("productsCart ACTUALIZADO", sessionStorage.getItem("productsCart"));
+
+                let product_id = productCart.product_id;
+                let size = productCart.size;
+                let nameProductSizes = "productSizes" + product_id;
+                if (sessionStorage.getItem(nameProductSizes) != null){
+                    let productSizes = JSON.parse(sessionStorage.getItem(nameProductSizes));
+                    productSizes.map(productSize => {
+                        if (productSize.product == product_id && productSize.size == size){
+                            productSize.stock += document.querySelector("#" + idProductDetails + " input").value;
+                        }
+                    });
+                    sessionStorage.setItem(nameProductSizes, JSON.stringify(productsSizes));
+                    console.log("stock disponible virtual actualizado");
+                }
+
             })
         });
 

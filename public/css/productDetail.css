@@ -19,6 +19,35 @@
 
 
 
+#size:focus{
+    outline: none;
+}
+
+#colorwave:focus{
+    outline: none;
+}
+
+#review:focus{
+    outline: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+select:focus{
+    outline: none;
+}
+
+
+a:hover{
+    cursor: pointer;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
 
 
 *{

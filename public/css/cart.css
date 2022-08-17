@@ -3,6 +3,25 @@
 @import url("header.css");
 @import url("footer.css");
 
+
+select:focus{
+  outline: none;
+}
+input:focus{
+  outline: none;
+}
+textarea:focus{
+  outline: none;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+select:hover{
+  cursor: pointer;
+}
+
 *{
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;

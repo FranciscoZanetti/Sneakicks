@@ -16,6 +16,19 @@
     --vw-10rem: clamp(9rem, calc(((160 * 100) / 414) * 1vw), 14rem);
 }
 
+
+select:focus{
+    outline: none;
+  }
+  input:focus{
+    outline: none;
+  }
+  textarea:focus{
+    outline: none;
+  }
+
+
+
 *{
     box-sizing: border-box;
 }
