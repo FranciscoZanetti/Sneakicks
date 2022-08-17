@@ -271,7 +271,7 @@ textarea:focus{
 .search-bar:focus-within .search-bar__submit:hover,
 .search-bar:focus-within .search-bar__submit:focus{
     outline: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.35); */
 }
 
 
@@ -415,7 +415,7 @@ textarea:focus{
         padding: 1px;
         width: var(--size);
         position: relative;
-        transition: width 300ms cubic-bezier(.18, .89, .32, 1.02);
+        transition: width 400ms cubic-bezier(.18, .89, .32, 1.02);
         overflow: hidden;
         background-color: white;
     }
@@ -482,7 +482,7 @@ textarea:focus{
     .search-bar:focus-within .search-bar__submit:hover,
     .search-bar:focus-within .search-bar__submit:focus{
         outline: 0;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+        /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.35); */
     }
 
     .burger-menu{
