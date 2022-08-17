@@ -47,7 +47,7 @@ const controller = {
     },
     manageProduct: (req, res) => {
         return res.render('products/manageProduct');
-    },
+    }
 }
 
 module.exports = controller;

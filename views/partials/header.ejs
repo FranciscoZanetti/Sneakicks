@@ -3,10 +3,25 @@
             <div class="top-navbar-container">
                 <div class="top-navbar">
                     <div class="top-left-navbar">
-                        <ul>
-                            <li><a href="#"><i class="fa-solid fa-bars dropdown"></i></a></li>
-                            <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                        </ul>
+
+                        <div class="burger-menu">
+                            <i class="fa-solid fa-bars dropdown"></i>
+                        </div>
+
+                        <div class="search-bar-container">
+                            <form class="search-bar" action="/products?search=">
+                                <input type="text" class="search-bar__input" placeholder="search..." aria-label="search">
+                                <button class="search-bar__submit" aria-label="submit search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- <ul>
+                            <li id="li-burger"><a href="#"><i class="fa-solid fa-bars dropdown"></i></a></li>
+                            <li id="li-search"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        </ul> -->
+
                     </div>
                     <div class="logo">
                         <a href="/">

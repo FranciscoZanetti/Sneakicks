@@ -220,4 +220,106 @@ window.addEventListener("load", async () => {
         }
     })
 
+
+
+    document.querySelector("#nav-descripcion").addEventListener("click", function (){
+        document.getElementById("nav-descripcion").style.backgroundColor = "#F10F10F10";
+    })
+    document.querySelector("#nav-descripcion span").addEventListener("click", function (){
+        document.getElementById("nav-descripcion").style.backgroundColor = "#F10F10F10";
+    })
+
+    document.querySelector("#nav-talles").addEventListener("click", function (){
+        document.getElementById("nav-talles").style.backgroundColor = "#F10F10F10";
+    })
+    document.querySelector("#nav-talles span").addEventListener("click", function (){
+        document.getElementById("nav-talles").style.backgroundColor = "#F10F10F10";
+    })
+
+    document.querySelector("#nav-reseñas").addEventListener("click", function (){
+        document.getElementById("nav-reseñas").style.backgroundColor = "#F10F10F10";
+    })
+    document.querySelector("#nav-reseñas span").addEventListener("click", function (){
+        document.getElementById("nav-reseñas").style.backgroundColor = "#F10F10F10";
+    })
+
+
+
+
+    document.getElementById("radio1").addEventListener("click", function (){
+        document.getElementById("star1").classList.remove("fa-regular");
+        document.getElementById("star1").classList.add("fa-solid");
+        document.getElementById("star2").classList.remove("fa-solid");
+        document.getElementById("star2").classList.add("fa-regular");
+        document.getElementById("star3").classList.remove("fa-solid");
+        document.getElementById("star3").classList.add("fa-regular");
+        document.getElementById("star4").classList.remove("fa-solid");
+        document.getElementById("star4").classList.add("fa-regular");
+        document.getElementById("star5").classList.remove("fa-solid");
+        document.getElementById("star5").classList.add("fa-regular");
+    })
+
+    document.getElementById("radio2").addEventListener("click", function (){
+        document.getElementById("star1").classList.remove("fa-regular");
+        document.getElementById("star1").classList.add("fa-solid");
+        document.getElementById("star2").classList.remove("fa-regular");
+        document.getElementById("star2").classList.add("fa-solid");
+        document.getElementById("star3").classList.remove("fa-solid");
+        document.getElementById("star3").classList.add("fa-regular");
+        document.getElementById("star4").classList.remove("fa-solid");
+        document.getElementById("star4").classList.add("fa-regular");
+        document.getElementById("star5").classList.remove("fa-solid");
+        document.getElementById("star5").classList.add("fa-regular");
+    })
+
+    document.getElementById("radio3").addEventListener("click", function (){
+        document.getElementById("star1").classList.remove("fa-regular");
+        document.getElementById("star1").classList.add("fa-solid");
+        document.getElementById("star2").classList.remove("fa-regular");
+        document.getElementById("star2").classList.add("fa-solid");
+        document.getElementById("star3").classList.remove("fa-regular");
+        document.getElementById("star3").classList.add("fa-solid");
+        document.getElementById("star4").classList.remove("fa-solid");
+        document.getElementById("star4").classList.add("fa-regular");
+        document.getElementById("star5").classList.remove("fa-solid");
+        document.getElementById("star5").classList.add("fa-regular");
+    })
+
+    document.getElementById("radio4").addEventListener("click", function (){
+        document.getElementById("star1").classList.remove("fa-regular");
+        document.getElementById("star1").classList.add("fa-solid");
+        document.getElementById("star2").classList.remove("fa-regular");
+        document.getElementById("star2").classList.add("fa-solid");
+        document.getElementById("star3").classList.remove("fa-regular");
+        document.getElementById("star3").classList.add("fa-solid");
+        document.getElementById("star4").classList.remove("fa-regular");
+        document.getElementById("star4").classList.add("fa-solid");
+        document.getElementById("star5").classList.remove("fa-solid");
+        document.getElementById("star5").classList.add("fa-regular");
+    })
+
+    document.getElementById("radio5").addEventListener("click", function (){
+        document.getElementById("star1").classList.remove("fa-regular");
+        document.getElementById("star1").classList.add("fa-solid");
+        document.getElementById("star2").classList.remove("fa-regular");
+        document.getElementById("star2").classList.add("fa-solid");
+        document.getElementById("star3").classList.remove("fa-regular");
+        document.getElementById("star3").classList.add("fa-solid");
+        document.getElementById("star4").classList.remove("fa-regular");
+        document.getElementById("star4").classList.add("fa-solid");
+        document.getElementById("star5").classList.remove("fa-regular");
+        document.getElementById("star5").classList.add("fa-solid");
+    })
+
+
+    document.querySelector(".text-review").addEventListener("submit", function (event){
+        if (document.querySelector("textarea").value == ""){
+            event.preventDefault();
+        }
+        if ( !(document.querySelector("radio1").checked && document.querySelector("radio2").checked && document.querySelector("radio3").checked &&
+        document.querySelector("radio4").checked && document.querySelector("radio5").checked) ){
+            event.preventDefault();
+        }
+    })
+
 })

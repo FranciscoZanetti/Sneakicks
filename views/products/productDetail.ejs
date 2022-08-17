@@ -54,16 +54,16 @@
                             <img src="/img/products/<%= result.product.main_picture %>" alt=<%= result.product.name %>>
                         </div>
                         <div class="images-mini">
-                            <article class="images-mini-img-container">
+                            <article class="images-mini-img-container" id="image-1">
                                 <img src="/img/products/<%= result.product.picture1 %>" alt=<%= result.product.name %>>
                             </article>
-                            <article class="images-mini-img-container">
+                            <article class="images-mini-img-container" id="image-2">
                                 <img src="/img/products/<%= result.product.picture2 %>" alt=<%= result.product.name %>>
                             </article>
-                            <article class="images-mini-img-container">
+                            <article class="images-mini-img-container" id="image-3">
                                 <img src="/img/products/<%= result.product.picture3 %>" alt=<%= result.product.name %>>
                             </article>
-                            <article class="images-mini-img-container">
+                            <article class="images-mini-img-container" id="image-4">
                                 <img src="/img/products/<%= result.product.picture4 %>" alt=<%= result.product.name %>>
                             </article>
                         </div>
@@ -213,10 +213,10 @@
                                     <% for (let i=1; i<=5; i++){ %>
                                         <div class="star-input-container">
                                             <div class="radio-container">
-                                                <input type="radio" name="stars" value="<%= i %>">
+                                                <input id="radio<%= i %>" type="radio" name="stars" value="<%= i %>">
                                             </div>
                                             <div class="form-star-container">
-                                                <i class="fa-regular fa-star"></i>
+                                                <i id="star<%= i %>" class="fa-regular fa-star"></i>
                                             </div>
                                         </div>
                                     <% } %>

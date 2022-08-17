@@ -213,7 +213,7 @@ const controller = {
         let errors = validationResult(req);
         console.log(req.files);
 
-        if (!errors.isEmpty() || !req.files || req.files.length < 1){
+        if (!errors.isEmpty() || !req.files || req.files.length < 1 || req.files.length > 5){
             res.render("products/manageProduct", { errors: errors.mapped(), old: req.body });
             console.log("req.files: "+req.files);
         }else{
@@ -486,7 +486,7 @@ const controller = {
         }
     },
     editGet: (req, res) => {
-        if (typeof req.session.category == "admin"){
+        if (req.session.category == "admin"){
             let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
             let promiseProduct_Size = db.Product_Size.findAll({
                 where: {

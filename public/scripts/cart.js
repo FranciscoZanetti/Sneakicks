@@ -243,20 +243,8 @@ window.addEventListener("load", async function(){
                 });
                 sessionStorage.setItem("productsCart", JSON.stringify(productsCartAux));
                 
-                // productsSizes.map(productSize => {
-                //     if (productCart.product_id == productSize.product && productCart.size == productSize.size){
-                //         let productsCartAux = [];
-                //         productsCart.map(productCart => {
-                //             productsSizes.map(productSize => {
-                //                 if ( !(productCart.product_id == productSize.product && productCart.size == productSize.size) ){
-                //                     productsCartAux.push(productCart);
-                //                 }
-                //             });
-                //         });
-                //         sessionStorage.removeItem("productsCart");
-                //         sessionStorage.setItem("productsCart")
-                //     }
-                // });
+                
+                
                 console.log("productsCart ACTUALIZADO", sessionStorage.getItem("productsCart"));
 
                 let product_id = productCart.product_id;
