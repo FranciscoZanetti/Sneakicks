@@ -22,7 +22,7 @@ window.addEventListener("load", function(){
             });
         }
         if (sessionStorage.getItem("productsCart") != null){
-            if (JSON.parse(sessionStorage.getItem("productsCart")).length == 0){
+            // if (JSON.parse(sessionStorage.getItem("productsCart")).length == 0){
                 fetch("http://localhost:3000/api/main/cart")
                 .then(response => response.json())
                 .then(results => {
@@ -31,13 +31,13 @@ window.addEventListener("load", function(){
                         sessionStorage.setItem("productsCart", [JSON.stringify(results.cart.products)]);
                         // console.log(sessionStorage.getItem("productsCart"));
                         // console.log(JSON.stringify(sessionStorage.getItem("productsCart")));
-                        console.log("productsCart MONTADO", sessionStorage);
+                        console.log("productsCart MONTADO", sessionStorage.getItem("productsCart"));
                     }
                     if (results.status == 400){
                         console.log("no se pudo");
                     }
                 });
-            }
+            // }
         }
     }
     if ( document.querySelector(".fa-user") != null){

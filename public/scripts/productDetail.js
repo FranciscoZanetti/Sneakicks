@@ -1,7 +1,8 @@
 // const e = require("express");
 
-let UrlId = document.querySelector("#URLparamId").textContent;
+let UrlId = window.location.pathname.slice(10);
 let nameProductSizes = "productSizes" + UrlId;
+
 
 const fetchData = fetch("http://localhost:3000/api/products/" + UrlId)
                     .then(response => response.json())
@@ -10,19 +11,19 @@ const fetchData = fetch("http://localhost:3000/api/products/" + UrlId)
                         console.log(results);
                         console.log("Product Sizes antes", sessionStorage.getItem(nameProductSizes));
                         if (sessionStorage.getItem("productsCart") == null){
-                            if (sessionStorage.getItem(nameProductSizes) == null){
+                            // if (sessionStorage.getItem(nameProductSizes) == null){
                                 sessionStorage.setItem(nameProductSizes, JSON.stringify(results.product.product_sizes));
                                 console.log("Product Sizes durante", sessionStorage.getItem(nameProductSizes));
-                            }
+                            // }
                         }
                         if (sessionStorage.getItem("productsCart") != null){
-                            if (sessionStorage.getItem("productsCart").length == 0){
-                                if (sessionStorage.getItem(nameProductSizes) == null){
+                            if (JSON.parse(sessionStorage.getItem("productsCart")).length == 0){
+                                // if (sessionStorage.getItem(nameProductSizes) == null){
                                     sessionStorage.setItem(nameProductSizes, JSON.stringify(results.product.product_sizes));
                                     console.log("Product Sizes durante", sessionStorage.getItem(nameProductSizes));
-                                }
+                                // }
                             }
-                            if (sessionStorage.getItem("productsCart").length > 0){
+                            if (JSON.parse(sessionStorage.getItem("productsCart")).length > 0){
                                 let productsCart = JSON.parse(sessionStorage.getItem("productsCart"));
                                 let instancesOfProductInProductCart = [];
                                 productsCart.map(productCart => {
@@ -31,7 +32,7 @@ const fetchData = fetch("http://localhost:3000/api/products/" + UrlId)
                                     }
                                 });
                                 if (instancesOfProductInProductCart.length > 0){
-                                    if (sessionStorage.getItem(nameProductSizes) == null){
+                                    if (sessionStorage.getItem(nameProductSizes) == null){ // ojo aca
                                         let resultsProduct_Sizes = results.product.product_sizes;
                                         instancesOfProductInProductCart.map(instance => {
                                             resultsProduct_Sizes.map(product_size => {
@@ -49,10 +50,10 @@ const fetchData = fetch("http://localhost:3000/api/products/" + UrlId)
                                     }
                                 }
                                 else{
-                                    if (sessionStorage.getItem(nameProductSizes) == null){
+                                    // if (sessionStorage.getItem(nameProductSizes) == null){
                                         sessionStorage.setItem(nameProductSizes, JSON.stringify(results.product.product_sizes));
                                         console.log("Product Sizes durante", sessionStorage.getItem(nameProductSizes));
-                                    }
+                                    // }
                                 }
                             }
                         }
@@ -61,6 +62,10 @@ const fetchData = fetch("http://localhost:3000/api/products/" + UrlId)
                         console.log("Product Sizes despues", sessionStorage.getItem(nameProductSizes));
                         return results.colorwaves;
                     });
+
+
+
+// const fetchReviews = fetch()
 
 window.addEventListener("load", async () => {
     console.log("hola");
@@ -174,7 +179,7 @@ window.addEventListener("load", async () => {
                     }
                 });
                 sessionStorage.setItem(nameProductSizes, JSON.stringify(productSizesAux));
-                console.log("actualice los productsSizes");
+                console.log("actualice los productsSizes: ", sessionStorage.getItem(nameProductSizes));
                 console.log("agregando al carrito: ", {id: selectedProductSize.product, size: selectedProductSize.size});
             }
         }

@@ -1,5 +1,6 @@
 const fetchData = fetch("http://localhost:3000/api/products").then(response => response.json()).then(results => {
     let productsCart = JSON.parse(sessionStorage.getItem("productsCart"));
+    console.log("productsCart en el fetch del cart", sessionStorage.getItem("productsCart"));
     let productsSizes = [];
     if (productsCart.length > 0){
         results.products.map(product => {
@@ -25,12 +26,13 @@ const fetchShippings = fetch("http://localhost:3000/api/main/shippings").then(re
 
 window.addEventListener("load", async function(){
     let productsSizes = await fetchData;
+    console.log("productsSizes", JSON.stringify(productsSizes));
     let shippings = await fetchShippings;
-    if (productsSizes.length > 0){
+    if (productsSizes.length > 0 && JSON.parse(sessionStorage.getItem("productsCart")).length > 0){
 
         console.log(shippings);
 
-
+        
 
         let productsCart = JSON.parse(sessionStorage.getItem("productsCart"));
         let updateNecessary = false;
@@ -47,7 +49,7 @@ window.addEventListener("load", async function(){
 
 
         // CAMBIA EL VALOR DE LAS UNITS SI EXCEDEN EL STOCK REAL, Y ACTUALIZA EL STOCK VIRTUAL EN SESSION STORAGE
-
+        
         productsCart.map(productCart => {
             let idProductDetails = "product-details"+productCart.id;
             let idProductName = "product-name"+productCart.id;
@@ -231,20 +233,31 @@ window.addEventListener("load", async function(){
 
         // ELIMINA PRODUCTOS DEL CARRITO Y ACTUALIZA EL SESSION STORAGE
 
+        productsCart = JSON.parse(sessionStorage.getItem("productsCart")); // ultima cosa agregada
+
         productsCart.map(productCart => {
+
             let idProductDetails = "product-details"+productCart.id;
+
             document.querySelector("#" + idProductDetails).addEventListener("submit", function (event){
 
+                // event.preventDefault();
+
                 let productsCartAux = [];
-                productsCart.map(aux => {
+                // productsCart.map(aux => {
+                //     if (productCart.id != aux.id){
+                //         productsCartAux.push(aux);
+                //     }
+                // });
+                productsCart.forEach(aux => {
                     if (productCart.id != aux.id){
                         productsCartAux.push(aux);
                     }
-                });
+                })
                 sessionStorage.setItem("productsCart", JSON.stringify(productsCartAux));
                 
                 
-                
+
                 console.log("productsCart ACTUALIZADO", sessionStorage.getItem("productsCart"));
 
                 let product_id = productCart.product_id;
@@ -252,14 +265,55 @@ window.addEventListener("load", async function(){
                 let nameProductSizes = "productSizes" + product_id;
                 if (sessionStorage.getItem(nameProductSizes) != null){
                     let productSizes = JSON.parse(sessionStorage.getItem(nameProductSizes));
-                    productSizes.map(productSize => {
-                        if (productSize.product == product_id && productSize.size == size){
-                            productSize.stock += document.querySelector("#" + idProductDetails + " input").value;
-                        }
-                    });
-                    sessionStorage.setItem(nameProductSizes, JSON.stringify(productsSizes));
-                    console.log("stock disponible virtual actualizado");
+                    console.log("stock disponible virtual pre actualizacion: ", sessionStorage.getItem(nameProductSizes));
+                    // productSizes.map(productSize => {
+                    //     if (productSize.product == product_id && productSize.size == size){
+                    //         productSize.stock += productCart.units;
+                    //     }
+                    // });
+
+
+                    // productSizes.forEach(productSize => {
+                    //     if (productSize.product == product_id && productSize.size == size){
+                    //         productSize.stock = productSize.stock + productCart.units;
+                    //     }
+                    // });
+                    // console.log("productSizes antes de cargar en sessionStorage: ", productsSizes);
+                    // sessionStorage.setItem(nameProductSizes, JSON.stringify(productsSizes));
+                    // console.log("stock disponible virtual actualizado: ", sessionStorage.getItem(nameProductSizes));
                 }
+                console.log("ProductsCart post eliminacion", sessionStorage.getItem("productsCart"));
+
+
+                // OPCION 2
+
+                // let product_id = productCart.product_id;
+                // let size = productCart.size;
+                // let nameProductSizes = "productSizes" + product_id;
+                // if (sessionStorage.getItem(nameProductSizes) != null){
+                //     // sessionStorage.remove(nameProductSizes);
+                //     console.log("productsSizes pre actualizar: ", sessionStorage.getItem(nameProductSizes));
+                //     let productSizes = JSON.parse(sessionStorage.getItem(nameProductSizes));
+                //     productSizes.map(productSize => {
+                //         if (productSize.product == product_id && productSize.size == size){
+                //             productSize.stock += productCart.units;
+                //         }
+                //     });
+                //     sessionStorage.setItem(nameProductSizes, JSON.stringify(productsSizes));
+                //     console.log("stock disponible virtual actualizado: ", sessionStorage.getItem(nameProductSizes));
+                // }
+
+                // let productsCartAux = [];
+                // productsCart.map(aux => {
+                //     if (productCart.id != aux.id){
+                //         productsCartAux.push(aux);
+                //     }
+                // });
+                // sessionStorage.removeItem("productsCart");
+                // sessionStorage.setItem("productsCart", JSON.stringify(productsCartAux));
+                // console.log("ProductsCart post eliminacion", sessionStorage.getItem("productsCart"));
+
+                
 
             })
         });
