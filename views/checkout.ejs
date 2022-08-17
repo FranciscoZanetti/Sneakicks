@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/manageProduct.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <script src="https://kit.fontawesome.com/f7b22d2da3.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <title>Checkout | Sneakicks</title>
+</head>
+
+
+
+<body>
+
+    <%- include('../partials/header'); %>
+
+    <main>
+        <div class="container">
+            <h2 class="manage-title">Completa los datos de la compra</h2>
+            <form action="/checkout" method="post">
+                <article class="product-item">
+                    <label for="item-name" class="item-label">Nombre del modelo</label>
+                    <!-- <% if ( locals.errors && errors.name ){ %>
+                        <div class="error-message-container">
+                            <p class="error-message"><%= errors.name.msg %></p>
+                        </div>
+                    <% } %> -->
+                    <input type="text" class="item-input" id="item-name" name="name" value="<%= locals.old && old.name ? old.name : '' %>">
+                </article>
+                
+                <article class="product-item" id="product-buttons">
+                    <div class="item-submit">
+                        <button type="submit" id="item-submit">Crear</button>
+                    </div>
+                    <div class="item-reset">
+                        <button type="reset" id="item-reset">Borrar</button>
+                    </div>
+                </article>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../partials/footer'); %>
+
+</body>
+
+</html>

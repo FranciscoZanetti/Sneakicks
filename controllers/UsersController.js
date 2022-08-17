@@ -40,6 +40,7 @@ const controller = {
         }
     },
     renderLogin: (req, res) => {
+        console.log(req.session.user_id);
         if (req.session.user_id) {
             res.redirect(`${req.session.user_id}/profile`)
         }

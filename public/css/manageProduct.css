@@ -102,6 +102,12 @@ article{
         font-size: var(--vw-1rem);
     }
 
+    .item-input-errors{
+        border: 2px solid #e28a8a;
+        background-color: #f7d7d7;
+        border-radius: 7px;
+    }
+
     .item-label{
         display: block;
         font-size: var(--vw-1-1rem);
@@ -376,7 +382,13 @@ article{
     }
 
     .error-message{
-        color: red;
+        color: #eb7171;
+        font-size: var(--vw-0-8rem);
+    }
+
+    .error-message-container-front{
+        display: none;
+        color: #eb7171;
         font-size: var(--vw-0-8rem);
     }
 

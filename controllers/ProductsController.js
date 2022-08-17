@@ -206,7 +206,7 @@ const controller = {
         if (req.session.category == 'admin') {
             return res.render('products/manageProduct');
         } else {
-            return res.status(401).send('No tiene permisos para realizar esa acción')
+            return res.render("blockedRoute");
         }
     },
     create: (req, res) => {
@@ -252,7 +252,9 @@ const controller = {
                     }
                 }
             )
-            .then(brand => {
+            .then(results => {
+                let brand = results[0];
+                console.log("\nSOY BRAND: " + brand + "\n");
                 db.Product.create({
                     id_brand: brand.id,
                     category: req.body.category,
@@ -484,22 +486,26 @@ const controller = {
         }
     },
     editGet: (req, res) => {
-        // let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
-        // let promiseProduct_Size = db.Product_Size.findAll({
-        //     where: {
-        //         product: req.params.id
-        //     }
+        if (typeof req.session.category == "admin"){
+            let promiseProduct = db.Product.findByPk(req.params.id, {include: {association: "brand"}});
+            let promiseProduct_Size = db.Product_Size.findAll({
+                where: {
+                    product: req.params.id
+                }
+            });
+            Promise.all([promiseProduct, promiseProduct_Size])
+                .then(([resultProduct, resultProduct_Size]) => {
+                    console.log(resultProduct_Size);
+                    return res.render('products/editProduct', {product: resultProduct, sizeArray: resultProduct_Size});
+                });
+        }else{
+            return res.render('blockedRoute');
+        }
+        // fetch("http://localhost:3000/api/products/"+req.params.id)
+        // .then(response => response.json())
+        // .then(result => {
+        //     return res.render('products/editProduct', {product: result.product});
         // });
-        // Promise.all([promiseProduct, promiseProduct_Size])
-        //     .then(([resultProduct, resultProduct_Size]) => {
-        //         console.log(resultProduct_Size);
-        //         return res.render('products/editProduct', {product: resultProduct, sizeArray: resultProduct_Size});
-        //     });
-        fetch("http://localhost:3000/api/products/"+req.params.id)
-        .then(response => response.json())
-        .then(result => {
-            return res.render('products/editProduct', {product: result.product});
-        });
     },
     editPut: (req, res) => {
 
@@ -513,8 +519,9 @@ const controller = {
         Promise.all([promiseProduct, promiseProduct_Size])
             .then(([resultProduct, resultProduct_Size]) => {
                 if (!errors.isEmpty()){
-                    res.render("products/editProduct", { errors: errors.mapped(), old: req.body, product: resultProduct, sizeArray: resultProduct_Size });
+                    return res.render("products/editProduct", { errors: errors.mapped(), old: req.body, product: resultProduct, sizeArray: resultProduct_Size });
                 }else{
+                    console.log(req.body);
                     let edited_id = req.params.id;
                     db.Brand.findOrCreate(
                         {
@@ -584,314 +591,617 @@ const controller = {
                                     {
                                         where: {id: edited_id}
                                     }
+                                )
+                                .then(x => {
+                                    let promise30 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_30,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 3.0
+                                            }
+                                        }
+                                    );
+                                    let promise35 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_35,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 3.5
+                                            }
+                                        }
+                                    );
+                                    let promise40 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_40,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 4.0
+                                            }
+                                        }
+                                    );
+                                    let promise45 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_45,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 4.5
+                                            }
+                                        }
+                                    );
+                                    let promise50 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_50,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 5.0
+                                            }
+                                        }
+                                    );
+                                    let promise55 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_55,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 5.5
+                                            }
+                                        }
+                                    );
+                                    let promise60 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_60,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 6.0
+                                            }
+                                        }
+                                    );
+                                    let promise65 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_65,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 6.5
+                                            }
+                                        }
+                                    );
+                                    let promise70 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_70,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 7.0
+                                            }
+                                        }
+                                    );
+                                    let promise75 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_75,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 7.5
+                                            }
+                                        }
+                                    );
+                                    let promise80 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_80,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 8.0
+                                            }
+                                        }
+                                    );
+                                    let promise85 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_35,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 8.5
+                                            }
+                                        }
+                                    );
+                                    let promise90 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_90,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 9.0
+                                            }
+                                        }
+                                    );
+                                    let promise95 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_95,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 9.5
+                                            }
+                                        }
+                                    );
+                                    let promise100 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_100,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 10.0
+                                            }
+                                        }
+                                    );
+                                    let promise105 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_105,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 10.5
+                                            }
+                                        }
+                                    );
+                                    let promise110 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_110,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 11.0
+                                            }
+                                        }
+                                    );
+                                    let promise115 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_115,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 11.5
+                                            }
+                                        }
+                                    );
+                                    let promise120 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_120,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 12.0
+                                            }
+                                        }
+                                    );
+                                    let promise125 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_125,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 12.5
+                                            }
+                                        }
+                                    );
+                                    let promise130 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_130,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 13.0
+                                            }
+                                        }
+                                    );
+                                    let promise135 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_135,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 13.5
+                                            }
+                                        }
+                                    );
+                                    let promise140 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_140,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 14.0
+                                            }
+                                        }
+                                    );
+                                    let promise145 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_145,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 14.5
+                                            }
+                                        }
+                                    );
+                                    let promise150 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_150,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 15.0
+                                            }
+                                        }
+                                    );
+                                    let promise155 = db.Product_Size.update(
+                                        {
+                                            stock: req.body.size_155,
+                                        },
+                                        {
+                                            where: {
+                                                product: edited_id,
+                                                size: 15.5
+                                            }
+                                        }
+                                    );
+
+                                    Promise.all([promise30, promise35, promise40, promise45, promise50, promise55, promise60, promise65, promise70,
+                                        promise75, promise80, promise85, promise90, promise100, promise105, promise110, promise115, promise120,
+                                        promise125, promise130, promise135, promise140, promise145, promise150, promise155])
+                                    .then(([result30, result35, result40, result45, result50, result55, result60, result65, result70,
+                                        result75, result80, result85, result90, result100, result105, result110, result115, result120,
+                                        result125, result130, result135, result140, result145, result150, result155]) => {
+                                            return res.redirect("/products/"+edited_id);
+                                        });
+                                });
+                            }else{
+                                let promise30 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_30,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 3.0
+                                        }
+                                    }
                                 );
+                                let promise35 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_35,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 3.5
+                                        }
+                                    }
+                                );
+                                let promise40 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_40,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 4.0
+                                        }
+                                    }
+                                );
+                                let promise45 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_45,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 4.5
+                                        }
+                                    }
+                                );
+                                let promise50 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_50,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 5.0
+                                        }
+                                    }
+                                );
+                                let promise55 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_55,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 5.5
+                                        }
+                                    }
+                                );
+                                let promise60 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_60,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 6.0
+                                        }
+                                    }
+                                );
+                                let promise65 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_65,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 6.5
+                                        }
+                                    }
+                                );
+                                let promise70 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_70,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 7.0
+                                        }
+                                    }
+                                );
+                                let promise75 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_75,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 7.5
+                                        }
+                                    }
+                                );
+                                let promise80 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_80,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 8.0
+                                        }
+                                    }
+                                );
+                                let promise85 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_35,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 8.5
+                                        }
+                                    }
+                                );
+                                let promise90 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_90,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 9.0
+                                        }
+                                    }
+                                );
+                                let promise95 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_95,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 9.5
+                                        }
+                                    }
+                                );
+                                let promise100 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_100,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 10.0
+                                        }
+                                    }
+                                );
+                                let promise105 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_105,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 10.5
+                                        }
+                                    }
+                                );
+                                let promise110 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_110,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 11.0
+                                        }
+                                    }
+                                );
+                                let promise115 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_115,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 11.5
+                                        }
+                                    }
+                                );
+                                let promise120 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_120,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 12.0
+                                        }
+                                    }
+                                );
+                                let promise125 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_125,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 12.5
+                                        }
+                                    }
+                                );
+                                let promise130 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_130,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 13.0
+                                        }
+                                    }
+                                );
+                                let promise135 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_135,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 13.5
+                                        }
+                                    }
+                                );
+                                let promise140 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_140,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 14.0
+                                        }
+                                    }
+                                );
+                                let promise145 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_145,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 14.5
+                                        }
+                                    }
+                                );
+                                let promise150 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_150,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 15.0
+                                        }
+                                    }
+                                );
+                                let promise155 = db.Product_Size.update(
+                                    {
+                                        stock: req.body.size_155,
+                                    },
+                                    {
+                                        where: {
+                                            product: edited_id,
+                                            size: 15.5
+                                        }
+                                    }
+                                );
+
+                                Promise.all([promise30, promise35, promise40, promise45, promise50, promise55, promise60, promise65, promise70,
+                                    promise75, promise80, promise85, promise90, promise100, promise105, promise110, promise115, promise120,
+                                    promise125, promise130, promise135, promise140, promise145, promise150, promise155])
+                                .then(([result30, result35, result40, result45, result50, result55, result60, result65, result70,
+                                    result75, result80, result85, result90, result100, result105, result110, result115, result120,
+                                    result125, result130, result135, result140, result145, result150, result155]) => {
+                                        return res.redirect("/products/"+edited_id);
+                                    });
                             }
                             // CHEQUEAR CODIGO DE EDIT PUT
                         });
                     
-                        let promise30 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_30,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 3.0
-                                }
-                            }
-                        );
-                        let promise35 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_35,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 3.5
-                                }
-                            }
-                        );
-                        let promise40 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_40,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 4.0
-                                }
-                            }
-                        );
-                        let promise45 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_45,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 4.5
-                                }
-                            }
-                        );
-                        let promise50 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_50,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 5.0
-                                }
-                            }
-                        );
-                        let promise55 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_55,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 5.5
-                                }
-                            }
-                        );
-                        let promise60 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_60,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 6.0
-                                }
-                            }
-                        );
-                        let promise65 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_65,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 6.5
-                                }
-                            }
-                        );
-                        let promise70 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_70,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 7.0
-                                }
-                            }
-                        );
-                        let promise75 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_75,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 7.5
-                                }
-                            }
-                        );
-                        let promise80 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_80,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 8.0
-                                }
-                            }
-                        );
-                        let promise85 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_35,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 8.5
-                                }
-                            }
-                        );
-                        let promise90 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_90,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 9.0
-                                }
-                            }
-                        );
-                        let promise95 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_95,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 9.5
-                                }
-                            }
-                        );
-                        let promise100 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_100,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 10.0
-                                }
-                            }
-                        );
-                        let promise105 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_105,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 10.5
-                                }
-                            }
-                        );
-                        let promise110 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_110,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 11.0
-                                }
-                            }
-                        );
-                        let promise115 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_115,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 11.5
-                                }
-                            }
-                        );
-                        let promise120 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_120,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 12.0
-                                }
-                            }
-                        );
-                        let promise125 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_125,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 12.5
-                                }
-                            }
-                        );
-                        let promise130 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_130,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 13.0
-                                }
-                            }
-                        );
-                        let promise135 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_135,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 13.5
-                                }
-                            }
-                        );
-                        let promise140 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_140,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 14.0
-                                }
-                            }
-                        );
-                        let promise145 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_145,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 14.5
-                                }
-                            }
-                        );
-                        let promise150 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_150,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 15.0
-                                }
-                            }
-                        );
-                        let promise155 = db.Product_Size.update(
-                            {
-                                stock: req.body.size_155,
-                            },
-                            {
-                                where: {
-                                    product: edited_id,
-                                    size: 15.5
-                                }
-                            }
-                        );
-                    });
                         
-                        Promise.all([promise30, promise35, promise40, promise45, promise50, promise55, promise60, promise65, promise70,
-                        promise75, promise80, promise85, promise90, promise100, promise105, promise110, promise115, promise120,
-                        promise125, promise130, promise135, promise140, promise145, promise150, promise155])
-                            .then(([result30, result35, result40, result45, result50, result55, result60, result65, result70,
-                                result75, result80, result85, result90, result100, result105, result110, result115, result120,
-                                result125, result130, result135, result140, result145, result150, result155]) => {
-                                    return res.redirect("/products/"+edited_id);
-                                });
+                    });
                 }
             });
     },
     deleteGet: (req, res) => {
         // db.Product.findByPk(req.params.id)
         //     .then(result => {return res.render("products/deleteProduct", {product: result})});
-        return res.render("products/deleteProduct", {productId: req.params.id});
+        if (req.session.category == "admin"){
+            return res.render("products/deleteProduct", {productId: req.params.id});
+        }else{
+            return res.render("blockedRoute");
+        }
     },
     deleteDelete: (req, res) => {
         db.Product.destroy({
@@ -991,6 +1301,11 @@ const controller = {
                     return res.redirect('/products/'+ idProduct);
                 });
         }
+    },
+    bargains: (req, res) => {
+        fetch("http://localhost:3000/api/main").then(response => response.json()).then(results => {
+            return res.render("products/productList", {results: {bargains: results.list.bargains}});
+        })
     }
 }
 

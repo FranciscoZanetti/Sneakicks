@@ -24,7 +24,7 @@
     <main>
         <div class="container">
             <h2 class="manage-title">Crea un producto</h2>
-            <form action="/products/create" method="post" enctype="multipart/form-data">
+            <form action="/products/create" method="post" enctype="multipart/form-data" id="create-product-form">
                 <article class="product-item">
                     <label for="item-name" class="item-label">Nombre del modelo</label>
                     <% if ( locals.errors && errors.name ){ %>
@@ -32,6 +32,9 @@
                             <p class="error-message"><%= errors.name.msg %></p>
                         </div>
                     <% } %>
+                    <div class="error-message-container-front" id="error-message-name">
+                        <p class="error-message">Este campo es obligatorio</p>
+                    </div>
                     <input type="text" class="item-input" id="item-name" name="name" value="<%= locals.old && old.name ? old.name : '' %>">
                 </article>
                 <article class="product-item">
@@ -41,6 +44,9 @@
                             <p class="error-message"><%= errors.colorwave.msg %></p>
                         </div>
                     <% } %>
+                    <div class="error-message-container-front" id="error-message-colorwave">
+                        <p class="error-message">Este campo es obligatorio</p>
+                    </div>
                     <input type="text" class="item-input" id="item-colorwave" name="colorwave" value="<%= locals.old && old.colorwave ? old.colorwave : '' %>">
                 </article>
                 <article class="product-item">
@@ -50,7 +56,10 @@
                             <p class="error-message"><%= errors.brand_name.msg %></p>
                         </div>
                     <% } %>
-                    <input type="text" class="item-input" id="item-brand" name="brand_name" value="<%= locals.old && old.brand_name ? old.brand_name : '' %>">
+                    <div class="error-message-container-front" id="error-message-brand_name">
+                        <p class="error-message">Este campo es obligatorio</p>
+                    </div>
+                    <input type="text" class="item-input" id="item-brand_name" name="brand_name" value="<%= locals.old && old.brand_name ? old.brand_name : '' %>">
                 </article>
                 <article class="product-item">
                     <label for="item-category" class="item-label">Categoía</label>
@@ -59,17 +68,23 @@
                             <p class="error-message"><%= errors.category.msg %></p>
                         </div>
                     <% } %>
+                    <div class="error-message-container-front" id="error-message-category">
+                        <p class="error-message">Este campo es obligatorio</p>
+                    </div>
                     <input type="text" class="item-input" id="item-category" name="category" value="<%= locals.old && old.category ? old.category : '' %>">
                 </article>
                 <article class="product-item">
                     <p class="item-header">Talles</p>
+                    <div class="error-message-container-front" id="error-message-sizes">
+                        <p class="error-message">Todos los campos deben ser válidos</p>
+                    </div>
                     <div id="product-size">
                         <% for (let i=30; i<=155; i=i+5) { %>
-                            <div class="item-size">
+                            <div class="item-size" id="item-size-size_<%= i %>">
                                 <!-- <input type="checkbox" name="size" value="<%= i %>" class="item-checkbox" id="<%= i %>" checked> -->
                                 <label for="<%= i %>"><%= i/10 %> :</label>
-                                <div class="size-input-container">
-                                    <input type="number" class="size-input" name="size_<%= i %>" value="0">
+                                <div class="size-input-container" id="size-input-container-<%= i %>">
+                                    <input type="number" class="size-input" id="size_<%= i %>" name="size_<%= i %>" value="0">
                                     <span>u</span>
                                 </div>
                             </div>
@@ -84,6 +99,9 @@
                                 <p class="error-message"><%= errors.price_original.msg %></p>
                             </div>
                         <% } %>
+                        <div class="error-message-container-front" id="error-message-price">
+                            <p class="error-message">Este campo es obligatorio</p>
+                        </div>
                         <input type="number" min="1" class="item-input" id="item-price" name="price_original" value="<%= locals.old && old.price_original ? old.price_original : '' %>">
                     </article>
                     <article class="product-item">
@@ -93,6 +111,9 @@
                                 <p class="error-message"><%= errors.discount.msg %></p>
                             </div>
                         <% } %>
+                        <div class="error-message-container-front" id="error-message-discount">
+                            <p class="error-message">Este campo es obligatorio</p>
+                        </div>
                         <div class="discount-container">
                             <input type="number" min="0" max="90" class="item-input" id="item-discount" name="discount" value="<%= locals.old && old.discount ? old.discount : '0' %>"><span>%</span>
                         </div>
@@ -106,7 +127,10 @@
                                 <p class="error-message"><%= errors.release_year.msg %></p>
                             </div>
                         <% } %>
-                        <input type="number" min="1970" class="item-input" id="item-year" name="release_year" value="<%= locals.old && old.release_year ? old.release_year : '' %>">
+                        <div class="error-message-container-front" id="error-message-release_year">
+                            <p class="error-message">Este campo es obligatorio</p>
+                        </div>
+                        <input type="number" min="1970" class="item-input" id="item-release_year" name="release_year" value="<%= locals.old && old.release_year ? old.release_year : '' %>">
                     </article>
                     <article class="product-item">
                         <label for="item-condition" class="item-label">Condición</label>
@@ -126,6 +150,9 @@
                                 <p class="error-message"><%= errors.story.msg %></p>
                             </div>
                         <% } %>
+                        <div class="error-message-container-front" id="error-message-story">
+                            <p class="error-message">Este campo es obligatorio</p>
+                        </div>
                         <div class="description-container-parent">
                         <div class="description-container-child">
                             <textarea name="story" id="item-description" placeholder="Escriba una descripción"></textarea>
@@ -134,7 +161,10 @@
                         </div>
                 </article>
                 <article class="product-item">
-                    <p class="item-header">Selecciona entre 2 y 5 imágenes (la primera será la principal)</p>
+                    <p class="item-header">Selecciona entre 1 y 5 imágenes (la primera será la principal)</p>
+                    <div class="error-message-container-front" id="error-message-images">
+                        <p class="error-message">Este campo es obligatorio</p>
+                    </div>
                     <div class="item-images">
                         <input type="file" name="product_pictures" accept=".jpg,.jpeg,.png" id="item-images" multiple>
                     </div>
@@ -153,6 +183,7 @@
 
     <%- include('../partials/footer'); %>
 
+<script src="/scripts/create.js"></script>
 </body>
 
 </html>

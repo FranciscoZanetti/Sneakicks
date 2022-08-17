@@ -28,7 +28,7 @@
                 <a href="/products/<%= result.product.id %>"> > <%= result.product.whole_name %></a>
             </div>
 
-            <!-- <% if (typeof session.user_id != 'undefined') { %> -->
+            <% if (session.category == 'admin') { %>
                 <section class="edit-delete-container">
                     <div class="edit-delete">
                         <a href="/products/<%= result.product.id %>/edit" class="edit-delete-a">
@@ -43,7 +43,7 @@
                         </a>
                     </div>
                 </section>
-            <!-- <% } %> -->
+            <% } %>
 
 
             <section class="product">

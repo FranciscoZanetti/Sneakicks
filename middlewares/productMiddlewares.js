@@ -13,7 +13,7 @@ const productMiddlewares = {
         check("category").notEmpty().withMessage("Este campo es obligatorio"),
         check("price_original")
             .notEmpty().withMessage("Este campo es obligatorio").bail()
-            .isInt().withMessage("El precio debe ser un número entero, no usamos centavos"),
+            .isInt().withMessage("El precio debe ser un número entero"),
         check("discount").isInt().withMessage("El porcentaje debe ser un entero"),
         check("release_year")
             .isInt().withMessage("Debe ser un año válido"),

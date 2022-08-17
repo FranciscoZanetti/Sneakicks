@@ -65,10 +65,14 @@
     height: auto;
 }
 
+.partial-header .top-right-navbar{
+    max-width: 40%;
+}
+
 .partial-header .top-right-navbar ul{
     display: flex;
     align-items: center;
-
+    font-size: 0.5rem;
 }
 
 .partial-header .top-right-navbar ul li{
@@ -102,6 +106,12 @@
     border-radius: 0.5rem;
     width: auto;
     padding: 0.1rem 0.4rem;
+}
+
+@media (min-width: 500px){
+    .partial-header .top-right-navbar ul{
+        font-size: 0.8rem;
+    }
 }
 
 
@@ -153,6 +163,29 @@
 
     .partial-header .top-navbar {
         width: 90%;
+        display: block;
+        position: relative;
+    }
+
+    .partial-header .top-left-navbar{
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .partial-header .top-right-navbar{
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 1rem;
+    }
+
+    .partial-header .logo{
+        position: absolute;
+        right: 0;
+        left: 0;
     }
 
     .partial-header .bottom-navbar-container{

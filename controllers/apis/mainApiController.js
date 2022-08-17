@@ -180,7 +180,35 @@ module.exports = {
         .then(results => {
             return res.json(results);
         });
-    }
+    },
+    // checkout: (req, res) => {
+    //     if (typeof req.session.user_id != "undefined"){
+
+    //         db.User.findByPk(req.session.user_id)
+    //         .then(user => {
+    //             db.Order.create({
+    //                 charges: req.body.charges,
+    //                 total_ammount: req.body.total_ammount,
+    //                 id_shipping: req.body.id_shipping,
+    //                 id_user: req.session.user_id,
+    //                 user_fullname: user.first_name + " " + user.last_name
+    //             })
+    //             .then(orderCreated => {
+    //                 db.Product_Cart.destroy({
+    //                     where: {user_id: req.session.user_id}
+    //                 })
+    //                 .then(x => {
+    //                     db.Product_Size.findAll({
+    //                         where
+    //                     })
+    //                 })
+    //             })
+    //         })
+
+
+
+    //     }
+    // }
 
 
 

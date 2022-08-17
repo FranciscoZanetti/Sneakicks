@@ -21,6 +21,8 @@ const productsController = require('../controllers/productsController');
 /*** GET ALL PRODUCTS ***/ 
 router.get('/', productsController.productList); 
 
+router.get('/bargains', productsController.bargains);
+
 router.get('/create', productsController.manageProduct);
 
 router.post('/create', uploadFile.array("product_pictures"),  productMiddlewares.validateManageProduct, productsController.create);
