@@ -1,5 +1,8 @@
 # SneaKicks
 
+image.png
+image.png
+
 **Sneakicks** es un E-Comerce destinado a la venta de zapatillas. Su nombre proviene de la combinación de dos términos en inglés, *sneakers* y *kicks*, que hacen referencia a los calzados deportivos o de uso casual.//
 
 
