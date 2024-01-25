@@ -20,27 +20,16 @@ const productsController = require('../controllers/productsController');
 
 /*** GET ALL PRODUCTS ***/ 
 router.get('/', productsController.productList);
-
 router.get('/bargains', productsController.bargains);
-
 router.get('/create', productsController.manageProduct);
-
 router.post('/create', uploadFile.array("product_pictures"),  productMiddlewares.validateManageProduct, productsController.create);
-
 router.get('/:id', productsController.productDetail);
-
 router.post('/:id',productMiddlewares.validateAddToCart, productsController.addToCart);
-
 router.put('/:id/edit', uploadFile.array("product_pictures"),  productMiddlewares.validateManageProduct, productsController.editPut);
-
 router.get('/:id/edit', productsController.editGet);
-
 router.delete('/:id/delete', productsController.deleteDelete);
-
 router.delete('/:id/remove-from-cart', productsController.removeFromCart);
-
 router.get('/:id/delete', productsController.deleteGet);
-
 router.post('/:id/adding-review', productMiddlewares.validateReviewForm, productsController.addReview);
 
 module.exports = router;
